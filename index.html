@@ -146,7 +146,7 @@ function ghConfig(){
     owner: localStorage.getItem(LS_KEYS.owner) || "",
     repo: localStorage.getItem(LS_KEYS.repo) || "",
     branch: localStorage.getItem(LS_KEYS.branch) || "main",
-    path: localStorage.getItem(LS_KEYS.path) || "data/schedule.json",
+    path: localStorage.getItem(LS_KEYS.path) || "schedule.json",
     token: localStorage.getItem(LS_KEYS.token) || "",
   };
 }
@@ -173,7 +173,7 @@ async function loadSchedule(){
   }
   // fallback: relative fetch (works on GitHub Pages / local server)
   try{
-    const r = await fetch("data/schedule.json", {cache:"no-store"});
+    const r = await fetch("schedule.json", {cache:"no-store"});
     if (r.ok){
       state.schedule = await r.json();
       state.currentSha = null;
@@ -626,7 +626,7 @@ function openSettingsModal(){
           <div class="field"><label>Repo owner / org</label><input type="text" id="sOwner" value="${escapeHtml(c.owner)}" placeholder="e.g. fresha"></div>
           <div class="field"><label>Repo name</label><input type="text" id="sRepo" value="${escapeHtml(c.repo)}" placeholder="e.g. sales-onboarding-scheduler"></div>
           <div class="field"><label>Branch</label><input type="text" id="sBranch" value="${escapeHtml(c.branch)}" placeholder="main"></div>
-          <div class="field"><label>File path</label><input type="text" id="sPath" value="${escapeHtml(c.path)}" placeholder="data/schedule.json"></div>
+          <div class="field"><label>File path</label><input type="text" id="sPath" value="${escapeHtml(c.path)}" placeholder="schedule.json"></div>
           <div class="field"><label>Personal access token</label><input type="text" id="sToken" value="${escapeHtml(c.token)}" placeholder="ghp_... (fine-grained, Contents: Read & write)"></div>
         </div>
         <div class="note">Your token is stored only in this browser (localStorage) and is never written into the schedule file or committed. Each sales leader needs their own token with read/write access to this repo's contents. Every save is a normal git commit, so full history is on GitHub.</div>
@@ -646,7 +646,7 @@ function openSettingsModal(){
     localStorage.setItem(LS_KEYS.owner, document.getElementById("sOwner").value.trim());
     localStorage.setItem(LS_KEYS.repo, document.getElementById("sRepo").value.trim());
     localStorage.setItem(LS_KEYS.branch, document.getElementById("sBranch").value.trim() || "main");
-    localStorage.setItem(LS_KEYS.path, document.getElementById("sPath").value.trim() || "data/schedule.json");
+    localStorage.setItem(LS_KEYS.path, document.getElementById("sPath").value.trim() || "schedule.json");
     localStorage.setItem(LS_KEYS.token, document.getElementById("sToken").value.trim());
     closeModal();
     await loadSchedule();
