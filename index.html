@@ -3,1354 +3,672 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BD Onboarding Schedule</title>
+<title>Sales Onboarding Scheduler</title>
 <style>
-  :root {
-    --bg: #f7f6f3;
-    --card: #ffffff;
-    --ink: #1f2328;
-    --muted: #6b7280;
-    --line: #e6e4df;
-    --accent: #e8725a;
-    --accent-soft: #fbe7e1;
-    --mod1: #2b7a78;
-    --mod1-soft: #e0efee;
-    --mod2: #4c5ca7;
-    --mod2-soft: #e5e8f3;
-    --mod3: #8a5a2b;
-    --mod3-soft: #f4ead9;
-    --mod4: #6b3e86;
-    --mod4-soft: #f3e7f7;
-    --mod5: #b33d5f;
-    --mod5-soft: #fbe3ea;
-    --milestone: #fff4cc;
-    --milestone-border: #e6c65c;
-    --assess: #fde2e2;
-    --assess-border: #d9534f;
-    --inperson: #ffe5d4;
-    --inperson-ink: #a8441b;
-    --lunch: #eef2f5;
-    --lunch-ink: #556370;
-    --buffer: #f5f1e8;
-    --buffer-ink: #8a7a55;
-    --drag-over: #e0efee;
+  :root{
+    --bg:#f5f6f8; --panel:#ffffff; --border:#e2e4e9; --text:#1c1f26; --muted:#6b7280;
+    --accent:#2563eb; --accent-light:#e8efff; --danger:#dc2626; --row-h:64px;
   }
-  * { box-sizing: border-box; }
-  html, body {
-    margin: 0; padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: var(--ink); background: var(--bg);
-    -webkit-font-smoothing: antialiased;
-  }
-  .wrap { max-width: 1200px; margin: 0 auto; padding: 28px 22px 80px; }
-
-  header.page { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 14px; }
-  header.page h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -0.01em; }
-  header.page p.lede { margin: 0; color: var(--muted); font-size: 14px; max-width: 640px; }
-
-  .header-actions { display: flex; gap: 8px; }
-  .btn {
-    background: #fff; border: 1px solid var(--line);
-    padding: 7px 12px; border-radius: 8px; cursor: pointer;
-    color: var(--ink); font-size: 12px; font-weight: 500;
-  }
-  .btn:hover { border-color: var(--ink); }
-  .btn.ghost { background: transparent; color: var(--muted); }
-  .btn.ghost:hover { color: var(--ink); }
-  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .btn.primary:hover { background: #d6624d; }
-  .btn.danger { color: var(--assess-border); }
-  .btn.danger:hover { border-color: var(--assess-border); }
-
-  .view-tabs { display: inline-flex; gap: 4px; background: #ede9e2; padding: 4px; border-radius: 10px; margin: 18px 0; }
-  .view-tab { padding: 8px 16px; border-radius: 7px; cursor: pointer; font-size: 13px; font-weight: 500; color: var(--muted); border: none; background: transparent; }
-  .view-tab.active { background: #fff; color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
-
-  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0 0 22px; }
-  @media (max-width: 760px) { .summary { grid-template-columns: repeat(2, 1fr); } }
-  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
-  .stat .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
-  .stat .big { font-size: 22px; font-weight: 600; margin-top: 4px; }
-  .stat .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .bar { height: 6px; background: #eee; border-radius: 4px; overflow: hidden; margin-top: 8px; }
-  .bar > span { display: block; height: 100%; background: var(--accent); width: 0%; transition: width .3s ease; }
-
-  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 18px; background: var(--card); border: 1px solid var(--line); padding: 12px; border-radius: 12px; }
-  .controls input[type="search"] { flex: 1 1 240px; min-width: 200px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 14px; background: #fff; color: var(--ink); }
-  .chip-group { display: inline-flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-  .chip { border: 1px solid var(--line); background: #fff; padding: 6px 11px; border-radius: 999px; font-size: 12px; cursor: pointer; color: var(--muted); user-select: none; }
-  .chip:hover { border-color: var(--ink); color: var(--ink); }
-  .chip.active { background: var(--ink); color: #fff; border-color: var(--ink); }
-  .controls .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-right: 4px; }
-
-  /* Checklist */
-  .module { margin-bottom: 34px; }
-  .module h2 { font-size: 18px; margin: 0 0 2px; display: flex; align-items: center; gap: 10px; }
-  .module .sub { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
-  .mod-tag { display: inline-block; font-size: 11px; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; white-space: nowrap; }
-  .mod-tag[data-mod="1"] { background: var(--mod1-soft); color: var(--mod1); }
-  .mod-tag[data-mod="2"] { background: var(--mod2-soft); color: var(--mod2); }
-  .mod-tag[data-mod="3"] { background: var(--mod3-soft); color: var(--mod3); }
-  .mod-tag[data-mod="4"] { background: var(--mod4-soft); color: var(--mod4); }
-  .mod-tag[data-mod="5"] { background: var(--mod5-soft); color: var(--mod5); }
-  .mod-tag[data-mod="buffer"] { background: #f4f1ea; color: #8a7a55; }
-
-  .sessions { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-  .row { display: grid; grid-template-columns: 28px 1fr 130px 90px; align-items: center; gap: 12px; padding: 11px 14px; border-top: 1px solid var(--line); font-size: 14px; }
-  .row:first-child { border-top: none; }
-  .row.done .title { text-decoration: line-through; color: var(--muted); }
-  .row:hover { background: #fafaf8; }
-  .row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
-  .title { font-weight: 500; }
-  .owner, .dur { font-size: 12px; color: var(--muted); text-align: right; }
-  .owner .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; background: #f0f0ec; color: var(--ink); }
-  .owner .pill.hobd { background: #eaf1ff; color: #2a4c8f; }
-  .owner .pill.tl { background: #eaf6ee; color: #2c6f44; }
-  .owner .pill.bdm { background: #fff0e5; color: #9c5a1b; }
-  .owner .pill.mel { background: #f3e7f7; color: #6b3e86; }
-  .owner .pill.kyc { background: #fff3d6; color: #7a5a00; }
-  .owner .pill.self { background: #f0f0ec; color: var(--muted); }
-  .row .title .inperson, .block .body .t .inperson {
-    display: inline-block; margin-left: 6px;
-    background: var(--inperson); color: var(--inperson-ink);
-    font-size: 10px; padding: 2px 6px; border-radius: 4px;
-    text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;
-    vertical-align: middle;
-  }
-  .milestone { background: var(--milestone); border: 1px dashed var(--milestone-border); border-radius: 12px; padding: 12px 16px; margin: 12px 0 0; font-size: 13px; display: flex; align-items: center; gap: 10px; }
-  .milestone::before { content: "🎯"; font-size: 16px; }
-  .row.assessment { background: var(--assess); border-left: 3px solid var(--assess-border); }
-
-  /* Calendar */
-  .week-header { display: flex; align-items: baseline; justify-content: space-between; margin: 24px 0 12px; gap: 12px; flex-wrap: wrap; }
-  .week-header h2 { font-size: 20px; margin: 0; }
-  .week-header .wk-meta { color: var(--muted); font-size: 13px; display: flex; gap: 14px; align-items: center; }
-  .wk-hours { padding: 2px 8px; background: #fff; border: 1px solid var(--line); border-radius: 999px; font-size: 11px; }
-
-  .week-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
-  .day { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.15s; }
-  .day.drag-over-day { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-  .day-head { padding: 12px 14px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .day-head .info { flex: 1; min-width: 0; }
-  .day-head .dayname { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px; }
-  .day-head .daylabel {
-    font-size: 12px; color: var(--muted); margin-top: 2px;
-    cursor: text; border-radius: 4px; padding: 1px 3px; margin-left: -3px;
-  }
-  .day-head .daylabel:hover { background: #f4f2ed; }
-  .day-head .daylabel.editing { outline: 2px solid var(--accent); background: #fff; }
-  .day-head .day-actions { display: flex; gap: 4px; opacity: 0; transition: opacity 0.15s; }
-  .day:hover .day-actions { opacity: 1; }
-  .icon-btn {
-    width: 26px; height: 26px; border-radius: 6px; border: 1px solid transparent;
-    background: transparent; cursor: pointer; color: var(--muted);
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 14px; line-height: 1; padding: 0;
-  }
-  .icon-btn:hover { background: #f0eee9; color: var(--ink); border-color: var(--line); }
-  .icon-btn.danger:hover { background: var(--assess); color: var(--assess-border); border-color: var(--assess-border); }
-
-  .day[data-mod="1"] .day-head { background: var(--mod1-soft); }
-  .day[data-mod="2"] .day-head { background: var(--mod2-soft); }
-  .day[data-mod="3"] .day-head { background: var(--mod3-soft); }
-  .day[data-mod="4"] .day-head { background: var(--mod4-soft); }
-  .day[data-mod="5"] .day-head { background: var(--mod5-soft); }
-  .day[data-mod="buffer"] .day-head { background: #f4f1ea; }
-
-  .blocks { padding: 4px 0; flex: 1; min-height: 40px; }
-  .blocks.empty { padding: 12px 14px; color: var(--muted); font-size: 12px; font-style: italic; }
-  .day-foot { padding: 8px 14px; border-top: 1px solid #f1efe9; display: flex; justify-content: space-between; align-items: center; gap: 8px; background: #fbfaf6; }
-  .day-foot .total { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
-  .day-foot .total.over { color: var(--assess-border); font-weight: 600; }
-  .day-foot .add-menu { position: relative; }
-  .add-popover {
-    position: absolute; bottom: 100%; right: 0; margin-bottom: 6px;
-    background: #fff; border: 1px solid var(--line); border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1); padding: 6px;
-    min-width: 170px; display: none; z-index: 10;
-  }
-  .add-popover.open { display: block; }
-  .add-popover button {
-    width: 100%; text-align: left; padding: 8px 10px; border: none; background: transparent;
-    border-radius: 6px; cursor: pointer; font-size: 13px; color: var(--ink);
-  }
-  .add-popover button:hover { background: #f4f2ed; }
-
-  .block {
-    display: grid;
-    grid-template-columns: 78px 22px 1fr 24px;
-    gap: 10px; align-items: start;
-    padding: 9px 14px; border-top: 1px solid #f1efe9;
-    font-size: 13px; position: relative;
-    cursor: grab;
-    transition: background 0.1s, opacity 0.1s;
-  }
-  .block:first-child { border-top: none; }
-  .block.dragging { opacity: 0.4; cursor: grabbing; }
-  .block.drag-over-before { border-top: 2px solid var(--accent); }
-  .block.drag-over-after { border-bottom: 2px solid var(--accent); }
-  .block .time { color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; padding-top: 2px; }
-  .block input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); margin-top: 1px; cursor: pointer; }
-  .block .body { line-height: 1.35; cursor: pointer; min-width: 0; }
-  .block .body .t { font-weight: 500; }
-  .block .body .meta { color: var(--muted); font-size: 11px; margin-top: 2px; }
-  .block.done .body .t { text-decoration: line-through; color: var(--muted); }
-  .block .remove {
-    opacity: 0; transition: opacity 0.15s;
-    width: 22px; height: 22px; border-radius: 4px; border: none;
-    background: transparent; cursor: pointer; color: var(--muted);
-    font-size: 16px; line-height: 1; padding: 0;
-  }
-  .block:hover .remove { opacity: 0.7; }
-  .block .remove:hover { opacity: 1; background: var(--assess); color: var(--assess-border); }
-
-  .block.lunch { background: var(--lunch); }
-  .block.lunch .body .t { color: var(--lunch-ink); font-weight: 500; }
-  .block.lunch .time { color: var(--lunch-ink); }
-  .block.buffer { background: var(--buffer); }
-  .block.buffer .body .t { color: var(--buffer-ink); font-style: italic; }
-  .block.buffer .time { color: var(--buffer-ink); }
-  .block.assessment { background: var(--assess); border-left: 3px solid var(--assess-border); }
-  .block.inperson .body .t::after {
-    content: "In person";
-    display: inline-block; margin-left: 6px;
-    background: var(--inperson); color: var(--inperson-ink);
-    font-size: 9px; padding: 1px 5px; border-radius: 3px;
-    text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;
-    vertical-align: middle;
-  }
-  .block .ownertag {
-    display: inline-block; padding: 1px 6px; border-radius: 999px;
-    font-size: 10px; background: #f0f0ec; color: var(--muted); margin-left: 4px;
-  }
-  .block .ownertag.hobd { background: #eaf1ff; color: #2a4c8f; }
-  .block .ownertag.tl { background: #eaf6ee; color: #2c6f44; }
-  .block .ownertag.bdm { background: #fff0e5; color: #9c5a1b; }
-  .block .ownertag.mel { background: #f3e7f7; color: #6b3e86; }
-  .block .ownertag.kyc { background: #fff3d6; color: #7a5a00; }
-
-  .week-milestone { background: var(--milestone); border: 1px dashed var(--milestone-border); border-radius: 12px; padding: 10px 14px; margin: 14px 0 0; font-size: 13px; display: flex; align-items: center; gap: 10px; }
-  .week-milestone::before { content: "🎯"; font-size: 15px; }
-
-  .add-day-row { margin-top: 14px; text-align: center; }
-
-  .view { display: none; }
-  .view.active { display: block; }
-
-  .assumptions { background: #fffcf3; border: 1px solid #e9dfb2; border-radius: 10px; padding: 10px 14px; margin-bottom: 18px; font-size: 12px; color: #6b5e2e; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-  .assumptions b { color: #4a3e16; }
-
-  .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--muted); margin-top: 16px; }
-  .legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .legend .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
-
-  /* Modal */
-  .modal-backdrop {
-    position: fixed; inset: 0; background: rgba(20, 20, 20, 0.45);
-    display: none; align-items: center; justify-content: center;
-    z-index: 100; padding: 20px;
-  }
-  .modal-backdrop.open { display: flex; }
-  .modal {
-    background: #fff; border-radius: 14px; width: 100%;
-    max-width: 460px; max-height: 90vh; overflow: auto;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.22);
-  }
-  .modal-head { padding: 18px 20px 6px; }
-  .modal-head h3 { margin: 0; font-size: 17px; }
-  .modal-head p { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
-  .modal-body { padding: 14px 20px; }
-  .field { margin-bottom: 12px; }
-  .field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; font-weight: 500; }
-  .field input[type="text"], .field input[type="number"], .field select, .field textarea {
-    width: 100%; padding: 8px 10px; border: 1px solid var(--line);
-    border-radius: 7px; font-size: 14px; background: #fff; color: var(--ink);
-    font-family: inherit;
-  }
-  .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
-  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .field-check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink); }
-  .field-check input { width: 16px; height: 16px; }
-  .modal-foot { padding: 12px 20px 18px; display: flex; justify-content: flex-end; gap: 8px; }
-
-  @media (max-width: 640px) {
-    .row { grid-template-columns: 24px 1fr; }
-    .row .owner, .row .dur { grid-column: 2 / 3; text-align: left; }
-  }
-
-  @media print {
-    .view-tabs, .controls, .header-actions, .summary, .day-actions, .block .remove, .day-foot .add-menu, .add-day-row { display: none !important; }
-    .view { display: block !important; }
-    body { background: #fff; }
-    .week-grid { grid-template-columns: repeat(2, 1fr); }
-    .day, .sessions { break-inside: avoid; }
-  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);}
+  header{display:flex;align-items:center;gap:16px;padding:12px 20px;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;flex-wrap:wrap;}
+  header h1{font-size:16px;margin:0;white-space:nowrap;}
+  .weeks-tabs{display:flex;gap:4px;}
+  .week-tab{padding:6px 14px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);}
+  .week-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .header-spacer{flex:1;}
+  .btn{padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:13px;font-weight:600;color:var(--text);display:inline-flex;align-items:center;gap:6px;}
+  .btn:hover{background:#f0f1f3;}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .btn.primary:hover{background:#1d4ed8;}
+  .btn.danger{color:var(--danger);border-color:#fca5a5;}
+  .status-pill{font-size:12px;color:var(--muted);padding:4px 10px;border-radius:20px;background:#f0f1f3;white-space:nowrap;}
+  .status-pill.dirty{background:#fff7ed;color:#c2410c;}
+  .status-pill.synced{background:#ecfdf5;color:#047857;}
+  .banner{background:#fffbeb;border-bottom:1px solid #fde68a;color:#92400e;padding:8px 20px;font-size:13px;display:flex;align-items:center;gap:10px;}
+  .layout{display:flex;align-items:flex-start;gap:0;}
+  aside{width:280px;min-width:280px;background:var(--panel);border-right:1px solid var(--border);min-height:calc(100vh - 57px);padding:14px;}
+  aside h2{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:0 0 10px;}
+  .backlog-item{border:1px solid var(--border);border-radius:8px;padding:8px 10px;margin-bottom:8px;background:#fff;cursor:grab;display:flex;gap:8px;align-items:flex-start;}
+  .backlog-item:active{cursor:grabbing;}
+  .color-dot{width:10px;height:10px;border-radius:50%;margin-top:4px;flex-shrink:0;}
+  .backlog-item .info{flex:1;min-width:0;}
+  .backlog-item .title{font-weight:600;font-size:13px;}
+  .backlog-item .subtitle{font-size:11px;color:var(--muted);}
+  .backlog-item .owner{font-size:11px;color:var(--accent);}
+  .backlog-empty{font-size:12px;color:var(--muted);font-style:italic;padding:8px 0;}
+  main{flex:1;overflow-x:auto;padding:16px;}
+  .week-meta{font-size:13px;color:var(--muted);margin-bottom:10px;}
+  .grid-wrap{background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;min-width:900px;}
+  .grid-header{display:grid;grid-template-columns:130px repeat(5,1fr);border-bottom:1px solid var(--border);}
+  .grid-header .cell{padding:10px 8px;font-size:12px;font-weight:700;text-align:center;border-left:1px solid var(--border);}
+  .grid-header .cell:first-child{border-left:none;}
+  .grid-body{display:grid;grid-template-columns:130px repeat(5,1fr);}
+  .time-col{border-left:none;}
+  .time-col .time-label{height:var(--row-h);border-bottom:1px solid var(--border);padding:4px 8px;font-size:10px;color:var(--muted);line-height:1.3;display:flex;flex-direction:column;justify-content:center;}
+  .tz-tag{display:inline-block;width:26px;font-weight:700;color:#9ca3af;}
+  .day-col{position:relative;border-left:1px solid var(--border);}
+  .slot-bg{height:var(--row-h);border-bottom:1px solid #f0f1f3;}
+  .slot-bg.hover{background:var(--accent-light);}
+  .meeting-block{position:absolute;left:3px;right:3px;border-radius:7px;padding:6px 8px;color:#fff;overflow:hidden;cursor:grab;box-shadow:0 1px 2px rgba(0,0,0,.15);}
+  .meeting-block:active{cursor:grabbing;}
+  .meeting-block .m-title{font-size:12px;font-weight:700;line-height:1.25;}
+  .meeting-block .m-subtitle{font-size:10.5px;opacity:.9;line-height:1.2;margin-top:1px;}
+  .meeting-block .m-owner{font-size:10px;opacity:.85;margin-top:2px;font-style:italic;}
+  .resize-handle{position:absolute;left:0;right:0;bottom:0;height:7px;cursor:ns-resize;}
+  .resize-handle::after{content:"";position:absolute;left:50%;bottom:2px;width:24px;height:3px;margin-left:-12px;background:rgba(255,255,255,.6);border-radius:2px;}
+  .modal-overlay{position:fixed;inset:0;background:rgba(15,18,25,.45);display:flex;align-items:center;justify-content:center;z-index:100;}
+  .modal{background:#fff;border-radius:12px;padding:22px;width:380px;max-width:92vw;box-shadow:0 20px 50px rgba(0,0,0,.25);}
+  .modal h3{margin:0 0 14px;font-size:16px;}
+  .field{margin-bottom:12px;}
+  .field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:4px;}
+  .field input[type=text],.field select{width:100%;padding:7px 9px;border-radius:7px;border:1px solid var(--border);font-size:13px;}
+  .swatches{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+  .swatch{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent;}
+  .swatch.selected{border-color:#111;}
+  .modal-actions{display:flex;justify-content:space-between;margin-top:18px;gap:8px;flex-wrap:wrap;}
+  .modal-actions .left{display:flex;gap:8px;}
+  .modal-actions .right{display:flex;gap:8px;}
+  .settings-grid{display:grid;grid-template-columns:1fr;gap:10px;}
+  .note{font-size:11.5px;color:var(--muted);line-height:1.5;background:#f7f8fa;padding:8px 10px;border-radius:8px;margin-top:6px;}
+  a{color:var(--accent);}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header class="page">
-    <div>
-      <h1>BD Onboarding Schedule</h1>
-      <p class="lede">Drag blocks to reorder, click the × to remove, or + Session to add new sessions. All edits save to this browser.</p>
-    </div>
-    <div class="header-actions">
-      <button class="btn ghost" onclick="exportJson()">Export</button>
-      <button class="btn ghost" onclick="importJson()">Import</button>
-      <button class="btn ghost" onclick="resetAll()">Reset</button>
-    </div>
-  </header>
+<header>
+  <h1>📋 Sales Onboarding Scheduler</h1>
+  <div class="weeks-tabs" id="weekTabs"></div>
+  <div class="header-spacer"></div>
+  <span class="status-pill" id="statusPill">Loading…</span>
+  <button class="btn" id="btnReload">↻ Reload</button>
+  <button class="btn primary" id="btnSave">Save to GitHub</button>
+  <button class="btn" id="btnSettings">⚙ Settings</button>
+</header>
 
-  <div class="view-tabs" role="tablist">
-    <button class="view-tab active" data-view="calendar">Calendar</button>
-    <button class="view-tab" data-view="checklist">Checklist</button>
-  </div>
-
-  <section class="summary" aria-label="Progress summary">
-    <div class="stat">
-      <div class="label">Overall</div>
-      <div class="big"><span id="overallPct">0%</span></div>
-      <div class="sub"><span id="overallCount">0 / 0</span> sessions</div>
-      <div class="bar"><span id="overallBar"></span></div>
-    </div>
-    <div class="stat" id="stat-m1">
-      <div class="label">Module 1</div>
-      <div class="big"><span id="m1Pct">0%</span></div>
-      <div class="sub" id="m1Sub">—</div>
-      <div class="bar"><span id="m1Bar"></span></div>
-    </div>
-    <div class="stat" id="stat-m2">
-      <div class="label">Module 2</div>
-      <div class="big"><span id="m2Pct">0%</span></div>
-      <div class="sub" id="m2Sub">—</div>
-      <div class="bar"><span id="m2Bar"></span></div>
-    </div>
-    <div class="stat" id="stat-m3">
-      <div class="label">Module 3</div>
-      <div class="big"><span id="m3Pct">0%</span></div>
-      <div class="sub" id="m3Sub">—</div>
-      <div class="bar"><span id="m3Bar"></span></div>
-    </div>
-  </section>
-
-  <!-- CALENDAR VIEW -->
-  <div class="view active" id="calendarView">
-    <div class="assumptions">
-      <span><b>9:00 AM</b> day start · <b>12–1 PM</b> lunch typical · times auto-recompute from durations when you drag</span>
-      <span><button class="btn" onclick="openNewModuleModal()">+ New module</button></span>
-    </div>
-    <div id="calendarContainer"></div>
-  </div>
-
-  <!-- CHECKLIST VIEW -->
-  <div class="view" id="checklistView">
-    <div class="controls">
-      <input type="search" id="searchInput" placeholder="Search sessions…">
-      <div class="chip-group" id="moduleFilter">
-        <span class="label">Module:</span>
-        <span class="chip active" data-filter="mod" data-value="all">All</span>
-      </div>
-      <div class="chip-group" id="ownerFilter">
-        <span class="label">Owner:</span>
-        <span class="chip active" data-filter="owner" data-value="all">All</span>
-        <span class="chip" data-filter="owner" data-value="hobd">HoBD</span>
-        <span class="chip" data-filter="owner" data-value="tl">TL</span>
-        <span class="chip" data-filter="owner" data-value="bdm">BDM</span>
-        <span class="chip" data-filter="owner" data-value="self">Self</span>
-      </div>
-    </div>
-    <div id="modulesContainer"></div>
-  </div>
-
-  <div class="legend">
-    <span><span class="dot" style="background: var(--inperson);"></span> In-person</span>
-    <span><span class="dot" style="background: var(--assess);"></span> Assessment</span>
-    <span><span class="dot" style="background: var(--milestone); border: 1px dashed var(--milestone-border);"></span> Milestone</span>
-    <span><span class="dot" style="background: var(--lunch);"></span> Lunch</span>
-    <span><span class="dot" style="background: var(--buffer);"></span> Buffer / practice</span>
-  </div>
-
+<div class="banner" id="remoteBanner" style="display:none;">
+  A newer version was saved to GitHub. <button class="btn" id="btnBannerReload">Reload latest</button>
 </div>
 
-<!-- Session modal -->
-<div class="modal-backdrop" id="sessionModal">
-  <div class="modal">
-    <div class="modal-head">
-      <h3 id="sessionModalTitle">Add session</h3>
-      <p>Fill in the details below. Session will be inserted into the selected day.</p>
+<div class="layout">
+  <aside>
+    <h2>Not Yet Scheduled</h2>
+    <div id="backlogList"></div>
+    <button class="btn" id="btnAddMeeting" style="width:100%;justify-content:center;margin-top:6px;">+ Add meeting</button>
+    <div class="note">Drag any item onto the calendar to schedule it. Times shown as PST · CST · EST.</div>
+  </aside>
+
+  <main>
+    <div class="week-meta" id="weekMeta"></div>
+    <div class="grid-wrap">
+      <div class="grid-header" id="gridHeader"></div>
+      <div class="grid-body" id="gridBody"></div>
     </div>
-    <div class="modal-body">
-      <div class="field">
-        <label>Title</label>
-        <input type="text" id="smTitle" placeholder="e.g. Deep Dive on Pricing">
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Duration (minutes)</label>
-          <input type="number" id="smDuration" min="5" step="5" value="60">
-        </div>
-        <div class="field">
-          <label>Owner</label>
-          <select id="smOwner">
-            <option>HoBD</option><option>TL</option><option>BDM</option>
-            <option>Mel</option><option>KYC</option><option>Self</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label>Module</label>
-        <select id="smModule"></select>
-      </div>
-      <div class="field">
-        <label class="field-check"><input type="checkbox" id="smInPerson"> In person</label>
-        <label class="field-check"><input type="checkbox" id="smAssessment"> Assessment / checkpoint</label>
-      </div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn ghost" onclick="closeModal('sessionModal')">Cancel</button>
-      <button class="btn primary" id="smSaveBtn">Save</button>
-    </div>
-  </div>
+  </main>
 </div>
 
-<!-- Buffer modal -->
-<div class="modal-backdrop" id="bufferModal">
-  <div class="modal">
-    <div class="modal-head">
-      <h3>Add buffer / activity</h3>
-      <p>Use for shadowing, reviews, breaks, live calls — anything that isn't a formal trackable session.</p>
-    </div>
-    <div class="modal-body">
-      <div class="field">
-        <label>Label</label>
-        <input type="text" id="bmLabel" placeholder="e.g. Shadow a BDM on live calls">
-      </div>
-      <div class="field">
-        <label>Duration (minutes)</label>
-        <input type="number" id="bmDuration" min="5" step="5" value="60">
-      </div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn ghost" onclick="closeModal('bufferModal')">Cancel</button>
-      <button class="btn primary" id="bmSaveBtn">Save</button>
-    </div>
-  </div>
-</div>
-
-<!-- Module modal -->
-<div class="modal-backdrop" id="moduleModal">
-  <div class="modal">
-    <div class="modal-head">
-      <h3>New module</h3>
-      <p>Adds a new category. Sessions can be assigned to it.</p>
-    </div>
-    <div class="modal-body">
-      <div class="field">
-        <label>Title</label>
-        <input type="text" id="mmTitle" placeholder="e.g. Module 4 · Advanced Sales">
-      </div>
-      <div class="field">
-        <label>Hours (optional)</label>
-        <input type="text" id="mmHours" placeholder="e.g. ~10 hours">
-      </div>
-      <div class="field">
-        <label>Milestone (optional)</label>
-        <input type="text" id="mmMilestone" placeholder="e.g. Complete by end of Week 4">
-      </div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn ghost" onclick="closeModal('moduleModal')">Cancel</button>
-      <button class="btn primary" id="mmSaveBtn">Create module</button>
-    </div>
-  </div>
-</div>
-
-<!-- Day modal -->
-<div class="modal-backdrop" id="dayModal">
-  <div class="modal">
-    <div class="modal-head">
-      <h3>New day</h3>
-      <p>Adds an empty day at the end of the selected week.</p>
-    </div>
-    <div class="modal-body">
-      <div class="field">
-        <label>Week number</label>
-        <input type="number" id="dmWeek" min="1" value="1">
-      </div>
-      <div class="field">
-        <label>Day name</label>
-        <input type="text" id="dmDayName" placeholder="e.g. Monday">
-      </div>
-      <div class="field">
-        <label>Label</label>
-        <input type="text" id="dmLabel" placeholder="e.g. Day 16 · Ramp Kickoff">
-      </div>
-      <div class="field">
-        <label>Default module tint</label>
-        <select id="dmMod"></select>
-      </div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn ghost" onclick="closeModal('dayModal')">Cancel</button>
-      <button class="btn primary" id="dmSaveBtn">Create day</button>
-    </div>
-  </div>
-</div>
+<div id="modalRoot"></div>
 
 <script>
-  // ---------- Default data ----------
-  function defaultState() {
-    const sessions = {};
-    const add = (id, title, durMin, owner, modId, flags = {}) => {
-      sessions[id] = { id, title, durMin, owner, modId, inPerson: !!flags.inPerson, assessment: !!flags.assessment, custom: false };
-    };
-    // Module 1
-    add("m1-01", "Welcome & Meet the Team", 60, "HoBD", 1);
-    add("m1-02", "Hardware & Tech Set Up", 60, "Self", 1);
-    add("m1-03", "Intro to Fresha and Onboarding Classroom w/ HoB", 60, "HoBD", 1);
-    add("m1-04", "Expectations, Commission Plan and Housekeeping w/ HoBD", 45, "HoBD", 1);
-    add("m1-05", "Sales Demo and Intro to Test Account Task w/ TL", 60, "TL", 1);
-    add("m1-06", "Test Account Task", 60, "Self", 1);
-    add("m1-07", "System Overview (Calendar, Service Menu, Client)", 60, "TL", 1, { inPerson: true });
-    add("m1-08", "Test Account (Calendar, Service Menu, Client list)", 60, "Self", 1);
-    add("m1-09", "System Overview Knowledge Check 1 & 2", 20, "Self", 1);
-    add("m1-10", "Online Booking (Marktpl, Ecommerce, RwG, Google Boost)", 60, "TL", 1);
-    add("m1-11", "Online Bookings & Value of Online Bookings Knowledge Checks", 20, "Self", 1);
-    add("m1-12", "Test Account Task – Online Presence", 20, "Self", 1);
-    add("m1-13", "Test Account Task – Calendar, Service Menu & Client List", 20, "Self", 1);
-    add("m1-14", "Test Account Task – Ecommerce", 20, "Self", 1);
-    add("m1-15", "Demo Task 1 w/ HoBD", 90, "HoBD", 1);
-    add("m1-16", "FAB Deck", 20, "Self", 1);
-    add("m1-17", "Payment Features: CWC & Deposits", 90, "TL", 1);
-    add("m1-18", "Test Account Task – Deposits", 20, "Self", 1);
-    add("m1-19", "Payment Types (Online, TTP, Terminals)", 60, "TL", 1, { inPerson: true });
-    add("m1-20", "Payment Fees Knowledge Check", 20, "Self", 1);
-    add("m1-21", "CWC & Deposits Knowledge Check", 60, "Self", 1);
-    add("m1-22", "Marketing (Blast, Deals), Memberships & Gift Cards", 20, "TL", 1);
-    add("m1-23", "Test Account Task – Marketing", 20, "Self", 1);
-    add("m1-24", "Test Account Task – Business Settings", 20, "Self", 1);
-    add("m1-25", "Test Account Task – Client", 90, "Self", 1);
-    add("m1-26", "Online Presence Scenario Task", 90, "Self", 1);
-    add("m1-27", "Add On: Team Pay", 90, "TL", 1, { inPerson: true });
-    add("m1-28", "Add On: Insights", 60, "TL", 1);
-    add("m1-29", "Insights Knowledge Check", 20, "Self", 1);
-    add("m1-30", "Team Pay Knowledge Check", 20, "Self", 1);
-    add("m1-31", "Demo Task 2 w/ HoBD", 60, "HoBD", 1);
-    add("m1-32", "Module 1: Product Knowledge Assessment", 30, "HoBD", 1, { assessment: true });
-    // Module 2
-    add("m2-01", "Cold Calling at Fresha", 90, "TL", 2);
-    add("m2-02", "Discovery Questions & Roleplay w/ TL", 60, "TL", 2);
-    add("m2-03", "Listen to BD Calls (team up with a BDM) – 1", 60, "BDM", 2);
-    add("m2-04", "Listen to BD Calls (team up with a BDM) – 2", 60, "BDM", 2);
-    add("m2-05", "Cold Call Roleplay with Head Of / BD", 30, "HoBD", 2);
-    add("m2-06", "Battle Card Material", 60, "Self", 2);
-    add("m2-07", "Listen to BD Calls (team up with a BDM) – 3", 60, "BDM", 2);
-    add("m2-08", "Discovery Calls at Fresha (+recap of cold calls)", 90, "TL", 2);
-    add("m2-09", "Discovery Questions Task", 60, "Self", 2);
-    add("m2-10", "Objection Handling Roleplay", 60, "TL", 2);
-    add("m2-11", "Objection Handling Task", 60, "Self", 2);
-    add("m2-12", "Fact Find on 10 leads & Call 10 Leads (HoBD)", 60, "Self", 2);
-    add("m2-13", "Discovery Questions / Objection Roleplay", 60, "TL", 2);
-    add("m2-14", "Sales & Demo Strategy w/ HoBD", 60, "HoBD", 2);
-    add("m2-15", "Demo Agenda Task", 120, "Self", 2);
-    add("m2-16", "Cold Calling (leads assigned by HoBD)", 120, "Self", 2);
-    // Module 3
-    add("m3-01", "Handover to Professional Services w/ Mel", 60, "Mel", 3);
-    add("m3-02", "Module 3 Demo Roleplay Assessment", 60, "HoBD", 3, { assessment: true });
-    add("m3-03", "Intro to Hubspot", 60, "TL", 3);
-    add("m3-04", "Intro to Hubspot Knowledge Check", 30, "Self", 3);
-    add("m3-05", "Hubspot Best Practice", 60, "TL", 3);
-    add("m3-06", "Hubspot Best Practice Knowledge Check", 30, "Self", 3);
-    add("m3-07", "Self Demo Practice (recording)", 60, "Self", 3);
-    add("m3-08", "Fact Finding on Leads", 60, "Self", 3);
-    add("m3-09", "KYC w/ Sam (EMEA) / Ash (APAC) / Bianca (NA)", 60, "KYC", 3);
-    add("m3-10", "Walk through KYC w/ a BDM", 30, "BDM", 3);
-    add("m3-11", "Sales Practice Assessment (Module 2 follow-up)", 30, "HoBD", 3, { assessment: true });
+/* ---------------------------------------------------------------
+   Sales Onboarding Scheduler
+   Single-file static app. Data model lives in-memory as `state.schedule`
+   and is persisted to a GitHub repo file via the GitHub Contents API.
+---------------------------------------------------------------- */
 
-    const modules = [
-      { id: 1, title: "Module 1 · Product Knowledge", hours: "~33 hours", milestone: "All of Module 1 complete by end of Week 1" },
-      { id: 2, title: "Module 2 · Sales Practice", hours: "~25 hours", milestone: "All of Module 2 complete by end of Week 2" },
-      { id: 3, title: "Module 3 · Applied Learning", hours: "", milestone: "Ready to ramp by end of Week 3" }
-    ];
+const COLOR_PRESETS = ["#2563eb","#16a34a","#ea580c","#0891b2","#7c3aed","#db2777","#9333ea","#4b5563","#dc2626","#ca8a04"];
+const ROW_H = 64; // must match CSS --row-h
+const LS_KEYS = { owner:"ghOwner", repo:"ghRepo", branch:"ghBranch", path:"ghPath", token:"ghToken" };
 
-    // Build days with blocks
-    let nextBlockId = 0;
-    const mkSess = (sid) => ({ id: "b" + (++nextBlockId), kind: "session", sessionId: sid });
-    const mkLunch = (min = 60) => ({ id: "b" + (++nextBlockId), kind: "lunch", durMin: min });
-    const mkBuf = (label, min) => ({ id: "b" + (++nextBlockId), kind: "buffer", label, durMin: min });
+let state = {
+  schedule: null,
+  currentWeekId: null,
+  dirty: false,
+  currentSha: null,
+  pollTimer: null,
+};
 
-    const days = [
-      { id: "d1", week: 1, mod: 1, dayName: "Monday", dayLabel: "Day 1 · Welcome & Foundations", blocks: [
-        mkSess("m1-01"), mkSess("m1-02"), mkSess("m1-03"), mkLunch(),
-        mkSess("m1-04"), mkSess("m1-05"), mkSess("m1-06"), mkSess("m1-07"),
-        mkBuf("Wrap-up / Q&A", 15)
-      ]},
-      { id: "d2", week: 1, mod: 1, dayName: "Tuesday", dayLabel: "Day 2 · System Deep Dive & Demo 1", blocks: [
-        mkSess("m1-08"), mkSess("m1-09"), mkSess("m1-10"), mkSess("m1-11"), mkSess("m1-12"), mkLunch(),
-        mkSess("m1-13"), mkSess("m1-14"), mkSess("m1-15"), mkSess("m1-16"), mkSess("m1-17")
-      ]},
-      { id: "d3", week: 1, mod: 1, dayName: "Wednesday", dayLabel: "Day 3 · Payments & Marketing", blocks: [
-        mkSess("m1-18"), mkSess("m1-19"), mkSess("m1-20"), mkSess("m1-21"), mkSess("m1-22"), mkLunch(),
-        mkSess("m1-23"), mkSess("m1-24"), mkSess("m1-25"), mkSess("m1-26"),
-        mkBuf("Recap & notes", 20)
-      ]},
-      { id: "d4", week: 1, mod: 1, dayName: "Thursday", dayLabel: "Day 4 · Add-ons & Demo 2", blocks: [
-        mkSess("m1-27"), mkSess("m1-28"), mkSess("m1-29"), mkBuf("Break", 10), mkLunch(),
-        mkSess("m1-30"), mkSess("m1-31"),
-        mkBuf("Review & assessment prep", 160)
-      ]},
-      { id: "d5", week: 1, mod: 1, dayName: "Friday", dayLabel: "Day 5 · Assessment & Shadow", blocks: [
-        mkBuf("Review session / Q&A with TL", 60),
-        mkSess("m1-32"),
-        mkBuf("Shadow a BDM on live calls", 90), mkLunch(),
-        mkBuf("Assessment feedback & gap-fill", 120),
-        mkBuf("Module 2 pre-reading / cold call prep", 120)
-      ]},
-      { id: "d6", week: 2, mod: 2, dayName: "Monday", dayLabel: "Day 6 · Cold Calling Foundations", blocks: [
-        mkSess("m2-01"), mkSess("m2-02"), mkBuf("Break / notes", 30), mkLunch(),
-        mkSess("m2-03"), mkSess("m2-04"), mkSess("m2-05"), mkSess("m2-06"),
-        mkBuf("Debrief", 30)
-      ]},
-      { id: "d7", week: 2, mod: 2, dayName: "Tuesday", dayLabel: "Day 7 · Discovery & Objections", blocks: [
-        mkSess("m2-07"), mkSess("m2-08"), mkBuf("Break / notes", 30), mkLunch(),
-        mkSess("m2-09"), mkSess("m2-10"), mkSess("m2-11"),
-        mkBuf("Reflection / roleplay prep", 60)
-      ]},
-      { id: "d8", week: 2, mod: 2, dayName: "Wednesday", dayLabel: "Day 8 · Lead Work & Demo Strategy", blocks: [
-        mkSess("m2-12"), mkSess("m2-13"), mkSess("m2-14"), mkLunch(),
-        mkSess("m2-15"), mkSess("m2-16")
-      ]},
-      { id: "d9", week: 2, mod: "buffer", dayName: "Thursday", dayLabel: "Day 9 · Practice & Shadow", blocks: [
-        mkBuf("Shadow senior BDM on live calls", 60),
-        mkBuf("Independent cold calling practice", 120), mkLunch(),
-        mkBuf("Independent discovery call practice", 120),
-        mkBuf("Roleplay follow-up w/ TL", 60),
-        mkBuf("Prep for Module 3 roleplay", 60)
-      ]},
-      { id: "d10", week: 2, mod: "buffer", dayName: "Friday", dayLabel: "Day 10 · Week 2 Wrap-Up", blocks: [
-        mkBuf("Live cold calls with BDM support", 120),
-        mkBuf("Debrief & feedback", 60), mkLunch(),
-        mkBuf("Prep for Module 3 demo roleplay", 120),
-        mkBuf("Week 2 wrap-up w/ HoBD", 120)
-      ]},
-      { id: "d11", week: 3, mod: 3, dayName: "Monday", dayLabel: "Day 11 · Handover & Tools", blocks: [
-        mkSess("m3-01"), mkSess("m3-03"), mkSess("m3-04"), mkBuf("Break", 30), mkLunch(),
-        mkSess("m3-05"), mkSess("m3-06"), mkSess("m3-07"),
-        mkBuf("Roleplay prep", 90)
-      ]},
-      { id: "d12", week: 3, mod: 3, dayName: "Tuesday", dayLabel: "Day 12 · Assessments & KYC", blocks: [
-        mkSess("m3-02"), mkSess("m3-08"), mkSess("m3-09"), mkLunch(),
-        mkSess("m3-10"), mkSess("m3-11"),
-        mkBuf("Retake roleplay if needed", 60),
-        mkBuf("Debrief & feedback", 120)
-      ]},
-      { id: "d13", week: 3, mod: "buffer", dayName: "Wednesday", dayLabel: "Day 13 · Live Calling Day", blocks: [
-        mkBuf("Live cold & discovery calls (with BDM/HoBD support)", 180), mkLunch(),
-        mkBuf("Continued live calls + fact-finding", 180),
-        mkBuf("Daily debrief", 60)
-      ]},
-      { id: "d14", week: 3, mod: "buffer", dayName: "Thursday", dayLabel: "Day 14 · Live Calling + KYC", blocks: [
-        mkBuf("Live selling — discovery & demo calls", 180), mkLunch(),
-        mkBuf("KYC submissions / account hand-offs", 120),
-        mkBuf("Pipeline review w/ TL", 120)
-      ]},
-      { id: "d15", week: 3, mod: "buffer", dayName: "Friday", dayLabel: "Day 15 · Ramp Planning", blocks: [
-        mkBuf("Full onboarding debrief w/ HoBD", 120),
-        mkBuf("Review all assessment feedback", 60), mkLunch(),
-        mkBuf("Set 30/60/90 ramp goals w/ HoBD", 120),
-        mkBuf("Intro to pipeline management — official live", 120)
-      ]}
-    ];
+// ---------- Utility ----------
+function minutesToParts(mins){
+  mins = ((mins % 1440) + 1440) % 1440;
+  let h = Math.floor(mins/60), m = mins%60;
+  const ap = h >= 12 ? "PM" : "AM";
+  let h12 = h % 12; if (h12 === 0) h12 = 12;
+  return `${h12}:${String(m).padStart(2,"0")} ${ap}`;
+}
+function uid(prefix){ return prefix + Math.random().toString(36).slice(2,9); }
+function b64EncodeUnicode(str){ return btoa(unescape(encodeURIComponent(str))); }
+function b64DecodeUnicode(str){ return decodeURIComponent(escape(atob(str))); }
+function escapeHtml(s){ return (s||"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
-    return { version: 2, modules, sessions, days, progress: {}, nextSessionIdNum: 100, nextBlockIdNum: nextBlockId + 1 };
-  }
+function ghConfig(){
+  return {
+    owner: localStorage.getItem(LS_KEYS.owner) || "",
+    repo: localStorage.getItem(LS_KEYS.repo) || "",
+    branch: localStorage.getItem(LS_KEYS.branch) || "main",
+    path: localStorage.getItem(LS_KEYS.path) || "data/schedule.json",
+    token: localStorage.getItem(LS_KEYS.token) || "",
+  };
+}
+function ghConfigured(){
+  const c = ghConfig();
+  return !!(c.owner && c.repo && c.token);
+}
 
-  // ---------- State ----------
-  const STORAGE_KEY = "bdOnboardingState_v2";
-  let state;
-  try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    state = (saved && saved.version === 2) ? saved : defaultState();
-  } catch (e) { state = defaultState(); }
-
-  function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
-
-  let filters = { mod: "all", owner: "all", search: "" };
-  let dragState = null; // { blockId, fromDayId }
-  let modalContext = null; // transient context for modals
-
-  // ---------- Helpers ----------
-  function ownerPillClass(owner) {
-    const o = (owner || "").toLowerCase();
-    if (o === "hobd") return "hobd";
-    if (o === "tl") return "tl";
-    if (o === "bdm") return "bdm";
-    if (o === "mel") return "mel";
-    if (o === "kyc") return "kyc";
-    return "self";
-  }
-  function blockDuration(b) {
-    if (b.kind === "session") {
-      const s = state.sessions[b.sessionId];
-      return s ? s.durMin : 0;
+// ---------- Data load ----------
+async function loadSchedule(){
+  setStatus("Loading…", "");
+  if (ghConfigured()){
+    try{
+      const res = await ghGetFile();
+      if (res){
+        state.schedule = res.json;
+        state.currentSha = res.sha;
+        finishLoad();
+        return;
+      }
+    }catch(e){
+      console.warn("GitHub load failed, falling back", e);
     }
-    return b.durMin || 0;
   }
-  function formatTime(totalMin) {
-    // 9:00 = 540 mins from midnight
-    let h = Math.floor(totalMin / 60);
-    const m = totalMin % 60;
-    const pad = String(m).padStart(2, "0");
-    // 12-hour clock
-    let suffix = "";
-    if (h >= 12) h = h === 12 ? 12 : h - 12;
-    if (h === 0) h = 12;
-    return `${h}:${pad}`;
+  // fallback: relative fetch (works on GitHub Pages / local server)
+  try{
+    const r = await fetch("data/schedule.json", {cache:"no-store"});
+    if (r.ok){
+      state.schedule = await r.json();
+      state.currentSha = null;
+      finishLoad();
+      return;
+    }
+  }catch(e){ /* ignore, fall through */ }
+  // final fallback: inline default
+  state.schedule = JSON.parse(JSON.stringify(DEFAULT_SCHEDULE));
+  state.currentSha = null;
+  finishLoad();
+}
+
+function finishLoad(){
+  if (!state.currentWeekId && state.schedule.weeks.length){
+    state.currentWeekId = state.schedule.weeks[0].id;
   }
-  function dayMinutes(day) {
-    return day.blocks.reduce((sum, b) => sum + blockDuration(b), 0);
+  state.dirty = false;
+  renderAll();
+  setStatus(ghConfigured() ? "Synced with GitHub" : "Using local demo data (connect GitHub in Settings)", ghConfigured() ? "synced" : "");
+  startPolling();
+}
+
+// ---------- GitHub API ----------
+async function ghGetFile(){
+  const c = ghConfig();
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${encodeURI(c.path)}?ref=${encodeURIComponent(c.branch)}`;
+  const res = await fetch(url, {
+    headers: {
+      "Authorization": `Bearer ${c.token}`,
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    }
+  });
+  if (res.status === 404) return null; // file doesn't exist yet
+  if (!res.ok){
+    const body = await res.text();
+    throw new Error(`GitHub GET failed (${res.status}): ${body}`);
   }
-  function dayHoursLabel(day) {
-    const mins = dayMinutes(day);
-    const h = Math.floor(mins / 60);
-    const m = mins % 60;
-    return m === 0 ? `${h}h` : `${h}h ${m}m`;
+  const data = await res.json();
+  const json = JSON.parse(b64DecodeUnicode(data.content.replace(/\n/g,"")));
+  return { json, sha: data.sha };
+}
+
+async function ghPeekSha(){
+  const c = ghConfig();
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${encodeURI(c.path)}?ref=${encodeURIComponent(c.branch)}`;
+  const res = await fetch(url, {
+    headers: { "Authorization": `Bearer ${c.token}`, "Accept": "application/vnd.github+json" }
+  });
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.sha;
+}
+
+async function ghPutFile(message){
+  const c = ghConfig();
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${encodeURI(c.path)}`;
+  const body = {
+    message: message || `Update onboarding schedule (${new Date().toISOString()})`,
+    content: b64EncodeUnicode(JSON.stringify(state.schedule, null, 2)),
+    branch: c.branch,
+  };
+  if (state.currentSha) body.sha = state.currentSha;
+  const res = await fetch(url, {
+    method: "PUT",
+    headers: {
+      "Authorization": `Bearer ${c.token}`,
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  if (res.status === 409){
+    throw { conflict:true };
   }
-  function getDay(dayId) { return state.days.find(d => d.id === dayId); }
-  function getBlock(blockId) {
-    for (const d of state.days) for (const b of d.blocks) if (b.id === blockId) return { block: b, day: d };
-    return null;
+  if (!res.ok){
+    const t = await res.text();
+    throw new Error(`GitHub save failed (${res.status}): ${t}`);
   }
-  function newBlockId() { return "b" + (state.nextBlockIdNum++); }
-  function newSessionId(modId) { return `m${modId}-c${state.nextSessionIdNum++}`; }
-  function newDayId() { return "d" + Date.now().toString(36); }
-  function getMod(id) { return state.modules.find(m => m.id === id); }
+  const data = await res.json();
+  state.currentSha = data.content.sha;
+  return data;
+}
 
-  // ---------- Render calendar ----------
-  const calendarContainer = document.getElementById("calendarContainer");
+async function saveToGitHub(){
+  if (!ghConfigured()){ openSettingsModal(); return; }
+  setStatus("Saving…", "");
+  try{
+    await ghPutFile();
+    state.dirty = false;
+    setStatus("Synced with GitHub", "synced");
+  }catch(e){
+    if (e && e.conflict){
+      alert("Someone else saved changes to this file first. Reloading the latest version — please redo your edit and save again.");
+      await loadSchedule();
+    } else {
+      console.error(e);
+      alert("Save failed. Check your GitHub settings/token and try again.\n\n" + e.message);
+      setStatus("Save failed", "dirty");
+    }
+  }
+}
 
-  function renderCalendar() {
-    calendarContainer.innerHTML = "";
-    // group by week
-    const byWeek = {};
-    state.days.forEach(d => { (byWeek[d.week] = byWeek[d.week] || []).push(d); });
-    const weeks = Object.keys(byWeek).map(Number).sort((a, b) => a - b);
-    // ensure at least weeks 1-3
-    [1, 2, 3].forEach(w => { if (!weeks.includes(w)) weeks.push(w); });
-    weeks.sort((a, b) => a - b);
+function startPolling(){
+  if (state.pollTimer) clearInterval(state.pollTimer);
+  if (!ghConfigured()) return;
+  state.pollTimer = setInterval(async () => {
+    if (state.dirty) return; // don't clobber unsaved local edits, just wait
+    try{
+      const sha = await ghPeekSha();
+      if (sha && state.currentSha && sha !== state.currentSha){
+        document.getElementById("remoteBanner").style.display = "flex";
+      }
+    }catch(e){ /* ignore polling errors */ }
+  }, 20000);
+}
 
-    weeks.forEach(wk => {
-      const header = document.createElement("div");
-      header.className = "week-header";
-      const wkDays = byWeek[wk] || [];
-      const totalMin = wkDays.reduce((s, d) => s + dayMinutes(d), 0);
-      const totalH = Math.floor(totalMin / 60);
-      const totalM = totalMin % 60;
-      const modsThisWeek = [...new Set(wkDays.map(d => d.mod).filter(m => m !== "buffer"))];
-      const modTitles = modsThisWeek.map(m => getMod(m)).filter(Boolean).map(m => m.title.replace(/^Module \d+ · /, "")).join(" · ");
-      header.innerHTML = `
-        <h2>Week ${wk}${modTitles ? ` <span style="font-weight:400;color:var(--muted);font-size:15px;">· ${modTitles}</span>` : ''}</h2>
-        <div class="wk-meta">
-          <span class="wk-hours">${totalH}h${totalM ? ' ' + totalM + 'm' : ''} · ${wkDays.length} days</span>
-          <button class="btn ghost" onclick="openNewDayModal(${wk})" style="font-size:11px;padding:4px 9px;">+ Day</button>
-        </div>
-      `;
-      calendarContainer.appendChild(header);
+// ---------- Rendering ----------
+function setStatus(text, cls){
+  const el = document.getElementById("statusPill");
+  el.textContent = text;
+  el.className = "status-pill" + (cls ? " " + cls : "");
+}
 
-      const grid = document.createElement("div");
-      grid.className = "week-grid";
-      wkDays.forEach(d => grid.appendChild(buildDayCard(d)));
-      calendarContainer.appendChild(grid);
+function markDirty(){
+  state.dirty = true;
+  setStatus("Unsaved changes", "dirty");
+}
 
-      // Milestones: show any module whose milestone should land this week
-      const modsMilestones = state.modules.filter(m => modsThisWeek.includes(m.id) && m.milestone);
-      modsMilestones.forEach(m => {
-        const ms = document.createElement("div");
-        ms.className = "week-milestone";
-        ms.innerHTML = `<span><strong>${m.title.replace(/^Module \d+ · /, "")}:</strong> ${m.milestone}</span>`;
-        calendarContainer.appendChild(ms);
-      });
+function renderAll(){
+  renderWeekTabs();
+  renderWeekMeta();
+  renderGridHeader();
+  renderGridBody();
+  renderBacklog();
+}
+
+function renderWeekTabs(){
+  const wrap = document.getElementById("weekTabs");
+  wrap.innerHTML = "";
+  state.schedule.weeks.forEach(w => {
+    const btn = document.createElement("button");
+    btn.className = "week-tab" + (w.id === state.currentWeekId ? " active" : "");
+    btn.textContent = w.label;
+    btn.onclick = () => { state.currentWeekId = w.id; renderAll(); };
+    wrap.appendChild(btn);
+  });
+}
+
+function renderWeekMeta(){
+  const w = state.schedule.weeks.find(w => w.id === state.currentWeekId);
+  document.getElementById("weekMeta").textContent = w ? `${w.label} — ${w.dateRange}` : "";
+}
+
+function renderGridHeader(){
+  const el = document.getElementById("gridHeader");
+  el.innerHTML = `<div class="cell"></div>` + state.schedule.meta.days.map(d => `<div class="cell">${d}</div>`).join("");
+}
+
+function slotStartMinutes(slotIndex){
+  return state.schedule.meta.startMinutesPST + slotIndex * state.schedule.meta.slotMinutes;
+}
+
+function renderGridBody(){
+  const el = document.getElementById("gridBody");
+  el.innerHTML = "";
+  const slotCount = state.schedule.meta.slotCount;
+
+  // time column
+  const timeCol = document.createElement("div");
+  timeCol.className = "time-col";
+  for (let i=0;i<slotCount;i++){
+    const pst = slotStartMinutes(i);
+    const div = document.createElement("div");
+    div.className = "time-label";
+    div.innerHTML = `
+      <div><span class="tz-tag">PST</span>${minutesToParts(pst)}</div>
+      <div><span class="tz-tag">CST</span>${minutesToParts(pst+120)}</div>
+      <div><span class="tz-tag">EST</span>${minutesToParts(pst+180)}</div>`;
+    timeCol.appendChild(div);
+  }
+  el.appendChild(timeCol);
+
+  // day columns
+  state.schedule.meta.days.forEach(day => {
+    const col = document.createElement("div");
+    col.className = "day-col";
+    col.style.height = (slotCount * ROW_H) + "px";
+    col.dataset.day = day;
+
+    for (let i=0;i<slotCount;i++){
+      const bg = document.createElement("div");
+      bg.className = "slot-bg";
+      bg.dataset.slot = i;
+      col.appendChild(bg);
+    }
+
+    // drag over / drop handling
+    col.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      const slot = clampSlot(Math.floor((e.clientY - col.getBoundingClientRect().top) / ROW_H));
+      highlightSlot(col, slot);
+    });
+    col.addEventListener("dragleave", () => clearHighlight(col));
+    col.addEventListener("drop", (e) => {
+      e.preventDefault();
+      clearHighlight(col);
+      const raw = e.dataTransfer.getData("text/plain");
+      if (!raw) return;
+      const payload = JSON.parse(raw);
+      const slot = clampSlot(Math.floor((e.clientY - col.getBoundingClientRect().top) / ROW_H));
+      handleDrop(payload, day, slot);
     });
 
-    // Add new week button
-    const addWeek = document.createElement("div");
-    addWeek.className = "add-day-row";
-    const nextWk = Math.max(...weeks, 0) + 1;
-    addWeek.innerHTML = `<button class="btn ghost" onclick="openNewDayModal(${nextWk})">+ Add day (Week ${nextWk})</button>`;
-    calendarContainer.appendChild(addWeek);
+    el.appendChild(col);
+  });
+
+  // place meeting blocks
+  const meetings = state.schedule.meetings.filter(m => m.scheduled && m.weekId === state.currentWeekId);
+  meetings.forEach(m => renderMeetingBlock(m));
+}
+
+function clampSlot(slot){
+  const max = state.schedule.meta.slotCount - 1;
+  return Math.max(0, Math.min(max, slot));
+}
+function highlightSlot(col, slot){
+  clearHighlight(col);
+  const bg = col.querySelector(`.slot-bg[data-slot="${slot}"]`);
+  if (bg) bg.classList.add("hover");
+}
+function clearHighlight(col){
+  col.querySelectorAll(".slot-bg.hover").forEach(x => x.classList.remove("hover"));
+}
+
+function renderMeetingBlock(m){
+  const col = document.querySelector(`.day-col[data-day="${m.day}"]`);
+  if (!col) return;
+  const block = document.createElement("div");
+  block.className = "meeting-block";
+  block.draggable = true;
+  block.style.top = (m.startSlot * ROW_H + 2) + "px";
+  block.style.height = (m.durationSlots * ROW_H - 4) + "px";
+  block.style.background = m.color;
+  block.dataset.id = m.id;
+
+  block.innerHTML = `
+    <div class="m-title">${escapeHtml(m.title)}</div>
+    ${m.subtitle ? `<div class="m-subtitle">${escapeHtml(m.subtitle)}</div>` : ""}
+    ${m.owner ? `<div class="m-owner">👤 ${escapeHtml(m.owner)}</div>` : ""}
+    <div class="resize-handle"></div>
+  `;
+
+  let resizing = false;
+
+  block.addEventListener("dragstart", (e) => {
+    if (resizing){ e.preventDefault(); return; }
+    e.dataTransfer.setData("text/plain", JSON.stringify({ id: m.id, source: "grid" }));
+    e.dataTransfer.effectAllowed = "move";
+  });
+
+  block.addEventListener("click", (e) => {
+    if (resizing) return;
+    openEditModal(m.id);
+  });
+
+  const handle = block.querySelector(".resize-handle");
+  handle.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    resizing = true;
+    const startY = e.clientY;
+    const startDuration = m.durationSlots;
+    function onMove(ev){
+      const deltaSlots = Math.round((ev.clientY - startY) / ROW_H);
+      const maxDur = state.schedule.meta.slotCount - m.startSlot;
+      m.durationSlots = Math.max(1, Math.min(maxDur, startDuration + deltaSlots));
+      block.style.height = (m.durationSlots * ROW_H - 4) + "px";
+    }
+    function onUp(){
+      document.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseup", onUp);
+      setTimeout(() => { resizing = false; }, 0);
+      markDirty();
+    }
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", onUp);
+  });
+
+  col.appendChild(block);
+}
+
+function handleDrop(payload, day, slot){
+  const m = state.schedule.meetings.find(x => x.id === payload.id);
+  if (!m) return;
+  const dur = m.durationSlots || 1;
+  const maxStart = state.schedule.meta.slotCount - dur;
+  m.scheduled = true;
+  m.weekId = state.currentWeekId;
+  m.day = day;
+  m.startSlot = Math.max(0, Math.min(maxStart, slot));
+  m.durationSlots = dur;
+  markDirty();
+  renderAll();
+}
+
+function renderBacklog(){
+  const wrap = document.getElementById("backlogList");
+  wrap.innerHTML = "";
+  const items = state.schedule.meetings.filter(m => !m.scheduled);
+  if (!items.length){
+    wrap.innerHTML = `<div class="backlog-empty">Nothing waiting — everything is scheduled.</div>`;
+    return;
   }
-
-  function buildDayCard(day) {
-    const el = document.createElement("div");
-    el.className = "day";
-    el.dataset.mod = day.mod;
-    el.dataset.dayId = day.id;
-
-    const modLabel = day.mod === "buffer" ? "Buffer" : (getMod(day.mod) ? `Module ${day.mod}` : "");
-
-    el.innerHTML = `
-      <div class="day-head">
-        <div class="info">
-          <div class="dayname">${day.dayName}</div>
-          <div class="daylabel" data-field="dayLabel">${day.dayLabel}</div>
-        </div>
-        <span class="mod-tag" data-mod="${day.mod}">${modLabel}</span>
-        <div class="day-actions">
-          <button class="icon-btn danger" title="Remove day" onclick="removeDay('${day.id}')">✕</button>
-        </div>
-      </div>
-      <div class="blocks" data-drop-zone="day"></div>
-      <div class="day-foot">
-        <span class="total">${dayHoursLabel(day)}${dayMinutes(day) > 480 ? ' (over 8h)' : ''}</span>
-        <div class="add-menu">
-          <button class="btn" onclick="toggleAddMenu(event, '${day.id}')">+ Add</button>
-          <div class="add-popover" id="addPop-${day.id}">
-            <button onclick="openNewSessionModal('${day.id}')">+ Session</button>
-            <button onclick="openNewBufferModal('${day.id}', 'buffer')">+ Buffer / activity</button>
-            <button onclick="openNewBufferModal('${day.id}', 'lunch')">+ Lunch</button>
-          </div>
-        </div>
+  items.forEach(m => {
+    const row = document.createElement("div");
+    row.className = "backlog-item";
+    row.draggable = true;
+    row.innerHTML = `
+      <div class="color-dot" style="background:${m.color}"></div>
+      <div class="info">
+        <div class="title">${escapeHtml(m.title)}</div>
+        ${m.subtitle ? `<div class="subtitle">${escapeHtml(m.subtitle)}</div>` : ""}
+        ${m.owner ? `<div class="owner">👤 ${escapeHtml(m.owner)}</div>` : ""}
       </div>
     `;
-
-    // over-8 styling
-    if (dayMinutes(day) > 480) el.querySelector(".total").classList.add("over");
-
-    // inline edit label
-    const labelEl = el.querySelector(".daylabel");
-    labelEl.addEventListener("click", () => editInline(labelEl, day, "dayLabel"));
-
-    // Blocks
-    const blocksEl = el.querySelector(".blocks");
-    let cursor = 9 * 60; // 9:00 AM
-    day.blocks.forEach(b => {
-      blocksEl.appendChild(buildBlock(b, day, cursor));
-      cursor += blockDuration(b);
-    });
-    if (day.blocks.length === 0) {
-      blocksEl.classList.add("empty");
-      blocksEl.textContent = "Drag blocks here or + Add a session";
-    }
-
-    // Day-level drop
-    blocksEl.addEventListener("dragover", e => {
-      if (!dragState) return;
-      e.preventDefault();
-      el.classList.add("drag-over-day");
-    });
-    blocksEl.addEventListener("dragleave", () => el.classList.remove("drag-over-day"));
-    blocksEl.addEventListener("drop", e => {
-      el.classList.remove("drag-over-day");
-      if (!dragState) return;
-      e.preventDefault();
-      // If dropped on empty area, append to end
-      if (e.target === blocksEl || e.target.classList.contains("blocks")) {
-        moveBlock(dragState.blockId, day.id, day.blocks.length);
-      }
-    });
-
-    return el;
-  }
-
-  function buildBlock(b, day, cursorMin) {
-    const el = document.createElement("div");
-    const dur = blockDuration(b);
-    const startLabel = formatTime(cursorMin);
-    const endLabel = formatTime(cursorMin + dur);
-    const timeLabel = `${startLabel}–${endLabel}`;
-    el.dataset.blockId = b.id;
-    el.draggable = true;
-
-    if (b.kind === "lunch") {
-      el.className = "block lunch";
-      el.innerHTML = `
-        <div class="time">${timeLabel}</div>
-        <div></div>
-        <div class="body"><div class="t">🍽 Lunch</div><div class="meta">${dur} min</div></div>
-        <button class="remove" title="Remove" data-act="remove">✕</button>
-      `;
-    } else if (b.kind === "buffer") {
-      el.className = "block buffer";
-      el.innerHTML = `
-        <div class="time">${timeLabel}</div>
-        <div></div>
-        <div class="body"><div class="t">${escapeHtml(b.label || "Activity")}</div><div class="meta">${dur} min</div></div>
-        <button class="remove" title="Remove" data-act="remove">✕</button>
-      `;
-    } else {
-      const s = state.sessions[b.sessionId];
-      if (!s) {
-        el.className = "block";
-        el.innerHTML = `<div class="time">${timeLabel}</div><div></div><div class="body"><div class="t">(missing session)</div></div><button class="remove" data-act="remove">✕</button>`;
-      } else {
-        const classes = ["block"];
-        if (s.assessment) classes.push("assessment");
-        if (s.inPerson) classes.push("inperson");
-        if (state.progress[s.id]) classes.push("done");
-        el.className = classes.join(" ");
-        const ownerClass = ownerPillClass(s.owner);
-        el.innerHTML = `
-          <div class="time">${timeLabel}</div>
-          <input type="checkbox" ${state.progress[s.id] ? "checked" : ""} data-id="${s.id}">
-          <div class="body">
-            <div class="t">${escapeHtml(s.title)}</div>
-            <div class="meta"><span class="ownertag ${ownerClass}">${s.owner}</span> · ${dur} min</div>
-          </div>
-          <button class="remove" title="Remove" data-act="remove">✕</button>
-        `;
-        el.querySelector("input").addEventListener("change", e => toggleSession(s.id, e.target.checked));
-        el.querySelector(".body").addEventListener("click", () => openEditSessionModal(s.id));
-      }
-    }
-
-    el.querySelector(".remove").addEventListener("click", (e) => {
-      e.stopPropagation();
-      removeBlock(b.id);
-    });
-
-    // Drag handlers
-    el.addEventListener("dragstart", (e) => {
-      dragState = { blockId: b.id, fromDayId: day.id };
-      el.classList.add("dragging");
+    row.addEventListener("dragstart", (e) => {
+      e.dataTransfer.setData("text/plain", JSON.stringify({ id: m.id, source: "backlog" }));
       e.dataTransfer.effectAllowed = "move";
-      e.dataTransfer.setData("text/plain", b.id);
     });
-    el.addEventListener("dragend", () => {
-      el.classList.remove("dragging");
-      document.querySelectorAll(".drag-over-before,.drag-over-after").forEach(x => x.classList.remove("drag-over-before", "drag-over-after"));
-      dragState = null;
-    });
-    el.addEventListener("dragover", (e) => {
-      if (!dragState) return;
-      e.preventDefault();
-      const rect = el.getBoundingClientRect();
-      const isBefore = e.clientY - rect.top < rect.height / 2;
-      el.classList.toggle("drag-over-before", isBefore);
-      el.classList.toggle("drag-over-after", !isBefore);
-    });
-    el.addEventListener("dragleave", () => {
-      el.classList.remove("drag-over-before", "drag-over-after");
-    });
-    el.addEventListener("drop", (e) => {
-      if (!dragState) return;
-      e.preventDefault();
-      e.stopPropagation();
-      const rect = el.getBoundingClientRect();
-      const isBefore = e.clientY - rect.top < rect.height / 2;
-      const targetIdx = day.blocks.findIndex(x => x.id === b.id);
-      const insertIdx = isBefore ? targetIdx : targetIdx + 1;
-      el.classList.remove("drag-over-before", "drag-over-after");
-      moveBlock(dragState.blockId, day.id, insertIdx);
-    });
+    row.addEventListener("click", () => openEditModal(m.id));
+    wrap.appendChild(row);
+  });
+}
 
-    return el;
-  }
+// ---------- Edit Modal ----------
+function openEditModal(meetingId){
+  const isNew = meetingId === null;
+  const m = isNew
+    ? { id: uid("m"), title: "", subtitle: "", owner: "", color: COLOR_PRESETS[0], scheduled: false }
+    : state.schedule.meetings.find(x => x.id === meetingId);
+  if (!m) return;
 
-  function editInline(el, obj, field) {
-    const original = obj[field];
-    el.classList.add("editing");
-    el.contentEditable = "true";
-    el.focus();
-    // select all
-    const range = document.createRange(); range.selectNodeContents(el);
-    const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
-    const done = (commit) => {
-      el.classList.remove("editing");
-      el.contentEditable = "false";
-      const newVal = el.textContent.trim();
-      if (commit && newVal && newVal !== original) {
-        obj[field] = newVal;
-        save();
-      } else {
-        el.textContent = original;
-      }
-      el.removeEventListener("blur", onBlur);
-      el.removeEventListener("keydown", onKey);
+  const root = document.getElementById("modalRoot");
+  root.innerHTML = `
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <h3>${isNew ? "Add meeting" : "Edit meeting"}</h3>
+        <div class="field">
+          <label>Title</label>
+          <input type="text" id="fTitle" value="${escapeHtml(m.title)}" placeholder="e.g. Sales Standup">
+        </div>
+        <div class="field">
+          <label>Subtitle / description</label>
+          <input type="text" id="fSubtitle" value="${escapeHtml(m.subtitle||"")}" placeholder="optional">
+        </div>
+        <div class="field">
+          <label>Person running it</label>
+          <input type="text" id="fOwner" value="${escapeHtml(m.owner||"")}" placeholder="e.g. Brian">
+        </div>
+        <div class="field">
+          <label>Duration</label>
+          <select id="fDuration">
+            ${[1,2,3,4,5,6].map(n => `<option value="${n}" ${m.durationSlots===n?"selected":""}>${n*30} min</option>`).join("")}
+          </select>
+        </div>
+        <div class="field">
+          <label>Color</label>
+          <div class="swatches" id="swatches">
+            ${COLOR_PRESETS.map(c => `<div class="swatch ${m.color===c?"selected":""}" data-color="${c}" style="background:${c}"></div>`).join("")}
+          </div>
+        </div>
+        <div class="modal-actions">
+          <div class="left">
+            ${!isNew ? `<button class="btn danger" id="btnDelete">Delete</button>` : ""}
+            ${!isNew && m.scheduled ? `<button class="btn" id="btnUnschedule">Move to list</button>` : ""}
+          </div>
+          <div class="right">
+            <button class="btn" id="btnCancel">Cancel</button>
+            <button class="btn primary" id="btnSaveMeeting">${isNew ? "Add" : "Save"}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  let selectedColor = m.color || COLOR_PRESETS[0];
+  root.querySelectorAll(".swatch").forEach(sw => {
+    sw.addEventListener("click", () => {
+      root.querySelectorAll(".swatch").forEach(s => s.classList.remove("selected"));
+      sw.classList.add("selected");
+      selectedColor = sw.dataset.color;
+    });
+  });
+
+  document.getElementById("modalOverlay").addEventListener("click", (e) => {
+    if (e.target.id === "modalOverlay") closeModal();
+  });
+  document.getElementById("btnCancel").onclick = closeModal;
+
+  document.getElementById("btnSaveMeeting").onclick = () => {
+    const title = document.getElementById("fTitle").value.trim();
+    if (!title){ alert("Please enter a title."); return; }
+    m.title = title;
+    m.subtitle = document.getElementById("fSubtitle").value.trim();
+    m.owner = document.getElementById("fOwner").value.trim();
+    m.durationSlots = parseInt(document.getElementById("fDuration").value, 10);
+    m.color = selectedColor;
+    if (isNew){
+      m.scheduled = false;
+      state.schedule.meetings.push(m);
+    }
+    markDirty();
+    closeModal();
+    renderAll();
+  };
+
+  if (!isNew){
+    const delBtn = document.getElementById("btnDelete");
+    if (delBtn) delBtn.onclick = () => {
+      if (!confirm("Delete this meeting permanently?")) return;
+      state.schedule.meetings = state.schedule.meetings.filter(x => x.id !== m.id);
+      markDirty();
+      closeModal();
+      renderAll();
     };
-    const onBlur = () => done(true);
-    const onKey = (e) => {
-      if (e.key === "Enter") { e.preventDefault(); el.blur(); }
-      if (e.key === "Escape") { el.textContent = original; el.blur(); }
+    const unschedBtn = document.getElementById("btnUnschedule");
+    if (unschedBtn) unschedBtn.onclick = () => {
+      m.scheduled = false;
+      delete m.weekId; delete m.day; delete m.startSlot;
+      markDirty();
+      closeModal();
+      renderAll();
     };
-    el.addEventListener("blur", onBlur);
-    el.addEventListener("keydown", onKey);
   }
+}
+function closeModal(){ document.getElementById("modalRoot").innerHTML = ""; }
 
-  // ---------- Actions ----------
-  function moveBlock(blockId, targetDayId, insertIdx) {
-    const found = getBlock(blockId);
-    if (!found) return;
-    const fromDay = found.day;
-    const fromIdx = fromDay.blocks.findIndex(b => b.id === blockId);
-    const [block] = fromDay.blocks.splice(fromIdx, 1);
-    const targetDay = getDay(targetDayId);
-    // Adjust insert index if moving within same day and source was before target
-    let idx = insertIdx;
-    if (fromDay === targetDay && fromIdx < insertIdx) idx = insertIdx - 1;
-    if (idx > targetDay.blocks.length) idx = targetDay.blocks.length;
-    targetDay.blocks.splice(idx, 0, block);
-    save();
-    renderAll();
-  }
+// ---------- Settings Modal ----------
+function openSettingsModal(){
+  const c = ghConfig();
+  const root = document.getElementById("modalRoot");
+  root.innerHTML = `
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <h3>GitHub sync settings</h3>
+        <div class="settings-grid">
+          <div class="field"><label>Repo owner / org</label><input type="text" id="sOwner" value="${escapeHtml(c.owner)}" placeholder="e.g. fresha"></div>
+          <div class="field"><label>Repo name</label><input type="text" id="sRepo" value="${escapeHtml(c.repo)}" placeholder="e.g. sales-onboarding-scheduler"></div>
+          <div class="field"><label>Branch</label><input type="text" id="sBranch" value="${escapeHtml(c.branch)}" placeholder="main"></div>
+          <div class="field"><label>File path</label><input type="text" id="sPath" value="${escapeHtml(c.path)}" placeholder="data/schedule.json"></div>
+          <div class="field"><label>Personal access token</label><input type="text" id="sToken" value="${escapeHtml(c.token)}" placeholder="ghp_... (fine-grained, Contents: Read & write)"></div>
+        </div>
+        <div class="note">Your token is stored only in this browser (localStorage) and is never written into the schedule file or committed. Each sales leader needs their own token with read/write access to this repo's contents. Every save is a normal git commit, so full history is on GitHub.</div>
+        <div class="modal-actions">
+          <div class="left"></div>
+          <div class="right">
+            <button class="btn" id="btnCancel">Cancel</button>
+            <button class="btn primary" id="btnSaveSettings">Save & connect</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById("btnCancel").onclick = closeModal;
+  document.getElementById("modalOverlay").addEventListener("click", (e) => { if (e.target.id === "modalOverlay") closeModal(); });
+  document.getElementById("btnSaveSettings").onclick = async () => {
+    localStorage.setItem(LS_KEYS.owner, document.getElementById("sOwner").value.trim());
+    localStorage.setItem(LS_KEYS.repo, document.getElementById("sRepo").value.trim());
+    localStorage.setItem(LS_KEYS.branch, document.getElementById("sBranch").value.trim() || "main");
+    localStorage.setItem(LS_KEYS.path, document.getElementById("sPath").value.trim() || "data/schedule.json");
+    localStorage.setItem(LS_KEYS.token, document.getElementById("sToken").value.trim());
+    closeModal();
+    await loadSchedule();
+  };
+}
 
-  function removeBlock(blockId) {
-    const found = getBlock(blockId);
-    if (!found) return;
-    if (!confirm("Remove this block?")) return;
-    const { block, day } = found;
-    const idx = day.blocks.findIndex(b => b.id === blockId);
-    day.blocks.splice(idx, 1);
-    // If it was a session and this was the only reference, keep session in pool (user might re-add)
-    save();
-    renderAll();
-  }
+// ---------- Wire up header buttons ----------
+document.getElementById("btnSave").onclick = saveToGitHub;
+document.getElementById("btnReload").onclick = () => loadSchedule();
+document.getElementById("btnSettings").onclick = openSettingsModal;
+document.getElementById("btnAddMeeting").onclick = () => openEditModal(null);
+document.getElementById("btnBannerReload").onclick = () => {
+  document.getElementById("remoteBanner").style.display = "none";
+  loadSchedule();
+};
 
-  function removeDay(dayId) {
-    if (!confirm("Remove this day and all its blocks?")) return;
-    state.days = state.days.filter(d => d.id !== dayId);
-    save();
-    renderAll();
-  }
+// ---------- Default fallback data (used if GitHub isn't configured and
+// data/schedule.json can't be fetched, e.g. opened directly as a file) ----------
+const DEFAULT_SCHEDULE = {"version": 1, "meta": {"title": "Sales Onboarding Schedule", "timezoneBase": "PST", "slotMinutes": 30, "startMinutesPST": 510, "slotCount": 17, "days": ["Mon", "Tue", "Wed", "Thu", "Fri"]}, "weeks": [{"id": "w1", "label": "Week 1", "dateRange": "June 8-12"}, {"id": "w2", "label": "Week 2", "dateRange": "June 15-19"}, {"id": "w3", "label": "Week 3", "dateRange": "June 22-26"}], "meetings": [{"id": "m1", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 0, "durationSlots": 1}, {"id": "m2", "title": "Team Kickoff", "subtitle": "Team Icebreakers", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 1, "durationSlots": 1}, {"id": "m3", "title": "Tech Setup", "subtitle": "Gmail, HS, Dialpad, Deal Manager, Gong", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 2, "durationSlots": 1}, {"id": "m4", "title": "Welcome to Fresha", "subtitle": "Company Background & Future", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 4, "durationSlots": 1}, {"id": "m5", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 7, "durationSlots": 1}, {"id": "m6", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 9, "durationSlots": 1}, {"id": "m7", "title": "PT001 - Launch Into Fresha", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 11, "durationSlots": 1}, {"id": "m8", "title": "PT002 - Marketplace & Book Now", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 12, "durationSlots": 1}, {"id": "m9", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 13, "durationSlots": 1}, {"id": "m10", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 16, "durationSlots": 1}, {"id": "m11", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 1, "durationSlots": 1}, {"id": "m12", "title": "Role Overview", "subtitle": "Day/Week/Month / Calendar management", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 2, "durationSlots": 1}, {"id": "m13", "title": "HR Onboarding", "subtitle": "(Hibob, expensing, time off etc)", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 5, "durationSlots": 1}, {"id": "m14", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 7, "durationSlots": 1}, {"id": "m15", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 9, "durationSlots": 1}, {"id": "m16", "title": "PT003 - Team & Staff", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 11, "durationSlots": 1}, {"id": "m17", "title": "PT004 - Services & Pricing", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 12, "durationSlots": 1}, {"id": "m18", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 13, "durationSlots": 1}, {"id": "m19", "title": "order biz cards", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 15, "durationSlots": 1}, {"id": "m20", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 16, "durationSlots": 1}, {"id": "m21", "title": "CPU BLOCK", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 0, "durationSlots": 1}, {"id": "m22", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 1, "durationSlots": 1}, {"id": "m23", "title": "Systems", "subtitle": "(HS, Gong, Flippy, Deal Manager)", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 2, "durationSlots": 1}, {"id": "m24", "title": "ICP", "subtitle": "Personas + Verticals", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 5, "durationSlots": 1}, {"id": "m25", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 7, "durationSlots": 1}, {"id": "m26", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 9, "durationSlots": 1}, {"id": "m27", "title": "PT005 - Booking, Resources & Calendar", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 11, "durationSlots": 1}, {"id": "m28", "title": "PT006 - Inventory & Products", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 12, "durationSlots": 1}, {"id": "m29", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 13, "durationSlots": 1}, {"id": "m30", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 16, "durationSlots": 1}, {"id": "m31", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 1, "durationSlots": 1}, {"id": "m32", "title": "Pipeline MGMT", "subtitle": "Leads/Deals / Pipeline Coverage / Sequences etc.", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 2, "durationSlots": 1}, {"id": "m33", "title": "Competitors", "subtitle": "Overview + Angles", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 5, "durationSlots": 1}, {"id": "m34", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 7, "durationSlots": 1}, {"id": "m35", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 9, "durationSlots": 1}, {"id": "m36", "title": "PT007 - Payments & Checkout, Team Pay", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 11, "durationSlots": 1}, {"id": "m37", "title": "PT008 - Marketing & Client Engagement", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 12, "durationSlots": 1}, {"id": "m38", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 13, "durationSlots": 1}, {"id": "m39", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 16, "durationSlots": 1}, {"id": "m40", "title": "Friday Pipeline Meeting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 0, "durationSlots": 1}, {"id": "m41", "title": "\u2708 Travel Day", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 1, "durationSlots": 1}, {"id": "m42", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 3, "durationSlots": 1}, {"id": "m43", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 5, "durationSlots": 1}, {"id": "m44", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 7, "durationSlots": 1}, {"id": "m45", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 9, "durationSlots": 1}, {"id": "m46", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 11, "durationSlots": 1}, {"id": "m47", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 13, "durationSlots": 1}, {"id": "m48", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 15, "durationSlots": 2}, {"id": "m49", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 0, "durationSlots": 1}, {"id": "m50", "title": "Week 1 Recap", "subtitle": "Questions?", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 1, "durationSlots": 1}, {"id": "m51", "title": "Demo", "subtitle": "Overview + Best Practices", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 2, "durationSlots": 1}, {"id": "m52", "title": "Mock Demo", "subtitle": "Megan", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 5, "durationSlots": 1}, {"id": "m53", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 7, "durationSlots": 1}, {"id": "m54", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 9, "durationSlots": 1}, {"id": "m55", "title": "CT001 - DIAL Prospecting & Outreach Fundamentals", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 11, "durationSlots": 1}, {"id": "m56", "title": "Mock Demo", "subtitle": "Brian", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 13, "durationSlots": 1}, {"id": "m57", "title": "Role Play", "subtitle": "Demo", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 15, "durationSlots": 1}, {"id": "m58", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 16, "durationSlots": 1}, {"id": "m59", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 1, "durationSlots": 1}, {"id": "m60", "title": "Discovery", "subtitle": "Overview + Best Practices", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 2, "durationSlots": 1}, {"id": "m61", "title": "Mock Discovery", "subtitle": "Brian", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 5, "durationSlots": 1}, {"id": "m62", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 7, "durationSlots": 1}, {"id": "m63", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 9, "durationSlots": 1}, {"id": "m64", "title": "CT003 - GAP 4Ts Discovering the Gap using the 4T Framework", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 11, "durationSlots": 1}, {"id": "m65", "title": "Role Play", "subtitle": "Discovery", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 15, "durationSlots": 1}, {"id": "m66", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 16, "durationSlots": 1}, {"id": "m67", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 1, "durationSlots": 1}, {"id": "m68", "title": "Prospecting", "subtitle": "Overview + Best Practices", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 2, "durationSlots": 1}, {"id": "m69", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 7, "durationSlots": 1}, {"id": "m70", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 9, "durationSlots": 1}, {"id": "m71", "title": "CT005 \u2014 EASE | Handling objections with the EASE framework", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 11, "durationSlots": 1}, {"id": "m72", "title": "Role Play", "subtitle": "Cold Calls", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 15, "durationSlots": 1}, {"id": "m73", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 16, "durationSlots": 1}, {"id": "m74", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 1, "durationSlots": 1}, {"id": "m75", "title": "Objection Handling", "subtitle": "Framework + Common Objections", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 2, "durationSlots": 1}, {"id": "m76", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 7, "durationSlots": 1}, {"id": "m77", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 9, "durationSlots": 1}, {"id": "m78", "title": "CT007 \u2014 EARN | Earning the close", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 11, "durationSlots": 1}, {"id": "m79", "title": "AI Call trainer", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 13, "durationSlots": 1}, {"id": "m80", "title": "Role Play", "subtitle": "Open", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 15, "durationSlots": 1}, {"id": "m81", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 16, "durationSlots": 1}, {"id": "m82", "title": "Friday Pipeline Meeting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 0, "durationSlots": 1}, {"id": "m83", "title": "Expectations - KPIs, Quota, Commission", "subtitle": "", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 3, "durationSlots": 1}, {"id": "m84", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 7, "durationSlots": 1}, {"id": "m85", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 9, "durationSlots": 1}, {"id": "m86", "title": "CT009 \u2014 PIPELINE | Pipeline management & forecasting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 11, "durationSlots": 1}, {"id": "m87", "title": "Role Play", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 13, "durationSlots": 1}, {"id": "m88", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 16, "durationSlots": 1}, {"id": "m89", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 0, "durationSlots": 1}, {"id": "m90", "title": "Territory Plan", "subtitle": "Research / List Building", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 2, "durationSlots": 1}, {"id": "m91", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 5, "durationSlots": 1}, {"id": "m92", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 7, "durationSlots": 1}, {"id": "m93", "title": "Field Work", "subtitle": "Drop Ins", "owner": "", "color": "#db2777", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 9, "durationSlots": 1}, {"id": "m94", "title": "Meeting Fresha Partners - 5 Partners", "subtitle": "", "owner": "", "color": "#db2777", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 11, "durationSlots": 1}, {"id": "m95", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 15, "durationSlots": 2}, {"id": "m96", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 1, "durationSlots": 1}, {"id": "m97", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 5, "durationSlots": 1}, {"id": "m98", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 7, "durationSlots": 1}, {"id": "m99", "title": "AI Call trainer", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 9, "durationSlots": 1}, {"id": "m100", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 15, "durationSlots": 2}, {"id": "m101", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 1, "durationSlots": 1}, {"id": "m102", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 5, "durationSlots": 1}, {"id": "m103", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 7, "durationSlots": 1}, {"id": "m104", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 15, "durationSlots": 2}, {"id": "m105", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 1, "durationSlots": 1}, {"id": "m106", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 5, "durationSlots": 1}, {"id": "m107", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 7, "durationSlots": 1}, {"id": "m108", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 15, "durationSlots": 2}, {"id": "m109", "title": "Friday Pipeline Meeting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 0, "durationSlots": 1}, {"id": "m110", "title": "Pipeline Review", "subtitle": "All", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 5, "durationSlots": 1}, {"id": "m111", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 7, "durationSlots": 1}, {"id": "m112", "title": "Team Demo Cert", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 9, "durationSlots": 1}, {"id": "b1", "title": "Book HR team for HR meeting", "subtitle": "", "owner": "", "color": "#9333ea", "scheduled": false}, {"id": "b2", "title": "Assign AMs for product trainings", "subtitle": "", "owner": "", "color": "#9333ea", "scheduled": false}]};
 
-  function toggleSession(id, checked) {
-    state.progress[id] = checked;
-    if (!checked) delete state.progress[id];
-    save();
-    document.querySelectorAll(`input[type="checkbox"][data-id="${id}"]`).forEach(cb => {
-      cb.checked = checked;
-      const row = cb.closest(".row, .block");
-      if (row) row.classList.toggle("done", checked);
-    });
-    updateStats();
-  }
-
-  function toggleAddMenu(e, dayId) {
-    e.stopPropagation();
-    const pop = document.getElementById("addPop-" + dayId);
-    document.querySelectorAll(".add-popover.open").forEach(p => { if (p !== pop) p.classList.remove("open"); });
-    pop.classList.toggle("open");
-  }
-  document.addEventListener("click", () => {
-    document.querySelectorAll(".add-popover.open").forEach(p => p.classList.remove("open"));
-  });
-
-  // ---------- Modals ----------
-  function openModal(id) { document.getElementById(id).classList.add("open"); }
-  function closeModal(id) { document.getElementById(id).classList.remove("open"); }
-
-  function populateModuleSelect(selectEl) {
-    selectEl.innerHTML = "";
-    state.modules.forEach(m => {
-      const opt = document.createElement("option");
-      opt.value = m.id; opt.textContent = m.title;
-      selectEl.appendChild(opt);
-    });
-  }
-  function populateModTintSelect(selectEl) {
-    selectEl.innerHTML = "";
-    state.modules.forEach(m => {
-      const opt = document.createElement("option");
-      opt.value = m.id; opt.textContent = m.title;
-      selectEl.appendChild(opt);
-    });
-    const opt = document.createElement("option");
-    opt.value = "buffer"; opt.textContent = "Buffer (neutral)";
-    selectEl.appendChild(opt);
-  }
-
-  function openNewSessionModal(dayId) {
-    modalContext = { dayId, editing: null };
-    document.getElementById("sessionModalTitle").textContent = "Add session";
-    document.getElementById("smTitle").value = "";
-    document.getElementById("smDuration").value = 60;
-    document.getElementById("smOwner").value = "TL";
-    populateModuleSelect(document.getElementById("smModule"));
-    const day = getDay(dayId);
-    if (day && typeof day.mod === "number") document.getElementById("smModule").value = day.mod;
-    document.getElementById("smInPerson").checked = false;
-    document.getElementById("smAssessment").checked = false;
-    openModal("sessionModal");
-    setTimeout(() => document.getElementById("smTitle").focus(), 50);
-  }
-
-  function openEditSessionModal(sessionId) {
-    const s = state.sessions[sessionId];
-    if (!s) return;
-    modalContext = { editing: sessionId };
-    document.getElementById("sessionModalTitle").textContent = "Edit session";
-    document.getElementById("smTitle").value = s.title;
-    document.getElementById("smDuration").value = s.durMin;
-    document.getElementById("smOwner").value = s.owner;
-    populateModuleSelect(document.getElementById("smModule"));
-    document.getElementById("smModule").value = s.modId;
-    document.getElementById("smInPerson").checked = !!s.inPerson;
-    document.getElementById("smAssessment").checked = !!s.assessment;
-    openModal("sessionModal");
-    setTimeout(() => document.getElementById("smTitle").focus(), 50);
-  }
-
-  document.getElementById("smSaveBtn").addEventListener("click", () => {
-    const title = document.getElementById("smTitle").value.trim();
-    if (!title) { alert("Title required"); return; }
-    const durMin = parseInt(document.getElementById("smDuration").value) || 60;
-    const owner = document.getElementById("smOwner").value;
-    const modId = parseInt(document.getElementById("smModule").value);
-    const inPerson = document.getElementById("smInPerson").checked;
-    const assessment = document.getElementById("smAssessment").checked;
-
-    if (modalContext && modalContext.editing) {
-      const s = state.sessions[modalContext.editing];
-      Object.assign(s, { title, durMin, owner, modId, inPerson, assessment });
-    } else if (modalContext && modalContext.dayId) {
-      const sid = newSessionId(modId);
-      state.sessions[sid] = { id: sid, title, durMin, owner, modId, inPerson, assessment, custom: true };
-      const day = getDay(modalContext.dayId);
-      day.blocks.push({ id: newBlockId(), kind: "session", sessionId: sid });
-    }
-    save();
-    closeModal("sessionModal");
-    renderAll();
-  });
-
-  function openNewBufferModal(dayId, kind) {
-    modalContext = { dayId, kind };
-    document.querySelector("#bufferModal h3").textContent = kind === "lunch" ? "Add lunch" : "Add buffer / activity";
-    document.getElementById("bmLabel").value = kind === "lunch" ? "Lunch" : "";
-    document.getElementById("bmDuration").value = kind === "lunch" ? 60 : 30;
-    document.getElementById("bmLabel").parentElement.style.display = kind === "lunch" ? "none" : "";
-    openModal("bufferModal");
-    setTimeout(() => (kind === "lunch" ? document.getElementById("bmDuration") : document.getElementById("bmLabel")).focus(), 50);
-  }
-
-  document.getElementById("bmSaveBtn").addEventListener("click", () => {
-    const durMin = parseInt(document.getElementById("bmDuration").value) || 30;
-    const day = getDay(modalContext.dayId);
-    if (modalContext.kind === "lunch") {
-      day.blocks.push({ id: newBlockId(), kind: "lunch", durMin });
-    } else {
-      const label = document.getElementById("bmLabel").value.trim() || "Activity";
-      day.blocks.push({ id: newBlockId(), kind: "buffer", label, durMin });
-    }
-    save();
-    closeModal("bufferModal");
-    renderAll();
-  });
-
-  function openNewModuleModal() {
-    document.getElementById("mmTitle").value = "";
-    document.getElementById("mmHours").value = "";
-    document.getElementById("mmMilestone").value = "";
-    openModal("moduleModal");
-    setTimeout(() => document.getElementById("mmTitle").focus(), 50);
-  }
-
-  document.getElementById("mmSaveBtn").addEventListener("click", () => {
-    const title = document.getElementById("mmTitle").value.trim();
-    if (!title) { alert("Title required"); return; }
-    const nextId = Math.max(...state.modules.map(m => m.id), 0) + 1;
-    state.modules.push({
-      id: nextId, title,
-      hours: document.getElementById("mmHours").value.trim(),
-      milestone: document.getElementById("mmMilestone").value.trim()
-    });
-    save();
-    closeModal("moduleModal");
-    renderAll();
-  });
-
-  function openNewDayModal(week) {
-    document.getElementById("dmWeek").value = week;
-    document.getElementById("dmDayName").value = "";
-    document.getElementById("dmLabel").value = "";
-    populateModTintSelect(document.getElementById("dmMod"));
-    openModal("dayModal");
-    setTimeout(() => document.getElementById("dmDayName").focus(), 50);
-  }
-
-  document.getElementById("dmSaveBtn").addEventListener("click", () => {
-    const week = parseInt(document.getElementById("dmWeek").value) || 1;
-    const dayName = document.getElementById("dmDayName").value.trim() || "New day";
-    const dayLabel = document.getElementById("dmLabel").value.trim() || dayName;
-    const modVal = document.getElementById("dmMod").value;
-    const mod = modVal === "buffer" ? "buffer" : parseInt(modVal);
-    state.days.push({ id: newDayId(), week, mod, dayName, dayLabel, blocks: [] });
-    save();
-    closeModal("dayModal");
-    renderAll();
-  });
-
-  // ---------- Checklist view ----------
-  const modulesContainer = document.getElementById("modulesContainer");
-
-  function renderChecklist() {
-    modulesContainer.innerHTML = "";
-    // refresh module filter chips
-    const modFilter = document.getElementById("moduleFilter");
-    modFilter.querySelectorAll('.chip:not([data-value="all"])').forEach(c => c.remove());
-    state.modules.forEach(m => {
-      const c = document.createElement("span");
-      c.className = "chip"; c.dataset.filter = "mod"; c.dataset.value = String(m.id);
-      c.textContent = String(m.id);
-      if (filters.mod === String(m.id)) c.classList.add("active");
-      c.addEventListener("click", () => setFilter("mod", String(m.id)));
-      modFilter.appendChild(c);
-    });
-
-    state.modules.forEach(mod => {
-      if (filters.mod !== "all" && String(mod.id) !== filters.mod) return;
-      const modSessions = Object.values(state.sessions).filter(s => s.modId === mod.id);
-      const visible = modSessions.filter(s => sessionVisible(s));
-      if (visible.length === 0 && (filters.search || filters.owner !== "all")) return;
-
-      const modEl = document.createElement("section");
-      modEl.className = "module";
-      modEl.dataset.mod = mod.id;
-      modEl.innerHTML = `
-        <h2><span class="mod-tag" data-mod="${mod.id}">Module ${mod.id}</span>${mod.title.replace(/^Module \d+ · /, '')}</h2>
-        <div class="sub">${mod.hours ? mod.hours + " · " : ""}${modSessions.length} sessions</div>
-        <div class="sessions"></div>
-        ${mod.milestone ? `<div class="milestone"><strong>Milestone:</strong> ${mod.milestone}</div>` : ""}
-      `;
-      const sessionsEl = modEl.querySelector(".sessions");
-      visible.forEach(s => {
-        const row = document.createElement("label");
-        row.className = "row" + (state.progress[s.id] ? " done" : "") + (s.assessment ? " assessment" : "");
-        const ownerClass = ownerPillClass(s.owner);
-        row.innerHTML = `
-          <input type="checkbox" ${state.progress[s.id] ? "checked" : ""} data-id="${s.id}">
-          <div class="title">${escapeHtml(s.title)}${s.inPerson ? '<span class="inperson">In person</span>' : ""}</div>
-          <div class="owner"><span class="pill ${ownerClass}">${s.owner}</span></div>
-          <div class="dur">${s.durMin} min</div>
-        `;
-        row.querySelector("input").addEventListener("change", e => toggleSession(s.id, e.target.checked));
-        sessionsEl.appendChild(row);
-      });
-      modulesContainer.appendChild(modEl);
-    });
-  }
-
-  function sessionVisible(s) {
-    if (filters.search) {
-      const q = filters.search.toLowerCase();
-      if (!s.title.toLowerCase().includes(q) && !(s.owner || "").toLowerCase().includes(q)) return false;
-    }
-    if (filters.owner !== "all") {
-      if (ownerPillClass(s.owner) !== filters.owner) return false;
-    }
-    return true;
-  }
-
-  function setFilter(group, value) {
-    filters[group] = value;
-    document.querySelectorAll(`.chip[data-filter="${group}"]`).forEach(c => {
-      c.classList.toggle("active", c.dataset.value === value);
-    });
-    renderChecklist();
-  }
-
-  document.querySelectorAll('#ownerFilter .chip, #moduleFilter .chip[data-value="all"]').forEach(chip => {
-    chip.addEventListener("click", () => setFilter(chip.dataset.filter, chip.dataset.value));
-  });
-  document.getElementById("searchInput").addEventListener("input", e => {
-    filters.search = e.target.value.trim(); renderChecklist();
-  });
-
-  // ---------- Stats ----------
-  function updateStats() {
-    // Stats are driven by sessions referenced in days only
-    const scheduledIds = new Set();
-    state.days.forEach(d => d.blocks.forEach(b => { if (b.kind === "session") scheduledIds.add(b.sessionId); }));
-    const allSess = Object.values(state.sessions).filter(s => scheduledIds.has(s.id));
-    const doneAll = allSess.filter(s => state.progress[s.id]).length;
-    setStat("overall", doneAll, allSess.length);
-
-    // For up to 3 module stat cards, show first 3 modules
-    const displayMods = state.modules.slice(0, 3);
-    for (let i = 0; i < 3; i++) {
-      const m = displayMods[i];
-      const key = "m" + (i + 1);
-      const statCard = document.getElementById("stat-" + key);
-      if (!m) { statCard.style.visibility = "hidden"; continue; }
-      statCard.style.visibility = "visible";
-      const mods = Object.values(state.sessions).filter(s => s.modId === m.id && scheduledIds.has(s.id));
-      const done = mods.filter(s => state.progress[s.id]).length;
-      setStat(key, done, mods.length);
-      const labelEl = statCard.querySelector(".label");
-      if (labelEl) labelEl.textContent = `Module ${m.id}`;
-      const subEl = document.getElementById(key + "Sub");
-      if (subEl) subEl.textContent = m.hours || `${mods.length} sessions`;
-    }
-  }
-  function setStat(key, done, total) {
-    const pct = total === 0 ? 0 : Math.round((done / total) * 100);
-    const pctEl = document.getElementById(key + "Pct");
-    const barEl = document.getElementById(key + "Bar");
-    if (pctEl) pctEl.textContent = pct + "%";
-    if (barEl) barEl.style.width = pct + "%";
-    const countEl = document.getElementById(key + "Count");
-    if (countEl) countEl.textContent = `${done} / ${total}`;
-  }
-
-  // ---------- Export / Import / Reset ----------
-  function exportJson() {
-    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url; a.download = "bd-onboarding-schedule.json";
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-  function importJson() {
-    const input = document.createElement("input");
-    input.type = "file"; input.accept = "application/json";
-    input.onchange = (e) => {
-      const f = e.target.files[0]; if (!f) return;
-      const r = new FileReader();
-      r.onload = () => {
-        try {
-          const data = JSON.parse(r.result);
-          if (!data.version || !data.modules || !data.days || !data.sessions) throw new Error("Invalid file");
-          state = data;
-          save();
-          renderAll();
-        } catch (err) { alert("Import failed: " + err.message); }
-      };
-      r.readAsText(f);
-    };
-    input.click();
-  }
-  function resetAll() {
-    if (!confirm("Reset everything back to the default schedule? This clears all edits and progress.")) return;
-    state = defaultState();
-    save();
-    renderAll();
-  }
-
-  // ---------- View switching ----------
-  document.querySelectorAll(".view-tab").forEach(tab => {
-    tab.addEventListener("click", () => {
-      document.querySelectorAll(".view-tab").forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-      const target = tab.dataset.view;
-      document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
-      document.getElementById(target + "View").classList.add("active");
-    });
-  });
-
-  // ---------- Utility ----------
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  }
-
-  function renderAll() {
-    renderCalendar();
-    renderChecklist();
-    updateStats();
-  }
-
-  // ---------- Init ----------
-  renderAll();
+// ---------- Boot ----------
+loadSchedule();
 </script>
 </body>
 </html>
