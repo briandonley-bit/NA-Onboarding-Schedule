@@ -152,20 +152,6 @@
       "description": ""
     },
     {
-      "id": "m9",
-      "title": "Modules",
-      "subtitle": "",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Thu",
-      "startSlot": 8,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m10",
       "title": "EOD Catch-up",
       "subtitle": "",
@@ -340,7 +326,7 @@
       "color": "#0891b2",
       "scheduled": true,
       "weekId": "w1",
-      "day": "Tue",
+      "day": "Thu",
       "startSlot": 3,
       "durationSlots": 1,
       "notes": "",
@@ -354,8 +340,8 @@
       "color": "#0891b2",
       "scheduled": true,
       "weekId": "w1",
-      "day": "Wed",
-      "startSlot": 3,
+      "day": "Thu",
+      "startSlot": 4,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -463,8 +449,8 @@
       "color": "#0891b2",
       "scheduled": true,
       "weekId": "w1",
-      "day": "Wed",
-      "startSlot": 6,
+      "day": "Thu",
+      "startSlot": 5,
       "durationSlots": 1,
       "notes": "",
       "description": ""
