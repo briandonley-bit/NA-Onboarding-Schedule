@@ -532,20 +532,6 @@
       "description": ""
     },
     {
-      "id": "m38",
-      "title": "Modules",
-      "subtitle": "",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Thu",
-      "startSlot": 13,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m39",
       "title": "EOD Catch-up",
       "subtitle": "",
