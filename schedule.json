@@ -1606,6 +1606,18 @@
       "color": "#2563eb",
       "scheduled": false,
       "durationSlots": 1
+    },
+    {
+      "id": "mkoa5643",
+      "title": "Intro to Sales Process & Systems",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "Give a high level overview of the sales process and the systems we use to do the job - just high level to show them what it looks like.",
+      "inviteListId": null,
+      "color": "#2563eb",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
