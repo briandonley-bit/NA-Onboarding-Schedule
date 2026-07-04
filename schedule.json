@@ -1594,6 +1594,18 @@
       "durationSlots": 1,
       "notes": "",
       "description": ""
+    },
+    {
+      "id": "mo8e9rp4",
+      "title": "Test Account Setup",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#2563eb",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
