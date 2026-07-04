@@ -211,14 +211,15 @@
       "title": "HR Onboarding",
       "subtitle": "(Hibob, expensing, time off etc)",
       "owner": "",
-      "color": "#7c3aed",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 5,
       "durationSlots": 1,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m14",
