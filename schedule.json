@@ -601,10 +601,7 @@
       "subtitle": "",
       "owner": "",
       "color": "#6b7280",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Fri",
-      "startSlot": 1,
+      "scheduled": false,
       "durationSlots": 1,
       "notes": "",
       "description": ""
