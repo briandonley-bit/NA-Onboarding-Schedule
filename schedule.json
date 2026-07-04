@@ -197,8 +197,8 @@
       "color": "#0891b2",
       "scheduled": true,
       "weekId": "w1",
-      "day": "Tue",
-      "startSlot": 2,
+      "day": "Mon",
+      "startSlot": 5,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -597,7 +597,7 @@
     },
     {
       "id": "m41",
-      "title": "\u2708 Travel Day",
+      "title": "✈ Travel Day",
       "subtitle": "",
       "owner": "",
       "color": "#6b7280",
@@ -1017,7 +1017,7 @@
     },
     {
       "id": "m71",
-      "title": "CT005 \u2014 EASE | Handling objections with the EASE framework",
+      "title": "CT005 — EASE | Handling objections with the EASE framework",
       "subtitle": "",
       "owner": "",
       "color": "#16a34a",
@@ -1115,7 +1115,7 @@
     },
     {
       "id": "m78",
-      "title": "CT007 \u2014 EARN | Earning the close",
+      "title": "CT007 — EARN | Earning the close",
       "subtitle": "",
       "owner": "",
       "color": "#16a34a",
@@ -1227,7 +1227,7 @@
     },
     {
       "id": "m86",
-      "title": "CT009 \u2014 PIPELINE | Pipeline management & forecasting",
+      "title": "CT009 — PIPELINE | Pipeline management & forecasting",
       "subtitle": "",
       "owner": "",
       "color": "#2563eb",
