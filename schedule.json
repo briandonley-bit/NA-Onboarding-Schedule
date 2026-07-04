@@ -1615,7 +1615,7 @@
       "description": "",
       "notes": "Give a high level overview of the sales process and the systems we use to do the job - just high level to show them what it looks like.",
       "inviteListId": null,
-      "color": "#2563eb",
+      "color": "#7c3aed",
       "scheduled": true,
       "durationSlots": 2,
       "weekId": "w1",
