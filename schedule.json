@@ -1617,7 +1617,7 @@
       "inviteListId": null,
       "color": "#2563eb",
       "scheduled": false,
-      "durationSlots": 1
+      "durationSlots": 2
     }
   ],
   "inviteLists": [
