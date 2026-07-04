@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sales Onboarding Scheduler</title>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
   :root{
     --bg:#f5f6f8; --panel:#ffffff; --border:#e2e4e9; --text:#1c1f26; --muted:#6b7280;
@@ -45,8 +46,11 @@
   .grid-header .cell:first-child{border-left:none;}
   .grid-body{display:grid;grid-template-columns:130px repeat(5,1fr);}
   .time-col{border-left:none;}
-  .time-col .time-label{height:var(--row-h);border-bottom:1px solid var(--border);padding:4px 8px;font-size:10px;color:var(--muted);line-height:1.3;display:flex;flex-direction:column;justify-content:center;}
+  .time-col .time-label{height:var(--row-h);border-bottom:1px solid var(--border);padding:4px 8px;line-height:1.25;display:flex;flex-direction:column;justify-content:center;}
   .tz-tag{display:inline-block;width:26px;font-weight:700;color:#9ca3af;}
+  .tz-primary{font-size:14px;font-weight:700;color:var(--text);}
+  .tz-primary .tz-tag{color:var(--accent);}
+  .tz-secondary{font-size:10px;color:var(--muted);margin-top:1px;}
   .day-col{position:relative;border-left:1px solid var(--border);}
   .slot-bg{height:var(--row-h);border-bottom:1px solid #f0f1f3;}
   .slot-bg.hover{background:var(--accent-light);}
@@ -83,6 +87,7 @@
   <span class="status-pill" id="statusPill">Loading…</span>
   <button class="btn" id="btnReload">↻ Reload</button>
   <button class="btn primary" id="btnSave">Save to GitHub</button>
+  <button class="btn" id="btnCalendar">🗓️ Calendar &amp; Invites</button>
   <button class="btn" id="btnSettings">⚙ Settings</button>
 </header>
 
@@ -95,7 +100,7 @@
     <h2>Not Yet Scheduled</h2>
     <div id="backlogList"></div>
     <button class="btn" id="btnAddMeeting" style="width:100%;justify-content:center;margin-top:6px;">+ Add meeting</button>
-    <div class="note">Drag any item onto the calendar to schedule it. Times shown as PST · CST · EST.</div>
+    <div class="note">Drag any item onto the calendar to schedule it. Times shown as EST (primary), with CST and PST below.</div>
   </aside>
 
   <main>
@@ -325,14 +330,48 @@ function renderWeekTabs(){
   });
 }
 
+function weekDayDate(w, dayIndex){
+  if (!w.startDate) return null;
+  const d = new Date(w.startDate + "T00:00:00");
+  d.setDate(d.getDate() + dayIndex);
+  return d;
+}
+function formatShortDate(d){
+  return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+}
+function computedDateRangeLabel(w){
+  const start = weekDayDate(w, 0);
+  const end = weekDayDate(w, state.schedule.meta.days.length - 1);
+  if (!start || !end) return w.dateRange || "dates not set";
+  const sameMonth = start.getMonth() === end.getMonth();
+  const startStr = formatShortDate(start);
+  const endStr = sameMonth ? String(end.getDate()) : formatShortDate(end);
+  return `${startStr}–${endStr}, ${start.getFullYear()}`;
+}
+
 function renderWeekMeta(){
   const w = state.schedule.weeks.find(w => w.id === state.currentWeekId);
-  document.getElementById("weekMeta").textContent = w ? `${w.label} — ${w.dateRange}` : "";
+  const el = document.getElementById("weekMeta");
+  if (!w){ el.innerHTML = ""; return; }
+  el.innerHTML = `${w.label} — ${computedDateRangeLabel(w)}
+    <label style="font-size:12px;color:var(--muted);margin-left:10px;">Set this week's start date (Monday):
+      <input type="date" id="weekStartDateInput" value="${w.startDate||""}" style="font-size:12px;padding:3px 6px;border-radius:6px;border:1px solid var(--border);margin-left:4px;">
+    </label>`;
+  document.getElementById("weekStartDateInput").addEventListener("change", (e) => {
+    w.startDate = e.target.value;
+    markDirty();
+    renderWeekMeta();
+    renderGridHeader();
+  });
 }
 
 function renderGridHeader(){
   const el = document.getElementById("gridHeader");
-  el.innerHTML = `<div class="cell"></div>` + state.schedule.meta.days.map(d => `<div class="cell">${d}</div>`).join("");
+  const w = state.schedule.weeks.find(w => w.id === state.currentWeekId);
+  el.innerHTML = `<div class="cell"></div>` + state.schedule.meta.days.map((d, i) => {
+    const date = w ? weekDayDate(w, i) : null;
+    return `<div class="cell">${d}${date ? `<div style="font-size:10.5px;font-weight:400;color:var(--muted);margin-top:1px;">${formatShortDate(date)}</div>` : ""}</div>`;
+  }).join("");
 }
 
 function slotStartMinutes(slotIndex){
@@ -352,9 +391,9 @@ function renderGridBody(){
     const div = document.createElement("div");
     div.className = "time-label";
     div.innerHTML = `
-      <div><span class="tz-tag">PST</span>${minutesToParts(pst)}</div>
-      <div><span class="tz-tag">CST</span>${minutesToParts(pst+120)}</div>
-      <div><span class="tz-tag">EST</span>${minutesToParts(pst+180)}</div>`;
+      <div class="tz-primary"><span class="tz-tag">EST</span>${minutesToParts(pst+180)}</div>
+      <div class="tz-secondary"><span class="tz-tag">CST</span>${minutesToParts(pst+120)}</div>
+      <div class="tz-secondary"><span class="tz-tag">PST</span>${minutesToParts(pst)}</div>`;
     timeCol.appendChild(div);
   }
   el.appendChild(timeCol);
@@ -421,9 +460,10 @@ function renderMeetingBlock(m){
   block.style.height = (m.durationSlots * ROW_H - 4) + "px";
   block.style.background = m.color;
   block.dataset.id = m.id;
+  if (m.notes) block.title = m.notes;
 
   block.innerHTML = `
-    <div class="m-title">${escapeHtml(m.title)}</div>
+    <div class="m-title">${escapeHtml(m.title)}${m.notes ? ` <span title="${escapeHtml(m.notes)}">📝</span>` : ""}</div>
     ${m.subtitle ? `<div class="m-subtitle">${escapeHtml(m.subtitle)}</div>` : ""}
     ${m.owner ? `<div class="m-owner">👤 ${escapeHtml(m.owner)}</div>` : ""}
     <div class="resize-handle"></div>
@@ -494,10 +534,11 @@ function renderBacklog(){
     const row = document.createElement("div");
     row.className = "backlog-item";
     row.draggable = true;
+    if (m.notes) row.title = m.notes;
     row.innerHTML = `
       <div class="color-dot" style="background:${m.color}"></div>
       <div class="info">
-        <div class="title">${escapeHtml(m.title)}</div>
+        <div class="title">${escapeHtml(m.title)}${m.notes ? " 📝" : ""}</div>
         ${m.subtitle ? `<div class="subtitle">${escapeHtml(m.subtitle)}</div>` : ""}
         ${m.owner ? `<div class="owner">👤 ${escapeHtml(m.owner)}</div>` : ""}
       </div>
@@ -515,7 +556,7 @@ function renderBacklog(){
 function openEditModal(meetingId){
   const isNew = meetingId === null;
   const m = isNew
-    ? { id: uid("m"), title: "", subtitle: "", owner: "", color: COLOR_PRESETS[0], scheduled: false }
+    ? { id: uid("m"), title: "", subtitle: "", owner: "", notes: "", inviteListId: null, color: COLOR_PRESETS[0], scheduled: false }
     : state.schedule.meetings.find(x => x.id === meetingId);
   if (!m) return;
 
@@ -537,10 +578,22 @@ function openEditModal(meetingId){
           <input type="text" id="fOwner" value="${escapeHtml(m.owner||"")}" placeholder="e.g. Brian">
         </div>
         <div class="field">
+          <label>Notes (context on what's covered)</label>
+          <textarea id="fNotes" rows="3" placeholder="optional — agenda, links, prep needed, etc." style="width:100%;padding:7px 9px;border-radius:7px;border:1px solid var(--border);font-size:13px;font-family:inherit;resize:vertical;">${escapeHtml(m.notes||"")}</textarea>
+        </div>
+        <div class="field">
           <label>Duration</label>
           <select id="fDuration">
             ${[1,2,3,4,5,6].map(n => `<option value="${n}" ${m.durationSlots===n?"selected":""}>${n*30} min</option>`).join("")}
           </select>
+        </div>
+        <div class="field">
+          <label>Invite list (for calendar invites)</label>
+          <select id="fInviteList">
+            <option value="">None</option>
+            ${(state.schedule.inviteLists||[]).map(l => `<option value="${l.id}" ${m.inviteListId===l.id?"selected":""}>${escapeHtml(l.name)} (${(l.emails||[]).length})</option>`).join("")}
+          </select>
+          ${m.calendarEventLink ? `<div class="note"><a href="${escapeHtml(m.calendarEventLink)}" target="_blank" rel="noopener">View in Google Calendar ↗</a></div>` : ""}
         </div>
         <div class="field">
           <label>Color</label>
@@ -582,6 +635,8 @@ function openEditModal(meetingId){
     m.title = title;
     m.subtitle = document.getElementById("fSubtitle").value.trim();
     m.owner = document.getElementById("fOwner").value.trim();
+    m.notes = document.getElementById("fNotes").value.trim();
+    m.inviteListId = document.getElementById("fInviteList").value || null;
     m.durationSlots = parseInt(document.getElementById("fDuration").value, 10);
     m.color = selectedColor;
     if (isNew){
@@ -613,6 +668,205 @@ function openEditModal(meetingId){
   }
 }
 function closeModal(){ document.getElementById("modalRoot").innerHTML = ""; }
+
+// ---------- Calendar & Invite Lists ----------
+function pad2(n){ return String(n).padStart(2,"0"); }
+function minsToHHMMSS(mins){
+  mins = ((mins % 1440) + 1440) % 1440;
+  const h = Math.floor(mins/60), mm = mins%60;
+  return `${pad2(h)}:${pad2(mm)}:00`;
+}
+function ensureInviteLists(){
+  if (!state.schedule.inviteLists) state.schedule.inviteLists = [];
+}
+
+function openCalendarModal(){
+  ensureInviteLists();
+  const root = document.getElementById("modalRoot");
+  const connected = !!(state.googleToken && Date.now() < (state.googleTokenExpiry||0));
+  const week = state.schedule.weeks.find(w => w.id === state.currentWeekId);
+  root.innerHTML = `
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal" style="width:460px;">
+        <h3>Calendar &amp; Invite Lists</h3>
+
+        <div class="field">
+          <label>Google account</label>
+          <input type="text" id="gClientId" value="${escapeHtml(localStorage.getItem('googleClientId')||'')}" placeholder="Google OAuth Client ID (one-time setup)">
+          <div class="note">One person sets this up once in Google Cloud Console and shares the Client ID with the team — it's a public identifier, not a secret. Ask me for step-by-step setup instructions if you haven't done this yet.</div>
+          <button class="btn" id="btnGoogleConnect" style="margin-top:8px;">${connected ? "✅ Connected — reconnect" : "Connect Google Calendar"}</button>
+        </div>
+
+        <div class="field">
+          <label>Invite lists (cohorts)</label>
+          <div id="inviteListsWrap"></div>
+          <button class="btn" id="btnAddList" style="margin-top:4px;">+ New list</button>
+        </div>
+
+        <div class="field">
+          <label>Send invites</label>
+          <div class="note">Sends (or updates) a Google Calendar event with attendees for every scheduled meeting in <b>${week ? week.label : "this week"}</b> that has an invite list assigned. Meetings without a list, or if this week has no Monday date set (see date field above the calendar), are skipped.</div>
+          <button class="btn primary" id="btnSendInvites" style="margin-top:8px;">📤 Send invites for this week</button>
+          <div id="sendStatus" style="font-size:12px;color:var(--muted);margin-top:6px;"></div>
+        </div>
+
+        <div class="modal-actions">
+          <div class="left"></div>
+          <div class="right"><button class="btn" id="btnCancel">Close</button></div>
+        </div>
+      </div>
+    </div>
+  `;
+  renderInviteListsEditor();
+  document.getElementById("btnCancel").onclick = closeModal;
+  document.getElementById("modalOverlay").addEventListener("click", (e) => { if (e.target.id === "modalOverlay") closeModal(); });
+  document.getElementById("gClientId").addEventListener("change", (e) => {
+    localStorage.setItem("googleClientId", e.target.value.trim());
+  });
+  document.getElementById("btnAddList").onclick = () => {
+    const name = prompt('List name (e.g. "June Cohort")');
+    if (!name || !name.trim()) return;
+    state.schedule.inviteLists.push({ id: uid("inv"), name: name.trim(), emails: [] });
+    markDirty();
+    renderInviteListsEditor();
+  };
+  document.getElementById("btnGoogleConnect").onclick = connectGoogle;
+  document.getElementById("btnSendInvites").onclick = sendInvitesForCurrentWeek;
+}
+
+function renderInviteListsEditor(){
+  const wrap = document.getElementById("inviteListsWrap");
+  if (!wrap) return;
+  const lists = state.schedule.inviteLists;
+  if (!lists.length){
+    wrap.innerHTML = `<div class="backlog-empty">No lists yet — add one below.</div>`;
+    return;
+  }
+  wrap.innerHTML = lists.map(list => `
+    <div style="border:1px solid var(--border);border-radius:8px;padding:8px;margin-bottom:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+        <input type="text" data-list="${list.id}" class="listNameInput" value="${escapeHtml(list.name)}" style="font-weight:600;border:none;font-size:13px;flex:1;padding:2px;">
+        <button class="btn danger" data-del="${list.id}" style="padding:2px 8px;font-size:11px;">Delete</button>
+      </div>
+      <textarea data-emails="${list.id}" rows="2" placeholder="one email per line or comma-separated" style="width:100%;margin-top:6px;padding:6px;border-radius:6px;border:1px solid var(--border);font-size:12px;font-family:inherit;resize:vertical;">${escapeHtml((list.emails||[]).join("\n"))}</textarea>
+    </div>
+  `).join("");
+
+  wrap.querySelectorAll(".listNameInput").forEach(inp => {
+    inp.addEventListener("change", (e) => {
+      const list = lists.find(l => l.id === e.target.dataset.list);
+      if (list){ list.name = e.target.value.trim(); markDirty(); }
+    });
+  });
+  wrap.querySelectorAll("textarea[data-emails]").forEach(ta => {
+    ta.addEventListener("change", (e) => {
+      const list = lists.find(l => l.id === e.target.dataset.emails);
+      if (list){
+        list.emails = e.target.value.split(/[\n,]/).map(s=>s.trim()).filter(Boolean);
+        markDirty();
+      }
+    });
+  });
+  wrap.querySelectorAll("button[data-del]").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      if (!confirm("Delete this invite list? Meetings using it will be unassigned.")) return;
+      const delId = e.target.dataset.del;
+      state.schedule.inviteLists = lists.filter(l => l.id !== delId);
+      state.schedule.meetings.forEach(m => { if (m.inviteListId === delId) m.inviteListId = null; });
+      markDirty();
+      renderInviteListsEditor();
+    });
+  });
+}
+
+let googleTokenClient = null;
+function connectGoogle(){
+  const clientId = (localStorage.getItem("googleClientId")||"").trim();
+  if (!clientId){ alert("Enter your Google OAuth Client ID first (see the note above the Connect button)."); return; }
+  if (typeof google === "undefined" || !google.accounts || !google.accounts.oauth2){
+    alert("Google's sign-in library hasn't loaded yet. Make sure you're online, then try again in a few seconds.");
+    return;
+  }
+  googleTokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: clientId,
+    scope: "https://www.googleapis.com/auth/calendar.events",
+    callback: (resp) => {
+      if (resp.error){ alert("Google sign-in failed: " + resp.error); return; }
+      state.googleToken = resp.access_token;
+      state.googleTokenExpiry = Date.now() + (Number(resp.expires_in||3600) * 1000);
+      openCalendarModal();
+    }
+  });
+  googleTokenClient.requestAccessToken();
+}
+
+async function syncMeetingToCalendar(m, week){
+  const list = state.schedule.inviteLists.find(l => l.id === m.inviteListId);
+  if (!list || !list.emails.length) throw new Error("Invite list is empty");
+  const dayIndex = state.schedule.meta.days.indexOf(m.day);
+  const base = new Date(week.startDate + "T00:00:00");
+  base.setDate(base.getDate() + dayIndex);
+  const dateStr = `${base.getFullYear()}-${pad2(base.getMonth()+1)}-${pad2(base.getDate())}`;
+  const pstStart = slotStartMinutes(m.startSlot);
+  const estStartMin = pstStart + 180;
+  const estEndMin = estStartMin + m.durationSlots * state.schedule.meta.slotMinutes;
+
+  const event = {
+    summary: m.title + (m.subtitle ? ` — ${m.subtitle}` : ""),
+    description: [m.notes, m.owner ? `Led by: ${m.owner}` : ""].filter(Boolean).join("\n\n"),
+    start: { dateTime: `${dateStr}T${minsToHHMMSS(estStartMin)}`, timeZone: "America/New_York" },
+    end: { dateTime: `${dateStr}T${minsToHHMMSS(estEndMin)}`, timeZone: "America/New_York" },
+    attendees: list.emails.map(email => ({ email })),
+  };
+
+  const url = m.calendarEventId
+    ? `https://www.googleapis.com/calendar/v3/calendars/primary/events/${m.calendarEventId}?sendUpdates=all`
+    : `https://www.googleapis.com/calendar/v3/calendars/primary/events?sendUpdates=all`;
+  const res = await fetch(url, {
+    method: m.calendarEventId ? "PATCH" : "POST",
+    headers: { "Authorization": `Bearer ${state.googleToken}`, "Content-Type": "application/json" },
+    body: JSON.stringify(event),
+  });
+  if (!res.ok){
+    const t = await res.text();
+    throw new Error(`Calendar API error (${res.status}): ${t}`);
+  }
+  const data = await res.json();
+  m.calendarEventId = data.id;
+  m.calendarEventLink = data.htmlLink;
+}
+
+async function sendInvitesForCurrentWeek(){
+  const statusEl = document.getElementById("sendStatus");
+  if (!state.googleToken || Date.now() > (state.googleTokenExpiry||0)){
+    alert("Connect Google Calendar first (button above).");
+    return;
+  }
+  const week = state.schedule.weeks.find(w => w.id === state.currentWeekId);
+  if (!week || !week.startDate){
+    alert("Set this week's Monday date first (the date field above the calendar grid) before sending invites.");
+    return;
+  }
+  const meetings = state.schedule.meetings.filter(m => m.scheduled && m.weekId === week.id && m.inviteListId);
+  if (!meetings.length){
+    statusEl.textContent = "No meetings in this week have an invite list assigned yet — open a meeting and set one.";
+    return;
+  }
+  statusEl.textContent = `Sending ${meetings.length} invite(s)...`;
+  let sent = 0, failed = 0;
+  for (const m of meetings){
+    try{
+      await syncMeetingToCalendar(m, week);
+      sent++;
+    }catch(e){
+      console.error(e);
+      failed++;
+    }
+  }
+  statusEl.textContent = `Done: ${sent} sent${failed ? `, ${failed} failed (see console)` : ""}.`;
+  markDirty();
+  renderAll();
+}
 
 // ---------- Settings Modal ----------
 function openSettingsModal(){
@@ -657,6 +911,7 @@ function openSettingsModal(){
 document.getElementById("btnSave").onclick = saveToGitHub;
 document.getElementById("btnReload").onclick = () => loadSchedule();
 document.getElementById("btnSettings").onclick = openSettingsModal;
+document.getElementById("btnCalendar").onclick = openCalendarModal;
 document.getElementById("btnAddMeeting").onclick = () => openEditModal(null);
 document.getElementById("btnBannerReload").onclick = () => {
   document.getElementById("remoteBanner").style.display = "none";
@@ -665,7 +920,7 @@ document.getElementById("btnBannerReload").onclick = () => {
 
 // ---------- Default fallback data (used if GitHub isn't configured and
 // data/schedule.json can't be fetched, e.g. opened directly as a file) ----------
-const DEFAULT_SCHEDULE = {"version": 1, "meta": {"title": "Sales Onboarding Schedule", "timezoneBase": "PST", "slotMinutes": 30, "startMinutesPST": 510, "slotCount": 17, "days": ["Mon", "Tue", "Wed", "Thu", "Fri"]}, "weeks": [{"id": "w1", "label": "Week 1", "dateRange": "June 8-12"}, {"id": "w2", "label": "Week 2", "dateRange": "June 15-19"}, {"id": "w3", "label": "Week 3", "dateRange": "June 22-26"}], "meetings": [{"id": "m1", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 0, "durationSlots": 1}, {"id": "m2", "title": "Team Kickoff", "subtitle": "Team Icebreakers", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 1, "durationSlots": 1}, {"id": "m3", "title": "Tech Setup", "subtitle": "Gmail, HS, Dialpad, Deal Manager, Gong", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 2, "durationSlots": 1}, {"id": "m4", "title": "Welcome to Fresha", "subtitle": "Company Background & Future", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 4, "durationSlots": 1}, {"id": "m5", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 7, "durationSlots": 1}, {"id": "m6", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 9, "durationSlots": 1}, {"id": "m7", "title": "PT001 - Launch Into Fresha", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 11, "durationSlots": 1}, {"id": "m8", "title": "PT002 - Marketplace & Book Now", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 12, "durationSlots": 1}, {"id": "m9", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 13, "durationSlots": 1}, {"id": "m10", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 16, "durationSlots": 1}, {"id": "m11", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 1, "durationSlots": 1}, {"id": "m12", "title": "Role Overview", "subtitle": "Day/Week/Month / Calendar management", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 2, "durationSlots": 1}, {"id": "m13", "title": "HR Onboarding", "subtitle": "(Hibob, expensing, time off etc)", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 5, "durationSlots": 1}, {"id": "m14", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 7, "durationSlots": 1}, {"id": "m15", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 9, "durationSlots": 1}, {"id": "m16", "title": "PT003 - Team & Staff", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 11, "durationSlots": 1}, {"id": "m17", "title": "PT004 - Services & Pricing", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 12, "durationSlots": 1}, {"id": "m18", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 13, "durationSlots": 1}, {"id": "m19", "title": "order biz cards", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 15, "durationSlots": 1}, {"id": "m20", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 16, "durationSlots": 1}, {"id": "m21", "title": "CPU BLOCK", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 0, "durationSlots": 1}, {"id": "m22", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 1, "durationSlots": 1}, {"id": "m23", "title": "Systems", "subtitle": "(HS, Gong, Flippy, Deal Manager)", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 2, "durationSlots": 1}, {"id": "m24", "title": "ICP", "subtitle": "Personas + Verticals", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 5, "durationSlots": 1}, {"id": "m25", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 7, "durationSlots": 1}, {"id": "m26", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 9, "durationSlots": 1}, {"id": "m27", "title": "PT005 - Booking, Resources & Calendar", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 11, "durationSlots": 1}, {"id": "m28", "title": "PT006 - Inventory & Products", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 12, "durationSlots": 1}, {"id": "m29", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 13, "durationSlots": 1}, {"id": "m30", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 16, "durationSlots": 1}, {"id": "m31", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 1, "durationSlots": 1}, {"id": "m32", "title": "Pipeline MGMT", "subtitle": "Leads/Deals / Pipeline Coverage / Sequences etc.", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 2, "durationSlots": 1}, {"id": "m33", "title": "Competitors", "subtitle": "Overview + Angles", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 5, "durationSlots": 1}, {"id": "m34", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 7, "durationSlots": 1}, {"id": "m35", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 9, "durationSlots": 1}, {"id": "m36", "title": "PT007 - Payments & Checkout, Team Pay", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 11, "durationSlots": 1}, {"id": "m37", "title": "PT008 - Marketing & Client Engagement", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 12, "durationSlots": 1}, {"id": "m38", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 13, "durationSlots": 1}, {"id": "m39", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 16, "durationSlots": 1}, {"id": "m40", "title": "Friday Pipeline Meeting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 0, "durationSlots": 1}, {"id": "m41", "title": "\u2708 Travel Day", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 1, "durationSlots": 1}, {"id": "m42", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 3, "durationSlots": 1}, {"id": "m43", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 5, "durationSlots": 1}, {"id": "m44", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 7, "durationSlots": 1}, {"id": "m45", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 9, "durationSlots": 1}, {"id": "m46", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 11, "durationSlots": 1}, {"id": "m47", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 13, "durationSlots": 1}, {"id": "m48", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 15, "durationSlots": 2}, {"id": "m49", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 0, "durationSlots": 1}, {"id": "m50", "title": "Week 1 Recap", "subtitle": "Questions?", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 1, "durationSlots": 1}, {"id": "m51", "title": "Demo", "subtitle": "Overview + Best Practices", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 2, "durationSlots": 1}, {"id": "m52", "title": "Mock Demo", "subtitle": "Megan", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 5, "durationSlots": 1}, {"id": "m53", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 7, "durationSlots": 1}, {"id": "m54", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 9, "durationSlots": 1}, {"id": "m55", "title": "CT001 - DIAL Prospecting & Outreach Fundamentals", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 11, "durationSlots": 1}, {"id": "m56", "title": "Mock Demo", "subtitle": "Brian", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 13, "durationSlots": 1}, {"id": "m57", "title": "Role Play", "subtitle": "Demo", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 15, "durationSlots": 1}, {"id": "m58", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 16, "durationSlots": 1}, {"id": "m59", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 1, "durationSlots": 1}, {"id": "m60", "title": "Discovery", "subtitle": "Overview + Best Practices", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 2, "durationSlots": 1}, {"id": "m61", "title": "Mock Discovery", "subtitle": "Brian", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 5, "durationSlots": 1}, {"id": "m62", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 7, "durationSlots": 1}, {"id": "m63", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 9, "durationSlots": 1}, {"id": "m64", "title": "CT003 - GAP 4Ts Discovering the Gap using the 4T Framework", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 11, "durationSlots": 1}, {"id": "m65", "title": "Role Play", "subtitle": "Discovery", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 15, "durationSlots": 1}, {"id": "m66", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 16, "durationSlots": 1}, {"id": "m67", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 1, "durationSlots": 1}, {"id": "m68", "title": "Prospecting", "subtitle": "Overview + Best Practices", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 2, "durationSlots": 1}, {"id": "m69", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 7, "durationSlots": 1}, {"id": "m70", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 9, "durationSlots": 1}, {"id": "m71", "title": "CT005 \u2014 EASE | Handling objections with the EASE framework", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 11, "durationSlots": 1}, {"id": "m72", "title": "Role Play", "subtitle": "Cold Calls", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 15, "durationSlots": 1}, {"id": "m73", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 16, "durationSlots": 1}, {"id": "m74", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 1, "durationSlots": 1}, {"id": "m75", "title": "Objection Handling", "subtitle": "Framework + Common Objections", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 2, "durationSlots": 1}, {"id": "m76", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 7, "durationSlots": 1}, {"id": "m77", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 9, "durationSlots": 1}, {"id": "m78", "title": "CT007 \u2014 EARN | Earning the close", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 11, "durationSlots": 1}, {"id": "m79", "title": "AI Call trainer", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 13, "durationSlots": 1}, {"id": "m80", "title": "Role Play", "subtitle": "Open", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 15, "durationSlots": 1}, {"id": "m81", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 16, "durationSlots": 1}, {"id": "m82", "title": "Friday Pipeline Meeting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 0, "durationSlots": 1}, {"id": "m83", "title": "Expectations - KPIs, Quota, Commission", "subtitle": "", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 3, "durationSlots": 1}, {"id": "m84", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 7, "durationSlots": 1}, {"id": "m85", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 9, "durationSlots": 1}, {"id": "m86", "title": "CT009 \u2014 PIPELINE | Pipeline management & forecasting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 11, "durationSlots": 1}, {"id": "m87", "title": "Role Play", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 13, "durationSlots": 1}, {"id": "m88", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 16, "durationSlots": 1}, {"id": "m89", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 0, "durationSlots": 1}, {"id": "m90", "title": "Territory Plan", "subtitle": "Research / List Building", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 2, "durationSlots": 1}, {"id": "m91", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 5, "durationSlots": 1}, {"id": "m92", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 7, "durationSlots": 1}, {"id": "m93", "title": "Field Work", "subtitle": "Drop Ins", "owner": "", "color": "#db2777", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 9, "durationSlots": 1}, {"id": "m94", "title": "Meeting Fresha Partners - 5 Partners", "subtitle": "", "owner": "", "color": "#db2777", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 11, "durationSlots": 1}, {"id": "m95", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 15, "durationSlots": 2}, {"id": "m96", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 1, "durationSlots": 1}, {"id": "m97", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 5, "durationSlots": 1}, {"id": "m98", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 7, "durationSlots": 1}, {"id": "m99", "title": "AI Call trainer", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 9, "durationSlots": 1}, {"id": "m100", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 15, "durationSlots": 2}, {"id": "m101", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 1, "durationSlots": 1}, {"id": "m102", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 5, "durationSlots": 1}, {"id": "m103", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 7, "durationSlots": 1}, {"id": "m104", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 15, "durationSlots": 2}, {"id": "m105", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 1, "durationSlots": 1}, {"id": "m106", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 5, "durationSlots": 1}, {"id": "m107", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 7, "durationSlots": 1}, {"id": "m108", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 15, "durationSlots": 2}, {"id": "m109", "title": "Friday Pipeline Meeting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 0, "durationSlots": 1}, {"id": "m110", "title": "Pipeline Review", "subtitle": "All", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 5, "durationSlots": 1}, {"id": "m111", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 7, "durationSlots": 1}, {"id": "m112", "title": "Team Demo Cert", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 9, "durationSlots": 1}, {"id": "b1", "title": "Book HR team for HR meeting", "subtitle": "", "owner": "", "color": "#9333ea", "scheduled": false}, {"id": "b2", "title": "Assign AMs for product trainings", "subtitle": "", "owner": "", "color": "#9333ea", "scheduled": false}]};
+const DEFAULT_SCHEDULE = {"version": 1, "meta": {"title": "Sales Onboarding Schedule", "timezoneBase": "PST", "slotMinutes": 30, "startMinutesPST": 510, "slotCount": 17, "days": ["Mon", "Tue", "Wed", "Thu", "Fri"]}, "weeks": [{"id": "w1", "label": "Week 1", "dateRange": "June 8-12", "startDate": "2026-06-08"}, {"id": "w2", "label": "Week 2", "dateRange": "June 15-19", "startDate": "2026-06-15"}, {"id": "w3", "label": "Week 3", "dateRange": "June 22-26", "startDate": "2026-06-22"}], "meetings": [{"id": "m1", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 0, "durationSlots": 1, "notes": ""}, {"id": "m2", "title": "Team Kickoff", "subtitle": "Team Icebreakers", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m3", "title": "Tech Setup", "subtitle": "Gmail, HS, Dialpad, Deal Manager, Gong", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 2, "durationSlots": 1, "notes": ""}, {"id": "m4", "title": "Welcome to Fresha", "subtitle": "Company Background & Future", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 4, "durationSlots": 1, "notes": ""}, {"id": "m5", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m6", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m7", "title": "PT001 - Launch Into Fresha", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 11, "durationSlots": 1, "notes": ""}, {"id": "m8", "title": "PT002 - Marketplace & Book Now", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 12, "durationSlots": 1, "notes": ""}, {"id": "m9", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 13, "durationSlots": 1, "notes": ""}, {"id": "m10", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Mon", "startSlot": 16, "durationSlots": 1, "notes": ""}, {"id": "m11", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m12", "title": "Role Overview", "subtitle": "Day/Week/Month / Calendar management", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 2, "durationSlots": 1, "notes": ""}, {"id": "m13", "title": "HR Onboarding", "subtitle": "(Hibob, expensing, time off etc)", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 5, "durationSlots": 1, "notes": ""}, {"id": "m14", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m15", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m16", "title": "PT003 - Team & Staff", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 11, "durationSlots": 1, "notes": ""}, {"id": "m17", "title": "PT004 - Services & Pricing", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 12, "durationSlots": 1, "notes": ""}, {"id": "m18", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 13, "durationSlots": 1, "notes": ""}, {"id": "m19", "title": "order biz cards", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 15, "durationSlots": 1, "notes": ""}, {"id": "m20", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Tue", "startSlot": 16, "durationSlots": 1, "notes": ""}, {"id": "m21", "title": "CPU BLOCK", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 0, "durationSlots": 1, "notes": ""}, {"id": "m22", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m23", "title": "Systems", "subtitle": "(HS, Gong, Flippy, Deal Manager)", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 2, "durationSlots": 1, "notes": ""}, {"id": "m24", "title": "ICP", "subtitle": "Personas + Verticals", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 5, "durationSlots": 1, "notes": ""}, {"id": "m25", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m26", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m27", "title": "PT005 - Booking, Resources & Calendar", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 11, "durationSlots": 1, "notes": ""}, {"id": "m28", "title": "PT006 - Inventory & Products", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 12, "durationSlots": 1, "notes": ""}, {"id": "m29", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 13, "durationSlots": 1, "notes": ""}, {"id": "m30", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Wed", "startSlot": 16, "durationSlots": 1, "notes": ""}, {"id": "m31", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m32", "title": "Pipeline MGMT", "subtitle": "Leads/Deals / Pipeline Coverage / Sequences etc.", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 2, "durationSlots": 1, "notes": ""}, {"id": "m33", "title": "Competitors", "subtitle": "Overview + Angles", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 5, "durationSlots": 1, "notes": ""}, {"id": "m34", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m35", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m36", "title": "PT007 - Payments & Checkout, Team Pay", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 11, "durationSlots": 1, "notes": ""}, {"id": "m37", "title": "PT008 - Marketing & Client Engagement", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 12, "durationSlots": 1, "notes": ""}, {"id": "m38", "title": "Modules", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 13, "durationSlots": 1, "notes": ""}, {"id": "m39", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Thu", "startSlot": 16, "durationSlots": 1, "notes": ""}, {"id": "m40", "title": "Friday Pipeline Meeting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 0, "durationSlots": 1, "notes": ""}, {"id": "m41", "title": "\u2708 Travel Day", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m42", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 3, "durationSlots": 1, "notes": ""}, {"id": "m43", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 5, "durationSlots": 1, "notes": ""}, {"id": "m44", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m45", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m46", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 11, "durationSlots": 1, "notes": ""}, {"id": "m47", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 13, "durationSlots": 1, "notes": ""}, {"id": "m48", "title": "-", "subtitle": "", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w1", "day": "Fri", "startSlot": 15, "durationSlots": 2, "notes": ""}, {"id": "m49", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 0, "durationSlots": 1, "notes": ""}, {"id": "m50", "title": "Week 1 Recap", "subtitle": "Questions?", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m51", "title": "Demo", "subtitle": "Overview + Best Practices", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 2, "durationSlots": 1, "notes": ""}, {"id": "m52", "title": "Mock Demo", "subtitle": "Megan", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 5, "durationSlots": 1, "notes": ""}, {"id": "m53", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m54", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m55", "title": "CT001 - DIAL Prospecting & Outreach Fundamentals", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 11, "durationSlots": 1, "notes": ""}, {"id": "m56", "title": "Mock Demo", "subtitle": "Brian", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 13, "durationSlots": 1, "notes": ""}, {"id": "m57", "title": "Role Play", "subtitle": "Demo", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 15, "durationSlots": 1, "notes": ""}, {"id": "m58", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Mon", "startSlot": 16, "durationSlots": 1, "notes": ""}, {"id": "m59", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m60", "title": "Discovery", "subtitle": "Overview + Best Practices", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 2, "durationSlots": 1, "notes": ""}, {"id": "m61", "title": "Mock Discovery", "subtitle": "Brian", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 5, "durationSlots": 1, "notes": ""}, {"id": "m62", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m63", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m64", "title": "CT003 - GAP 4Ts Discovering the Gap using the 4T Framework", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 11, "durationSlots": 1, "notes": ""}, {"id": "m65", "title": "Role Play", "subtitle": "Discovery", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 15, "durationSlots": 1, "notes": ""}, {"id": "m66", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Tue", "startSlot": 16, "durationSlots": 1, "notes": ""}, {"id": "m67", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m68", "title": "Prospecting", "subtitle": "Overview + Best Practices", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 2, "durationSlots": 1, "notes": ""}, {"id": "m69", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m70", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m71", "title": "CT005 \u2014 EASE | Handling objections with the EASE framework", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 11, "durationSlots": 1, "notes": ""}, {"id": "m72", "title": "Role Play", "subtitle": "Cold Calls", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 15, "durationSlots": 1, "notes": ""}, {"id": "m73", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Wed", "startSlot": 16, "durationSlots": 1, "notes": ""}, {"id": "m74", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m75", "title": "Objection Handling", "subtitle": "Framework + Common Objections", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 2, "durationSlots": 1, "notes": ""}, {"id": "m76", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m77", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m78", "title": "CT007 \u2014 EARN | Earning the close", "subtitle": "", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 11, "durationSlots": 1, "notes": ""}, {"id": "m79", "title": "AI Call trainer", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 13, "durationSlots": 1, "notes": ""}, {"id": "m80", "title": "Role Play", "subtitle": "Open", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 15, "durationSlots": 1, "notes": ""}, {"id": "m81", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Thu", "startSlot": 16, "durationSlots": 1, "notes": ""}, {"id": "m82", "title": "Friday Pipeline Meeting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 0, "durationSlots": 1, "notes": ""}, {"id": "m83", "title": "Expectations - KPIs, Quota, Commission", "subtitle": "", "owner": "", "color": "#7c3aed", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 3, "durationSlots": 1, "notes": ""}, {"id": "m84", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m85", "title": "Product Training", "subtitle": "Placeholder", "owner": "", "color": "#16a34a", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m86", "title": "CT009 \u2014 PIPELINE | Pipeline management & forecasting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 11, "durationSlots": 1, "notes": ""}, {"id": "m87", "title": "Role Play", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 13, "durationSlots": 1, "notes": ""}, {"id": "m88", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w2", "day": "Fri", "startSlot": 16, "durationSlots": 1, "notes": ""}, {"id": "m89", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 0, "durationSlots": 1, "notes": ""}, {"id": "m90", "title": "Territory Plan", "subtitle": "Research / List Building", "owner": "", "color": "#0891b2", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 2, "durationSlots": 1, "notes": ""}, {"id": "m91", "title": "BD Monday", "subtitle": "Morning Meeting", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 5, "durationSlots": 1, "notes": ""}, {"id": "m92", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m93", "title": "Field Work", "subtitle": "Drop Ins", "owner": "", "color": "#db2777", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m94", "title": "Meeting Fresha Partners - 5 Partners", "subtitle": "", "owner": "", "color": "#db2777", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 11, "durationSlots": 1, "notes": ""}, {"id": "m95", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Mon", "startSlot": 15, "durationSlots": 2, "notes": ""}, {"id": "m96", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m97", "title": "Tuesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 5, "durationSlots": 1, "notes": ""}, {"id": "m98", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m99", "title": "AI Call trainer", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "m100", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Tue", "startSlot": 15, "durationSlots": 2, "notes": ""}, {"id": "m101", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m102", "title": "Wednesday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 5, "durationSlots": 1, "notes": ""}, {"id": "m103", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m104", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Wed", "startSlot": 15, "durationSlots": 2, "notes": ""}, {"id": "m105", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 1, "durationSlots": 1, "notes": ""}, {"id": "m106", "title": "Thursday", "subtitle": "Sales Standup", "owner": "", "color": "#4b5563", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 5, "durationSlots": 1, "notes": ""}, {"id": "m107", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m108", "title": "EOD Catch-up", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Thu", "startSlot": 15, "durationSlots": 2, "notes": ""}, {"id": "m109", "title": "Friday Pipeline Meeting", "subtitle": "", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 0, "durationSlots": 1, "notes": ""}, {"id": "m110", "title": "Pipeline Review", "subtitle": "All", "owner": "", "color": "#2563eb", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 5, "durationSlots": 1, "notes": ""}, {"id": "m111", "title": "Lunch", "subtitle": "", "owner": "", "color": "#6b7280", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 7, "durationSlots": 1, "notes": ""}, {"id": "m112", "title": "Team Demo Cert", "subtitle": "", "owner": "", "color": "#ea580c", "scheduled": true, "weekId": "w3", "day": "Fri", "startSlot": 9, "durationSlots": 1, "notes": ""}, {"id": "b1", "title": "Book HR team for HR meeting", "subtitle": "", "owner": "", "color": "#9333ea", "scheduled": false, "notes": ""}, {"id": "b2", "title": "Assign AMs for product trainings", "subtitle": "", "owner": "", "color": "#9333ea", "scheduled": false, "notes": ""}], "inviteLists": []};
 
 // ---------- Boot ----------
 loadSchedule();

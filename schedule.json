@@ -18,17 +18,20 @@
     {
       "id": "w1",
       "label": "Week 1",
-      "dateRange": "June 8-12"
+      "dateRange": "June 8-12",
+      "startDate": "2026-06-08"
     },
     {
       "id": "w2",
       "label": "Week 2",
-      "dateRange": "June 15-19"
+      "dateRange": "June 15-19",
+      "startDate": "2026-06-15"
     },
     {
       "id": "w3",
       "label": "Week 3",
-      "dateRange": "June 22-26"
+      "dateRange": "June 22-26",
+      "startDate": "2026-06-22"
     }
   ],
   "meetings": [
@@ -42,7 +45,8 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 0,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m2",
@@ -54,7 +58,8 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m3",
@@ -66,7 +71,8 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 2,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m4",
@@ -78,7 +84,8 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 4,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m5",
@@ -90,7 +97,8 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m6",
@@ -102,7 +110,8 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m7",
@@ -114,7 +123,8 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 11,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m8",
@@ -126,7 +136,8 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 12,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m9",
@@ -138,7 +149,8 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 13,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m10",
@@ -150,7 +162,8 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 16,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m11",
@@ -162,7 +175,8 @@
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m12",
@@ -174,7 +188,8 @@
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 2,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m13",
@@ -186,7 +201,8 @@
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 5,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m14",
@@ -198,7 +214,8 @@
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m15",
@@ -210,7 +227,8 @@
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m16",
@@ -222,7 +240,8 @@
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 11,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m17",
@@ -234,7 +253,8 @@
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 12,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m18",
@@ -246,7 +266,8 @@
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 13,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m19",
@@ -258,7 +279,8 @@
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 15,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m20",
@@ -270,7 +292,8 @@
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 16,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m21",
@@ -282,7 +305,8 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 0,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m22",
@@ -294,7 +318,8 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m23",
@@ -306,7 +331,8 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 2,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m24",
@@ -318,7 +344,8 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 5,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m25",
@@ -330,7 +357,8 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m26",
@@ -342,7 +370,8 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m27",
@@ -354,7 +383,8 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 11,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m28",
@@ -366,7 +396,8 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 12,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m29",
@@ -378,7 +409,8 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 13,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m30",
@@ -390,7 +422,8 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 16,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m31",
@@ -402,7 +435,8 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m32",
@@ -414,7 +448,8 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 2,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m33",
@@ -426,7 +461,8 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 5,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m34",
@@ -438,7 +474,8 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m35",
@@ -450,7 +487,8 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m36",
@@ -462,7 +500,8 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 11,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m37",
@@ -474,7 +513,8 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 12,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m38",
@@ -486,7 +526,8 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 13,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m39",
@@ -498,7 +539,8 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 16,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m40",
@@ -510,7 +552,8 @@
       "weekId": "w1",
       "day": "Fri",
       "startSlot": 0,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m41",
@@ -522,7 +565,8 @@
       "weekId": "w1",
       "day": "Fri",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m42",
@@ -534,7 +578,8 @@
       "weekId": "w1",
       "day": "Fri",
       "startSlot": 3,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m43",
@@ -546,7 +591,8 @@
       "weekId": "w1",
       "day": "Fri",
       "startSlot": 5,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m44",
@@ -558,7 +604,8 @@
       "weekId": "w1",
       "day": "Fri",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m45",
@@ -570,7 +617,8 @@
       "weekId": "w1",
       "day": "Fri",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m46",
@@ -582,7 +630,8 @@
       "weekId": "w1",
       "day": "Fri",
       "startSlot": 11,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m47",
@@ -594,7 +643,8 @@
       "weekId": "w1",
       "day": "Fri",
       "startSlot": 13,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m48",
@@ -606,7 +656,8 @@
       "weekId": "w1",
       "day": "Fri",
       "startSlot": 15,
-      "durationSlots": 2
+      "durationSlots": 2,
+      "notes": ""
     },
     {
       "id": "m49",
@@ -618,7 +669,8 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 0,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m50",
@@ -630,7 +682,8 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m51",
@@ -642,7 +695,8 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 2,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m52",
@@ -654,7 +708,8 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 5,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m53",
@@ -666,7 +721,8 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m54",
@@ -678,7 +734,8 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m55",
@@ -690,7 +747,8 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 11,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m56",
@@ -702,7 +760,8 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 13,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m57",
@@ -714,7 +773,8 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 15,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m58",
@@ -726,7 +786,8 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 16,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m59",
@@ -738,7 +799,8 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m60",
@@ -750,7 +812,8 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 2,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m61",
@@ -762,7 +825,8 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 5,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m62",
@@ -774,7 +838,8 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m63",
@@ -786,7 +851,8 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m64",
@@ -798,7 +864,8 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 11,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m65",
@@ -810,7 +877,8 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 15,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m66",
@@ -822,7 +890,8 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 16,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m67",
@@ -834,7 +903,8 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m68",
@@ -846,7 +916,8 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 2,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m69",
@@ -858,7 +929,8 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m70",
@@ -870,7 +942,8 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m71",
@@ -882,7 +955,8 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 11,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m72",
@@ -894,7 +968,8 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 15,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m73",
@@ -906,7 +981,8 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 16,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m74",
@@ -918,7 +994,8 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m75",
@@ -930,7 +1007,8 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 2,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m76",
@@ -942,7 +1020,8 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m77",
@@ -954,7 +1033,8 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m78",
@@ -966,7 +1046,8 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 11,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m79",
@@ -978,7 +1059,8 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 13,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m80",
@@ -990,7 +1072,8 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 15,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m81",
@@ -1002,7 +1085,8 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 16,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m82",
@@ -1014,7 +1098,8 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 0,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m83",
@@ -1026,7 +1111,8 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 3,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m84",
@@ -1038,7 +1124,8 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m85",
@@ -1050,7 +1137,8 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m86",
@@ -1062,7 +1150,8 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 11,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m87",
@@ -1074,7 +1163,8 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 13,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m88",
@@ -1086,7 +1176,8 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 16,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m89",
@@ -1098,7 +1189,8 @@
       "weekId": "w3",
       "day": "Mon",
       "startSlot": 0,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m90",
@@ -1110,7 +1202,8 @@
       "weekId": "w3",
       "day": "Mon",
       "startSlot": 2,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m91",
@@ -1122,7 +1215,8 @@
       "weekId": "w3",
       "day": "Mon",
       "startSlot": 5,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m92",
@@ -1134,7 +1228,8 @@
       "weekId": "w3",
       "day": "Mon",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m93",
@@ -1146,7 +1241,8 @@
       "weekId": "w3",
       "day": "Mon",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m94",
@@ -1158,7 +1254,8 @@
       "weekId": "w3",
       "day": "Mon",
       "startSlot": 11,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m95",
@@ -1170,7 +1267,8 @@
       "weekId": "w3",
       "day": "Mon",
       "startSlot": 15,
-      "durationSlots": 2
+      "durationSlots": 2,
+      "notes": ""
     },
     {
       "id": "m96",
@@ -1182,7 +1280,8 @@
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m97",
@@ -1194,7 +1293,8 @@
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 5,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m98",
@@ -1206,7 +1306,8 @@
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m99",
@@ -1218,7 +1319,8 @@
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m100",
@@ -1230,7 +1332,8 @@
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 15,
-      "durationSlots": 2
+      "durationSlots": 2,
+      "notes": ""
     },
     {
       "id": "m101",
@@ -1242,7 +1345,8 @@
       "weekId": "w3",
       "day": "Wed",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m102",
@@ -1254,7 +1358,8 @@
       "weekId": "w3",
       "day": "Wed",
       "startSlot": 5,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m103",
@@ -1266,7 +1371,8 @@
       "weekId": "w3",
       "day": "Wed",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m104",
@@ -1278,7 +1384,8 @@
       "weekId": "w3",
       "day": "Wed",
       "startSlot": 15,
-      "durationSlots": 2
+      "durationSlots": 2,
+      "notes": ""
     },
     {
       "id": "m105",
@@ -1290,7 +1397,8 @@
       "weekId": "w3",
       "day": "Thu",
       "startSlot": 1,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m106",
@@ -1302,7 +1410,8 @@
       "weekId": "w3",
       "day": "Thu",
       "startSlot": 5,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m107",
@@ -1314,7 +1423,8 @@
       "weekId": "w3",
       "day": "Thu",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m108",
@@ -1326,7 +1436,8 @@
       "weekId": "w3",
       "day": "Thu",
       "startSlot": 15,
-      "durationSlots": 2
+      "durationSlots": 2,
+      "notes": ""
     },
     {
       "id": "m109",
@@ -1338,7 +1449,8 @@
       "weekId": "w3",
       "day": "Fri",
       "startSlot": 0,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m110",
@@ -1350,7 +1462,8 @@
       "weekId": "w3",
       "day": "Fri",
       "startSlot": 5,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m111",
@@ -1362,7 +1475,8 @@
       "weekId": "w3",
       "day": "Fri",
       "startSlot": 7,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "m112",
@@ -1374,7 +1488,8 @@
       "weekId": "w3",
       "day": "Fri",
       "startSlot": 9,
-      "durationSlots": 1
+      "durationSlots": 1,
+      "notes": ""
     },
     {
       "id": "b1",
@@ -1382,7 +1497,8 @@
       "subtitle": "",
       "owner": "",
       "color": "#9333ea",
-      "scheduled": false
+      "scheduled": false,
+      "notes": ""
     },
     {
       "id": "b2",
@@ -1390,7 +1506,9 @@
       "subtitle": "",
       "owner": "",
       "color": "#9333ea",
-      "scheduled": false
+      "scheduled": false,
+      "notes": ""
     }
-  ]
+  ],
+  "inviteLists": []
 }
