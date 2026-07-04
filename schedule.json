@@ -141,14 +141,15 @@
       "title": "Tuesday",
       "subtitle": "Sales Standup",
       "owner": "",
-      "color": "#4b5563",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 7,
       "durationSlots": 1,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m12",
@@ -252,14 +253,15 @@
       "title": "Wednesday",
       "subtitle": "Sales Standup",
       "owner": "",
-      "color": "#4b5563",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 7,
       "durationSlots": 1,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m23",
