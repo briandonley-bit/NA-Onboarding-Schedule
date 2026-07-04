@@ -132,6 +132,7 @@ let state = {
   dirty: false,
   currentSha: null,
   pollTimer: null,
+  lastSaveAt: null,
 };
 
 // ---------- Utility ----------
@@ -208,6 +209,7 @@ async function ghGetFile(){
   const c = ghConfig();
   const url = `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${encodeURI(c.path)}?ref=${encodeURIComponent(c.branch)}`;
   const res = await fetch(url, {
+    cache: "no-store",
     headers: {
       "Authorization": `Bearer ${c.token}`,
       "Accept": "application/vnd.github+json",
@@ -228,6 +230,7 @@ async function ghPeekSha(){
   const c = ghConfig();
   const url = `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${encodeURI(c.path)}?ref=${encodeURIComponent(c.branch)}`;
   const res = await fetch(url, {
+    cache: "no-store",
     headers: { "Authorization": `Bearer ${c.token}`, "Accept": "application/vnd.github+json" }
   });
   if (!res.ok) return null;
@@ -283,6 +286,7 @@ async function saveToGitHub(isAuto){
   try{
     await ghPutFile();
     state.dirty = false;
+    state.lastSaveAt = Date.now();
     setStatus("Synced with GitHub", "synced");
   }catch(e){
     if (e && e.conflict){
@@ -294,6 +298,7 @@ async function saveToGitHub(isAuto){
         if (freshSha) state.currentSha = freshSha;
         await ghPutFile();
         state.dirty = false;
+        state.lastSaveAt = Date.now();
         setStatus("Synced with GitHub", "synced");
         return;
       }catch(e2){
@@ -320,13 +325,21 @@ function startPolling(){
   if (!ghConfigured()) return;
   state.pollTimer = setInterval(async () => {
     try{
-      const sha = await ghPeekSha();
-      if (!sha || !state.currentSha || sha === state.currentSha) return;
       if (state.dirty || autosaveTimer){
         // A local edit is in flight — let the autosave conflict-retry above
         // reconcile this shortly instead of yanking the schedule out from under it.
         return;
       }
+      if (state.lastSaveAt && (Date.now() - state.lastSaveAt) < 6000){
+        // We just wrote to GitHub ourselves a moment ago. GitHub's read API can
+        // very briefly serve a stale/cached copy of the file right after a write
+        // lands, which previously made a just-saved change appear to "revert"
+        // when the next poll tick picked up that stale read. Give it a few
+        // seconds to catch up before trusting a GET again.
+        return;
+      }
+      const sha = await ghPeekSha();
+      if (!sha || !state.currentSha || sha === state.currentSha) return;
       await loadSchedule();
       setStatus("↻ Updated by a teammate", "synced");
       setTimeout(() => { if (!state.dirty) setStatus("Synced with GitHub", "synced"); }, 2500);
@@ -1020,7 +1033,24 @@ function openSettingsModal(){
 
 // ---------- Wire up header buttons ----------
 document.getElementById("btnSave").onclick = () => saveToGitHub(false);
-document.getElementById("btnReload").onclick = () => loadSchedule();
+document.getElementById("btnReload").onclick = async () => {
+  // Flush any pending/in-flight edit to GitHub first so a manual reload can
+  // never discard a change you just made — this was previously a bug: reload
+  // pulled from GitHub immediately, before the ~2.5s autosave timer fired.
+  if (autosaveTimer || state.dirty){
+    await saveToGitHub(true);
+  }
+  loadSchedule();
+};
+
+// Warn on browser refresh/close if there's an edit that hasn't made it to
+// GitHub yet (autosave still pending or a save is mid-flight).
+window.addEventListener("beforeunload", (e) => {
+  if (state.dirty || autosaveTimer){
+    e.preventDefault();
+    e.returnValue = "";
+  }
+});
 document.getElementById("btnSettings").onclick = openSettingsModal;
 document.getElementById("btnCalendar").onclick = openCalendarModal;
 initBacklogDropZone();
