@@ -145,7 +145,7 @@
       "scheduled": true,
       "weekId": "w1",
       "day": "Tue",
-      "startSlot": 6,
+      "startSlot": 7,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -186,7 +186,7 @@
       "scheduled": true,
       "weekId": "w1",
       "day": "Tue",
-      "startSlot": 7,
+      "startSlot": 8,
       "durationSlots": 2,
       "notes": "",
       "description": ""
@@ -298,7 +298,7 @@
       "scheduled": true,
       "weekId": "w1",
       "day": "Wed",
-      "startSlot": 7,
+      "startSlot": 8,
       "durationSlots": 2,
       "notes": "",
       "description": ""
@@ -312,7 +312,7 @@
       "scheduled": true,
       "weekId": "w1",
       "day": "Tue",
-      "startSlot": 9,
+      "startSlot": 10,
       "durationSlots": 2,
       "notes": "",
       "description": ""
@@ -1549,7 +1549,7 @@
       "durationSlots": 2,
       "weekId": "w1",
       "day": "Tue",
-      "startSlot": 11
+      "startSlot": 12
     }
   ],
   "inviteLists": [
