@@ -198,14 +198,15 @@
       "title": "Role Overview",
       "subtitle": "Day/Week/Month / Calendar management",
       "owner": "",
-      "color": "#0891b2",
+      "color": "#7c3aed",
       "scheduled": true,
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 8,
       "durationSlots": 1,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m13",
