@@ -109,20 +109,6 @@
       "description": ""
     },
     {
-      "id": "m7",
-      "title": "PT001 - Launch Into Fresha",
-      "subtitle": "",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Wed",
-      "startSlot": 10,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m8",
       "title": "PT002 - Marketplace & Book Now",
       "subtitle": "",
