@@ -280,20 +280,6 @@
       "description": ""
     },
     {
-      "id": "m18",
-      "title": "Modules",
-      "subtitle": "",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Tue",
-      "startSlot": 13,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m19",
       "title": "order biz cards",
       "subtitle": "",
@@ -429,20 +415,6 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 12,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
-      "id": "m29",
-      "title": "Modules",
-      "subtitle": "",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Wed",
-      "startSlot": 13,
       "durationSlots": 1,
       "notes": "",
       "description": ""
