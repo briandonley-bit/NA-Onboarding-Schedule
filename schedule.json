@@ -1614,7 +1614,9 @@
     {
       "id": "invb1fk3ep",
       "name": "July Cohort",
-      "emails": []
+      "emails": [
+        "arthur"
+      ]
     }
   ]
 }
