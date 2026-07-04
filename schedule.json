@@ -1579,6 +1579,18 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 10
+    },
+    {
+      "id": "ma6svji8",
+      "title": "Break",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#4b5563",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
