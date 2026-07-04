@@ -242,9 +242,9 @@
       "color": "#4b5563",
       "scheduled": true,
       "weekId": "w1",
-      "day": "Wed",
-      "startSlot": 0,
-      "durationSlots": 1,
+      "day": "Thu",
+      "startSlot": 5,
+      "durationSlots": 2,
       "notes": "",
       "description": ""
     },
@@ -396,7 +396,7 @@
       "scheduled": true,
       "weekId": "w1",
       "day": "Thu",
-      "startSlot": 5,
+      "startSlot": 2,
       "durationSlots": 1,
       "notes": "",
       "description": ""
