@@ -486,48 +486,6 @@
       "description": ""
     },
     {
-      "id": "m42",
-      "title": "-",
-      "subtitle": "",
-      "owner": "",
-      "color": "#4b5563",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Fri",
-      "startSlot": 3,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
-      "id": "m43",
-      "title": "-",
-      "subtitle": "",
-      "owner": "",
-      "color": "#4b5563",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Fri",
-      "startSlot": 5,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
-      "id": "m44",
-      "title": "-",
-      "subtitle": "",
-      "owner": "",
-      "color": "#4b5563",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Fri",
-      "startSlot": 7,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m45",
       "title": "-",
       "subtitle": "",
