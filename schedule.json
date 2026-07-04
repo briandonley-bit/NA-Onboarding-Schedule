@@ -4,8 +4,8 @@
     "title": "Sales Onboarding Schedule",
     "timezoneBase": "PST",
     "slotMinutes": 30,
-    "startMinutesPST": 510,
-    "slotCount": 17,
+    "startMinutesPST": 330,
+    "slotCount": 23,
     "days": [
       "Mon",
       "Tue",
@@ -46,7 +46,8 @@
       "day": "Mon",
       "startSlot": 0,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m2",
@@ -59,7 +60,8 @@
       "day": "Mon",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m3",
@@ -72,7 +74,8 @@
       "day": "Mon",
       "startSlot": 2,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m4",
@@ -85,7 +88,8 @@
       "day": "Mon",
       "startSlot": 4,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m5",
@@ -98,7 +102,8 @@
       "day": "Mon",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m6",
@@ -111,7 +116,8 @@
       "day": "Mon",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m7",
@@ -124,7 +130,8 @@
       "day": "Mon",
       "startSlot": 11,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m8",
@@ -137,7 +144,8 @@
       "day": "Mon",
       "startSlot": 12,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m9",
@@ -150,7 +158,8 @@
       "day": "Mon",
       "startSlot": 13,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m10",
@@ -163,7 +172,8 @@
       "day": "Mon",
       "startSlot": 16,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m11",
@@ -176,7 +186,8 @@
       "day": "Tue",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m12",
@@ -189,7 +200,8 @@
       "day": "Tue",
       "startSlot": 2,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m13",
@@ -202,7 +214,8 @@
       "day": "Tue",
       "startSlot": 5,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m14",
@@ -215,7 +228,8 @@
       "day": "Tue",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m15",
@@ -228,7 +242,8 @@
       "day": "Tue",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m16",
@@ -241,7 +256,8 @@
       "day": "Tue",
       "startSlot": 11,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m17",
@@ -254,7 +270,8 @@
       "day": "Tue",
       "startSlot": 12,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m18",
@@ -267,7 +284,8 @@
       "day": "Tue",
       "startSlot": 13,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m19",
@@ -280,7 +298,8 @@
       "day": "Tue",
       "startSlot": 15,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m20",
@@ -293,7 +312,8 @@
       "day": "Tue",
       "startSlot": 16,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m21",
@@ -306,7 +326,8 @@
       "day": "Wed",
       "startSlot": 0,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m22",
@@ -319,7 +340,8 @@
       "day": "Wed",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m23",
@@ -332,7 +354,8 @@
       "day": "Wed",
       "startSlot": 2,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m24",
@@ -345,7 +368,8 @@
       "day": "Wed",
       "startSlot": 5,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m25",
@@ -358,7 +382,8 @@
       "day": "Wed",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m26",
@@ -371,7 +396,8 @@
       "day": "Wed",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m27",
@@ -384,7 +410,8 @@
       "day": "Wed",
       "startSlot": 11,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m28",
@@ -397,7 +424,8 @@
       "day": "Wed",
       "startSlot": 12,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m29",
@@ -410,7 +438,8 @@
       "day": "Wed",
       "startSlot": 13,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m30",
@@ -423,7 +452,8 @@
       "day": "Wed",
       "startSlot": 16,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m31",
@@ -436,7 +466,8 @@
       "day": "Thu",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m32",
@@ -449,7 +480,8 @@
       "day": "Thu",
       "startSlot": 2,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m33",
@@ -462,7 +494,8 @@
       "day": "Thu",
       "startSlot": 5,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m34",
@@ -475,7 +508,8 @@
       "day": "Thu",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m35",
@@ -488,7 +522,8 @@
       "day": "Thu",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m36",
@@ -501,7 +536,8 @@
       "day": "Thu",
       "startSlot": 11,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m37",
@@ -514,7 +550,8 @@
       "day": "Thu",
       "startSlot": 12,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m38",
@@ -527,7 +564,8 @@
       "day": "Thu",
       "startSlot": 13,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m39",
@@ -540,7 +578,8 @@
       "day": "Thu",
       "startSlot": 16,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m40",
@@ -553,7 +592,8 @@
       "day": "Fri",
       "startSlot": 0,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m41",
@@ -566,7 +606,8 @@
       "day": "Fri",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m42",
@@ -579,7 +620,8 @@
       "day": "Fri",
       "startSlot": 3,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m43",
@@ -592,7 +634,8 @@
       "day": "Fri",
       "startSlot": 5,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m44",
@@ -605,7 +648,8 @@
       "day": "Fri",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m45",
@@ -618,7 +662,8 @@
       "day": "Fri",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m46",
@@ -631,7 +676,8 @@
       "day": "Fri",
       "startSlot": 11,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m47",
@@ -644,7 +690,8 @@
       "day": "Fri",
       "startSlot": 13,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m48",
@@ -657,7 +704,8 @@
       "day": "Fri",
       "startSlot": 15,
       "durationSlots": 2,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m49",
@@ -670,7 +718,8 @@
       "day": "Mon",
       "startSlot": 0,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m50",
@@ -683,7 +732,8 @@
       "day": "Mon",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m51",
@@ -696,7 +746,8 @@
       "day": "Mon",
       "startSlot": 2,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m52",
@@ -709,7 +760,8 @@
       "day": "Mon",
       "startSlot": 5,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m53",
@@ -722,7 +774,8 @@
       "day": "Mon",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m54",
@@ -735,7 +788,8 @@
       "day": "Mon",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m55",
@@ -748,7 +802,8 @@
       "day": "Mon",
       "startSlot": 11,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m56",
@@ -761,7 +816,8 @@
       "day": "Mon",
       "startSlot": 13,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m57",
@@ -774,7 +830,8 @@
       "day": "Mon",
       "startSlot": 15,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m58",
@@ -787,7 +844,8 @@
       "day": "Mon",
       "startSlot": 16,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m59",
@@ -800,7 +858,8 @@
       "day": "Tue",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m60",
@@ -813,7 +872,8 @@
       "day": "Tue",
       "startSlot": 2,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m61",
@@ -826,7 +886,8 @@
       "day": "Tue",
       "startSlot": 5,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m62",
@@ -839,7 +900,8 @@
       "day": "Tue",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m63",
@@ -852,7 +914,8 @@
       "day": "Tue",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m64",
@@ -865,7 +928,8 @@
       "day": "Tue",
       "startSlot": 11,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m65",
@@ -878,7 +942,8 @@
       "day": "Tue",
       "startSlot": 15,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m66",
@@ -891,7 +956,8 @@
       "day": "Tue",
       "startSlot": 16,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m67",
@@ -904,7 +970,8 @@
       "day": "Wed",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m68",
@@ -917,7 +984,8 @@
       "day": "Wed",
       "startSlot": 2,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m69",
@@ -930,7 +998,8 @@
       "day": "Wed",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m70",
@@ -943,7 +1012,8 @@
       "day": "Wed",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m71",
@@ -956,7 +1026,8 @@
       "day": "Wed",
       "startSlot": 11,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m72",
@@ -969,7 +1040,8 @@
       "day": "Wed",
       "startSlot": 15,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m73",
@@ -982,7 +1054,8 @@
       "day": "Wed",
       "startSlot": 16,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m74",
@@ -995,7 +1068,8 @@
       "day": "Thu",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m75",
@@ -1008,7 +1082,8 @@
       "day": "Thu",
       "startSlot": 2,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m76",
@@ -1021,7 +1096,8 @@
       "day": "Thu",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m77",
@@ -1034,7 +1110,8 @@
       "day": "Thu",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m78",
@@ -1047,7 +1124,8 @@
       "day": "Thu",
       "startSlot": 11,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m79",
@@ -1060,7 +1138,8 @@
       "day": "Thu",
       "startSlot": 13,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m80",
@@ -1073,7 +1152,8 @@
       "day": "Thu",
       "startSlot": 15,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m81",
@@ -1086,7 +1166,8 @@
       "day": "Thu",
       "startSlot": 16,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m82",
@@ -1099,7 +1180,8 @@
       "day": "Fri",
       "startSlot": 0,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m83",
@@ -1112,7 +1194,8 @@
       "day": "Fri",
       "startSlot": 3,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m84",
@@ -1125,7 +1208,8 @@
       "day": "Fri",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m85",
@@ -1138,7 +1222,8 @@
       "day": "Fri",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m86",
@@ -1151,7 +1236,8 @@
       "day": "Fri",
       "startSlot": 11,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m87",
@@ -1164,7 +1250,8 @@
       "day": "Fri",
       "startSlot": 13,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m88",
@@ -1177,7 +1264,8 @@
       "day": "Fri",
       "startSlot": 16,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m89",
@@ -1190,7 +1278,8 @@
       "day": "Mon",
       "startSlot": 0,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m90",
@@ -1203,7 +1292,8 @@
       "day": "Mon",
       "startSlot": 2,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m91",
@@ -1216,7 +1306,8 @@
       "day": "Mon",
       "startSlot": 5,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m92",
@@ -1229,7 +1320,8 @@
       "day": "Mon",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m93",
@@ -1242,7 +1334,8 @@
       "day": "Mon",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m94",
@@ -1255,7 +1348,8 @@
       "day": "Mon",
       "startSlot": 11,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m95",
@@ -1268,7 +1362,8 @@
       "day": "Mon",
       "startSlot": 15,
       "durationSlots": 2,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m96",
@@ -1281,7 +1376,8 @@
       "day": "Tue",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m97",
@@ -1294,7 +1390,8 @@
       "day": "Tue",
       "startSlot": 5,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m98",
@@ -1307,7 +1404,8 @@
       "day": "Tue",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m99",
@@ -1320,7 +1418,8 @@
       "day": "Tue",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m100",
@@ -1333,7 +1432,8 @@
       "day": "Tue",
       "startSlot": 15,
       "durationSlots": 2,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m101",
@@ -1346,7 +1446,8 @@
       "day": "Wed",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m102",
@@ -1359,7 +1460,8 @@
       "day": "Wed",
       "startSlot": 5,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m103",
@@ -1372,7 +1474,8 @@
       "day": "Wed",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m104",
@@ -1385,7 +1488,8 @@
       "day": "Wed",
       "startSlot": 15,
       "durationSlots": 2,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m105",
@@ -1398,7 +1502,8 @@
       "day": "Thu",
       "startSlot": 1,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m106",
@@ -1411,7 +1516,8 @@
       "day": "Thu",
       "startSlot": 5,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m107",
@@ -1424,7 +1530,8 @@
       "day": "Thu",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m108",
@@ -1437,7 +1544,8 @@
       "day": "Thu",
       "startSlot": 15,
       "durationSlots": 2,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m109",
@@ -1450,7 +1558,8 @@
       "day": "Fri",
       "startSlot": 0,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m110",
@@ -1463,7 +1572,8 @@
       "day": "Fri",
       "startSlot": 5,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m111",
@@ -1476,7 +1586,8 @@
       "day": "Fri",
       "startSlot": 7,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "m112",
@@ -1489,7 +1600,8 @@
       "day": "Fri",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "b1",
@@ -1498,7 +1610,8 @@
       "owner": "",
       "color": "#9333ea",
       "scheduled": false,
-      "notes": ""
+      "notes": "",
+      "description": ""
     },
     {
       "id": "b2",
@@ -1507,7 +1620,8 @@
       "owner": "",
       "color": "#9333ea",
       "scheduled": false,
-      "notes": ""
+      "notes": "",
+      "description": ""
     }
   ],
   "inviteLists": []
