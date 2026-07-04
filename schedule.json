@@ -1563,7 +1563,7 @@
       "durationSlots": 1,
       "weekId": "w1",
       "day": "Mon",
-      "startSlot": 12
+      "startSlot": 11
     },
     {
       "id": "mkoa5643",
@@ -1593,7 +1593,7 @@
       "durationSlots": 1,
       "weekId": "w1",
       "day": "Mon",
-      "startSlot": 11
+      "startSlot": 12
     },
     {
       "id": "mw0pgl1k",
