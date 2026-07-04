@@ -1402,6 +1402,18 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 10
+    },
+    {
+      "id": "msl4myao",
+      "title": "Product Training",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#16a34a",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
