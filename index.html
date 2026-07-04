@@ -88,6 +88,7 @@
   <span class="status-pill" id="statusPill">Loading…</span>
   <button class="btn" id="btnReload">↻ Reload</button>
   <button class="btn primary" id="btnSave">Save to GitHub</button>
+  <button class="btn" id="btnInviteLists">📇 Invite Lists</button>
   <button class="btn" id="btnCalendar">🗓️ Calendar &amp; Invites</button>
   <button class="btn" id="btnSettings">⚙ Settings</button>
 </header>
@@ -774,10 +775,11 @@ function openCalendarModal(){
   const root = document.getElementById("modalRoot");
   const connected = !!(state.googleToken && Date.now() < (state.googleTokenExpiry||0));
   const week = state.schedule.weeks.find(w => w.id === state.currentWeekId);
+  const totalAssigned = state.schedule.meetings.filter(m => m.scheduled && m.inviteListId).length;
   root.innerHTML = `
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal" style="width:460px;">
-        <h3>Calendar &amp; Invite Lists</h3>
+        <h3>Calendar &amp; Invites</h3>
 
         <div class="field">
           <label>Google account</label>
@@ -786,17 +788,13 @@ function openCalendarModal(){
           <button class="btn" id="btnGoogleConnect" style="margin-top:8px;">${connected ? "✅ Connected — reconnect" : "Connect Google Calendar"}</button>
         </div>
 
-        <div class="field">
-          <label>Invite lists (cohorts)</label>
-          <div class="note">Lists live here permanently — create and edit them anytime, whether or not you're about to send anything. When you're ready, click "＋ Apply to this week" on a list to attach it to every scheduled meeting in the current week tab in one click (you can still fine-tune individual meetings via their edit panel).</div>
-          <div id="inviteListsWrap" style="margin-top:8px;"></div>
-          <button class="btn" id="btnAddList" style="margin-top:4px;">+ New list</button>
-        </div>
+        <div class="note">Manage and edit invite lists (cohorts) anytime via the <b>📇 Invite Lists</b> button in the header — assign a list to any meeting from its edit panel, or bulk-apply a list to a whole week from that screen.</div>
 
         <div class="field">
           <label>Send invites</label>
-          <div class="note">Sends (or updates) a Google Calendar event with attendees for every scheduled meeting in <b>${week ? week.label : "this week"}</b> that has an invite list assigned. Meetings without a list, or if this week has no Monday date set (see date field above the calendar), are skipped.</div>
-          <button class="btn primary" id="btnSendInvites" style="margin-top:8px;">📤 Send invites for this week</button>
+          <div class="note">Sends (or updates) a Google Calendar event with attendees for every scheduled meeting that has an invite list assigned. Meetings without a list, or in a week with no Monday date set (see date field above the calendar), are skipped.</div>
+          <button class="btn primary" id="btnSendInvites" style="margin-top:8px;width:100%;justify-content:center;">📤 Send invites for this week${week ? ` (${week.label})` : ""}</button>
+          <button class="btn primary" id="btnSendAllInvites" style="margin-top:8px;width:100%;justify-content:center;">📤📤 Send ALL invites (all weeks — ${totalAssigned} meeting(s) assigned)</button>
           <div id="sendStatus" style="font-size:12px;color:var(--muted);margin-top:6px;"></div>
         </div>
 
@@ -807,12 +805,39 @@ function openCalendarModal(){
       </div>
     </div>
   `;
-  renderInviteListsEditor();
   document.getElementById("btnCancel").onclick = closeModal;
   document.getElementById("modalOverlay").addEventListener("click", (e) => { if (e.target.id === "modalOverlay") closeModal(); });
   document.getElementById("gClientId").addEventListener("change", (e) => {
     localStorage.setItem("googleClientId", e.target.value.trim());
   });
+  document.getElementById("btnGoogleConnect").onclick = connectGoogle;
+  document.getElementById("btnSendInvites").onclick = sendInvitesForCurrentWeek;
+  document.getElementById("btnSendAllInvites").onclick = sendAllInvites;
+}
+
+function openInviteListsModal(){
+  ensureInviteLists();
+  const root = document.getElementById("modalRoot");
+  const week = state.schedule.weeks.find(w => w.id === state.currentWeekId);
+  root.innerHTML = `
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal" style="width:460px;">
+        <h3>Invite Lists</h3>
+        <div class="note">Create and edit lists of email addresses (cohorts) anytime — this is independent of sending anything. Assign a list to a single meeting from that meeting's edit panel, or use "＋ Apply to this week" below to attach a list to every scheduled meeting in <b>${week ? week.label : "the current week"}</b> in one click. When you're ready to send, use the <b>🗓️ Calendar &amp; Invites</b> button.</div>
+        <div class="field" style="margin-top:10px;">
+          <div id="inviteListsWrap"></div>
+          <button class="btn" id="btnAddList" style="margin-top:4px;">+ New list</button>
+        </div>
+        <div class="modal-actions">
+          <div class="left"></div>
+          <div class="right"><button class="btn" id="btnCancel">Close</button></div>
+        </div>
+      </div>
+    </div>
+  `;
+  renderInviteListsEditor();
+  document.getElementById("btnCancel").onclick = closeModal;
+  document.getElementById("modalOverlay").addEventListener("click", (e) => { if (e.target.id === "modalOverlay") closeModal(); });
   document.getElementById("btnAddList").onclick = () => {
     const name = prompt('List name (e.g. "June Cohort")');
     if (!name || !name.trim()) return;
@@ -820,8 +845,6 @@ function openCalendarModal(){
     markDirty();
     renderInviteListsEditor();
   };
-  document.getElementById("btnGoogleConnect").onclick = connectGoogle;
-  document.getElementById("btnSendInvites").onclick = sendInvitesForCurrentWeek;
 }
 
 function renderInviteListsEditor(){
@@ -992,6 +1015,44 @@ async function sendInvitesForCurrentWeek(){
   renderAll();
 }
 
+async function sendAllInvites(){
+  const statusEl = document.getElementById("sendStatus");
+  if (!state.googleToken || Date.now() > (state.googleTokenExpiry||0)){
+    alert("Connect Google Calendar first (button above).");
+    return;
+  }
+  const weeksWithDate = state.schedule.weeks.filter(w => w.startDate);
+  const skippedWeeks = state.schedule.weeks.filter(w => !w.startDate);
+  const jobs = [];
+  weeksWithDate.forEach(week => {
+    state.schedule.meetings
+      .filter(m => m.scheduled && m.weekId === week.id && m.inviteListId)
+      .forEach(m => jobs.push({ m, week }));
+  });
+  if (!jobs.length){
+    statusEl.textContent = skippedWeeks.length
+      ? `No meetings with an invite list assigned yet (and ${skippedWeeks.length} week(s) skipped — no Monday date set).`
+      : "No meetings with an invite list assigned yet — open a meeting and set one, or use the 📇 Invite Lists screen to bulk-apply a list to a week.";
+    return;
+  }
+  if (!confirm(`Send/update Google Calendar invites for ${jobs.length} meeting(s) across ${weeksWithDate.length} week(s)?${skippedWeeks.length ? ` (${skippedWeeks.length} week(s) will be skipped — no Monday date set.)` : ""}`)) return;
+  statusEl.textContent = `Sending ${jobs.length} invite(s) across all weeks...`;
+  let sent = 0, failed = 0;
+  for (const { m, week } of jobs){
+    try{
+      await syncMeetingToCalendar(m, week);
+      sent++;
+    }catch(e){
+      console.error(e);
+      failed++;
+    }
+    statusEl.textContent = `Sending... ${sent + failed}/${jobs.length} (${sent} sent${failed ? `, ${failed} failed` : ""})`;
+  }
+  statusEl.textContent = `Done: ${sent} sent${failed ? `, ${failed} failed (see console)` : ""}${skippedWeeks.length ? `. Skipped ${skippedWeeks.length} week(s) with no Monday date set.` : "."}`;
+  markDirty();
+  renderAll();
+}
+
 // ---------- Settings Modal ----------
 function openSettingsModal(){
   const c = ghConfig();
@@ -1053,6 +1114,7 @@ window.addEventListener("beforeunload", (e) => {
 });
 document.getElementById("btnSettings").onclick = openSettingsModal;
 document.getElementById("btnCalendar").onclick = openCalendarModal;
+document.getElementById("btnInviteLists").onclick = openInviteListsModal;
 initBacklogDropZone();
 document.getElementById("btnAddMeeting").onclick = () => openEditModal(null);
 document.getElementById("btnBannerReload").onclick = () => {
