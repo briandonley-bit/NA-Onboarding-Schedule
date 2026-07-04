@@ -411,7 +411,7 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 8,
-      "durationSlots": 1,
+      "durationSlots": 2,
       "notes": "",
       "description": ""
     },
@@ -424,7 +424,7 @@
       "scheduled": true,
       "weekId": "w1",
       "day": "Thu",
-      "startSlot": 9,
+      "startSlot": 13,
       "durationSlots": 1,
       "notes": "",
       "description": ""
