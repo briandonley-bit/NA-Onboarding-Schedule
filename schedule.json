@@ -58,7 +58,7 @@
       "scheduled": true,
       "weekId": "w1",
       "day": "Mon",
-      "startSlot": 1,
+      "startSlot": 2,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -72,7 +72,7 @@
       "scheduled": true,
       "weekId": "w1",
       "day": "Mon",
-      "startSlot": 2,
+      "startSlot": 3,
       "durationSlots": 1,
       "notes": "",
       "description": ""
