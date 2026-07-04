@@ -118,8 +118,9 @@
       "day": "Mon",
       "startSlot": 9,
       "durationSlots": 1,
-      "notes": "",
-      "description": ""
+      "notes": "AM covered during leadership meeting",
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m7",
