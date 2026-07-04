@@ -245,8 +245,8 @@
       "color": "#16a34a",
       "scheduled": true,
       "weekId": "w1",
-      "day": "Tue",
-      "startSlot": 9,
+      "day": "Mon",
+      "startSlot": 13,
       "durationSlots": 1,
       "notes": "",
       "description": ""
