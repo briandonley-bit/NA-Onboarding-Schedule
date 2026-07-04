@@ -865,9 +865,13 @@ function renderInviteListsEditor(){
         <button class="btn danger" data-del="${list.id}" style="padding:2px 8px;font-size:11px;">Delete</button>
       </div>
       <textarea data-emails="${list.id}" rows="2" placeholder="one email per line or comma-separated" style="width:100%;margin-top:6px;padding:6px;border-radius:6px;border:1px solid var(--border);font-size:12px;font-family:inherit;resize:vertical;">${escapeHtml((list.emails||[]).join("\n"))}</textarea>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;gap:8px;">
         <span style="font-size:11px;color:var(--muted);">${countForWeek(list.id)} meeting(s) in ${week ? week.label : "this week"} using this list</span>
-        <button class="btn primary" data-apply="${list.id}" style="padding:3px 10px;font-size:11px;">＋ Apply to this week</button>
+        <span data-savedmsg="${list.id}" style="font-size:11px;color:#047857;display:none;">Saved ✓</span>
+        <div style="display:flex;gap:6px;">
+          <button class="btn" data-save="${list.id}" style="padding:3px 10px;font-size:11px;">Save</button>
+          <button class="btn primary" data-apply="${list.id}" style="padding:3px 10px;font-size:11px;">＋ Apply to this week</button>
+        </div>
       </div>
     </div>
   `).join("");
@@ -884,6 +888,23 @@ function renderInviteListsEditor(){
       if (list){
         list.emails = e.target.value.split(/[\n,]/).map(s=>s.trim()).filter(Boolean);
         markDirty();
+      }
+    });
+  });
+  wrap.querySelectorAll("button[data-save]").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const listId = e.target.dataset.save;
+      const list = lists.find(l => l.id === listId);
+      if (!list) return;
+      const nameInput = wrap.querySelector(`.listNameInput[data-list="${listId}"]`);
+      const emailsTa = wrap.querySelector(`textarea[data-emails="${listId}"]`);
+      list.name = (nameInput.value || "").trim() || list.name;
+      list.emails = (emailsTa.value || "").split(/[\n,]/).map(s=>s.trim()).filter(Boolean);
+      markDirty();
+      const msg = wrap.querySelector(`span[data-savedmsg="${listId}"]`);
+      if (msg){
+        msg.style.display = "inline";
+        setTimeout(() => { msg.style.display = "none"; }, 1800);
       }
     });
   });
