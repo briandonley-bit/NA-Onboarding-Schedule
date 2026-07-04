@@ -450,10 +450,7 @@
       "subtitle": "Leads/Deals / Pipeline Coverage / Sequences etc.",
       "owner": "",
       "color": "#2563eb",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Tue",
-      "startSlot": 2,
+      "scheduled": false,
       "durationSlots": 1,
       "notes": "",
       "description": ""
