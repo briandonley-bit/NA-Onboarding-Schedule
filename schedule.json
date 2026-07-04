@@ -1535,6 +1535,18 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 15
+    },
+    {
+      "id": "mscsa6ax",
+      "title": "Independent Work",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#0891b2",
+      "scheduled": false,
+      "durationSlots": 2
     }
   ],
   "inviteLists": [
