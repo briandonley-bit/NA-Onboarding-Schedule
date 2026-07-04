@@ -1578,7 +1578,7 @@
       "durationSlots": 2,
       "weekId": "w1",
       "day": "Mon",
-      "startSlot": 10
+      "startSlot": 9
     },
     {
       "id": "ma6svji8",
@@ -1593,7 +1593,7 @@
       "durationSlots": 1,
       "weekId": "w1",
       "day": "Mon",
-      "startSlot": 9
+      "startSlot": 11
     }
   ],
   "inviteLists": [
