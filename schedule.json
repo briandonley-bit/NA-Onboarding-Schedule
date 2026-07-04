@@ -1456,6 +1456,21 @@
       "weekId": "w1",
       "day": "Tue",
       "startSlot": 12
+    },
+    {
+      "id": "mkbi5m8z",
+      "title": "Lunch",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#4b5563",
+      "scheduled": true,
+      "durationSlots": 2,
+      "weekId": "w1",
+      "day": "Fri",
+      "startSlot": 8
     }
   ],
   "inviteLists": [
