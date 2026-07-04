@@ -256,7 +256,7 @@
       "scheduled": true,
       "weekId": "w1",
       "day": "Wed",
-      "startSlot": 1,
+      "startSlot": 7,
       "durationSlots": 1,
       "notes": "",
       "description": ""
