@@ -1503,6 +1503,21 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 10
+    },
+    {
+      "id": "mprnfhvk",
+      "title": "Independent Work - East",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#0891b2",
+      "scheduled": true,
+      "durationSlots": 2,
+      "weekId": "w2",
+      "day": "Mon",
+      "startSlot": 2
     }
   ],
   "inviteLists": [
