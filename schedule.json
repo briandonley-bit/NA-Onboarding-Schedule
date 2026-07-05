@@ -785,10 +785,7 @@
       "subtitle": "",
       "owner": "",
       "color": "#2563eb",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Fri",
-      "startSlot": 11,
+      "scheduled": false,
       "durationSlots": 1,
       "notes": "",
       "description": ""
