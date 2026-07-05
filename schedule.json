@@ -1565,6 +1565,18 @@
       "color": "#4b5563",
       "scheduled": false,
       "durationSlots": 1
+    },
+    {
+      "id": "mvvq2ldm",
+      "title": "Break",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#4b5563",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
