@@ -529,10 +529,7 @@
       "subtitle": "Overview + Best Practices",
       "owner": "",
       "color": "#0891b2",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Tue",
-      "startSlot": 2,
+      "scheduled": false,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -736,10 +733,7 @@
       "subtitle": "Framework + Common Objections",
       "owner": "",
       "color": "#0891b2",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Thu",
-      "startSlot": 2,
+      "scheduled": false,
       "durationSlots": 1,
       "notes": "",
       "description": ""
