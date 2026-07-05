@@ -1727,6 +1727,18 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 14
+    },
+    {
+      "id": "mt64l5zn",
+      "title": "Call Role Play?",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#0891b2",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
