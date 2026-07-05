@@ -437,17 +437,18 @@
     },
     {
       "id": "m57",
-      "title": "Role Play",
+      "title": "Gong Calls",
       "subtitle": "Demo",
       "owner": "",
-      "color": "#ea580c",
+      "color": "#0891b2",
       "scheduled": true,
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 15,
       "durationSlots": 1,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m58",
