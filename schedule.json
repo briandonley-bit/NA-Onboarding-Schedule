@@ -1569,6 +1569,18 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 4
+    },
+    {
+      "id": "mcjgjn0w",
+      "title": "Test Account Checklist",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#2563eb",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
