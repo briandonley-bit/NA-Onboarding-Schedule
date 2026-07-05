@@ -1538,6 +1538,18 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 8
+    },
+    {
+      "id": "ma7kka0o",
+      "title": "TO DO:",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "Source: \nCold Call examples in gong\nDiscovery examples in gong\nDemos in gong\n\nTest account checklist\nSystems checklist",
+      "inviteListId": null,
+      "color": "#2563eb",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
