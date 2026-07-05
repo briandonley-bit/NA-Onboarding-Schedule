@@ -1516,6 +1516,18 @@
       "color": "#0891b2",
       "scheduled": false,
       "durationSlots": 2
+    },
+    {
+      "id": "mgfqjpza",
+      "title": "Independent Work",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#0891b2",
+      "scheduled": false,
+      "durationSlots": 2
     }
   ],
   "inviteLists": [
