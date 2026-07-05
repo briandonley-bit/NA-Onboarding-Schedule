@@ -1529,8 +1529,11 @@
       "notes": "- Walk through deck for holding information \n- Walk through discovery meeting structure",
       "inviteListId": null,
       "color": "#9333ea",
-      "scheduled": false,
-      "durationSlots": 2
+      "scheduled": true,
+      "durationSlots": 2,
+      "weekId": "w2",
+      "day": "Tue",
+      "startSlot": 8
     }
   ],
   "inviteLists": [
