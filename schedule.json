@@ -1333,7 +1333,7 @@
       "durationSlots": 3,
       "weekId": "w1",
       "day": "Tue",
-      "startSlot": 12
+      "startSlot": 13
     },
     {
       "id": "mkbi5m8z",
@@ -1495,7 +1495,7 @@
       "durationSlots": 3,
       "weekId": "w1",
       "day": "Thu",
-      "startSlot": 12
+      "startSlot": 13
     },
     {
       "id": "mxd2cuth",
@@ -1510,7 +1510,7 @@
       "durationSlots": 3,
       "weekId": "w1",
       "day": "Wed",
-      "startSlot": 12
+      "startSlot": 13
     },
     {
       "id": "mv4o755s",
