@@ -169,20 +169,6 @@
       "inviteListId": null
     },
     {
-      "id": "m15",
-      "title": "Product Training",
-      "subtitle": "Placeholder",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Mon",
-      "startSlot": 13,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m19",
       "title": "order biz cards",
       "subtitle": "",
