@@ -1488,6 +1488,21 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 7
+    },
+    {
+      "id": "mlzg8dgq",
+      "title": "Cold Calling",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#9333ea",
+      "scheduled": true,
+      "durationSlots": 2,
+      "weekId": "w2",
+      "day": "Mon",
+      "startSlot": 10
     }
   ],
   "inviteLists": [
