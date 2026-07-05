@@ -257,8 +257,8 @@
       "color": "#0891b2",
       "scheduled": true,
       "weekId": "w1",
-      "day": "Fri",
-      "startSlot": 3,
+      "day": "Wed",
+      "startSlot": 6,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -353,8 +353,8 @@
       "color": "#0891b2",
       "scheduled": true,
       "weekId": "w1",
-      "day": "Fri",
-      "startSlot": 4,
+      "day": "Wed",
+      "startSlot": 5,
       "durationSlots": 1,
       "notes": "",
       "description": ""
