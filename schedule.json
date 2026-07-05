@@ -327,17 +327,6 @@
       "inviteListId": null
     },
     {
-      "id": "m32",
-      "title": "Pipeline MGMT",
-      "subtitle": "Leads/Deals / Pipeline Coverage / Sequences etc.",
-      "owner": "",
-      "color": "#2563eb",
-      "scheduled": false,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m33",
       "title": "Competitors",
       "subtitle": "Overview + Angles",
