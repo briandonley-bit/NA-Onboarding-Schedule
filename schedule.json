@@ -1576,7 +1576,12 @@
     {
       "id": "invuv83sdz",
       "name": "Leadership Team",
-      "emails": []
+      "emails": [
+        "brian.donley@fresha.com",
+        "mark.sanchez@fresha.com",
+        "greg.chow@fresha.com",
+        "scott.obrien@fresha.com"
+      ]
     }
   ]
 }
