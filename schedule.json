@@ -296,7 +296,7 @@
     },
     {
       "id": "m26",
-      "title": "Product Training",
+      "title": "Product Training - Team & Services",
       "subtitle": "Placeholder",
       "owner": "",
       "color": "#16a34a",
@@ -306,7 +306,8 @@
       "startSlot": 10,
       "durationSlots": 2,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m30",
