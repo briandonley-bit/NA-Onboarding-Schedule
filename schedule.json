@@ -1676,6 +1676,18 @@
       "color": "#4b5563",
       "scheduled": false,
       "durationSlots": 1
+    },
+    {
+      "id": "mcty53pc",
+      "title": "Lunch West Coast",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#4b5563",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
