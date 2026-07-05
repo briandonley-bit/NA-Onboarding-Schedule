@@ -388,20 +388,6 @@
       "inviteListId": null
     },
     {
-      "id": "m50",
-      "title": "Week 1 Recap",
-      "subtitle": "Questions?",
-      "owner": "",
-      "color": "#2563eb",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Mon",
-      "startSlot": 9,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m51",
       "title": "Demo",
       "subtitle": "Overview + Best Practices",
