@@ -574,7 +574,7 @@
       "scheduled": true,
       "weekId": "w2",
       "day": "Wed",
-      "startSlot": 1,
+      "startSlot": 7,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -652,7 +652,7 @@
       "scheduled": true,
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 1,
+      "startSlot": 7,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -744,7 +744,7 @@
       "scheduled": true,
       "weekId": "w2",
       "day": "Fri",
-      "startSlot": 0,
+      "startSlot": 6,
       "durationSlots": 1,
       "notes": "",
       "description": ""
