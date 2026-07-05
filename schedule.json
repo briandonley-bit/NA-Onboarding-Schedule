@@ -663,17 +663,18 @@
     },
     {
       "id": "m76",
-      "title": "Lunch",
+      "title": "Lunch East",
       "subtitle": "",
       "owner": "",
-      "color": "#6b7280",
+      "color": "#4b5563",
       "scheduled": true,
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 10,
       "durationSlots": 1,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m78",
@@ -752,8 +753,8 @@
       "scheduled": true,
       "weekId": "w2",
       "day": "Fri",
-      "startSlot": 8,
-      "durationSlots": 2,
+      "startSlot": 10,
+      "durationSlots": 1,
       "notes": "",
       "description": ""
     },
