@@ -1832,6 +1832,18 @@
       "color": "#9333ea",
       "scheduled": false,
       "durationSlots": 1
+    },
+    {
+      "id": "m0b0wce2",
+      "title": "EOD Check In - West Coast",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#9333ea",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
