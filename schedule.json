@@ -1581,6 +1581,18 @@
       "color": "#2563eb",
       "scheduled": false,
       "durationSlots": 1
+    },
+    {
+      "id": "mczt4l2o",
+      "title": "Module Work",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#2563eb",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
