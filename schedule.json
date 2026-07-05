@@ -481,14 +481,15 @@
       "title": "Tuesday",
       "subtitle": "Sales Standup",
       "owner": "",
-      "color": "#4b5563",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 7,
       "durationSlots": 1,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m60",
@@ -570,14 +571,15 @@
       "title": "Wednesday",
       "subtitle": "Sales Standup",
       "owner": "",
-      "color": "#4b5563",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 7,
       "durationSlots": 1,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m68",
@@ -648,14 +650,15 @@
       "title": "Thursday",
       "subtitle": "Sales Standup",
       "owner": "",
-      "color": "#4b5563",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 7,
       "durationSlots": 1,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m75",
@@ -740,14 +743,15 @@
       "title": "Friday Pipeline Meeting",
       "subtitle": "",
       "owner": "",
-      "color": "#2563eb",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 6,
       "durationSlots": 1,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m84",
