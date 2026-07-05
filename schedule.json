@@ -139,18 +139,6 @@
       "inviteListId": null
     },
     {
-      "id": "m12",
-      "title": "Role Overview",
-      "subtitle": "Day/Week/Month / Calendar management",
-      "owner": "",
-      "color": "#7c3aed",
-      "scheduled": false,
-      "durationSlots": 1,
-      "notes": "",
-      "description": "",
-      "inviteListId": null
-    },
-    {
       "id": "m13",
       "title": "HR Onboarding",
       "subtitle": "(Hibob, expensing, time off etc)",
