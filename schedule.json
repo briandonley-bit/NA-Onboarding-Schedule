@@ -1550,6 +1550,18 @@
       "color": "#2563eb",
       "scheduled": false,
       "durationSlots": 1
+    },
+    {
+      "id": "m3nzqac2",
+      "title": "East Coast Catch Up",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#9333ea",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
