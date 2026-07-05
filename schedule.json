@@ -1554,6 +1554,21 @@
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 12
+    },
+    {
+      "id": "mv4o755s",
+      "title": "Product Training - Services & Pricing",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#16a34a",
+      "scheduled": true,
+      "durationSlots": 1,
+      "weekId": "w1",
+      "day": "Wed",
+      "startSlot": 3
     }
   ],
   "inviteLists": [
