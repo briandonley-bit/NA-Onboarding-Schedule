@@ -282,14 +282,15 @@
       "title": "Lunch",
       "subtitle": "",
       "owner": "",
-      "color": "#6b7280",
+      "color": "#4b5563",
       "scheduled": true,
       "weekId": "w1",
       "day": "Wed",
       "startSlot": 8,
       "durationSlots": 2,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m26",
