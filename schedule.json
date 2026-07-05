@@ -1767,6 +1767,18 @@
       "color": "#0891b2",
       "scheduled": false,
       "durationSlots": 1
+    },
+    {
+      "id": "mvg719u4",
+      "title": "Independent Work - West",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#0891b2",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
