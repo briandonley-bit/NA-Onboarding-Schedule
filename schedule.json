@@ -1743,6 +1743,18 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 2
+    },
+    {
+      "id": "mr1huo0h",
+      "title": "Independent Work - West",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#0891b2",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
