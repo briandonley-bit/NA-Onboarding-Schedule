@@ -1652,6 +1652,18 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 11
+    },
+    {
+      "id": "mxogcdo7",
+      "title": "Lunch West Coast",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#4b5563",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
