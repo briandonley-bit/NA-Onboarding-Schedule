@@ -1637,6 +1637,18 @@
       "color": "#9333ea",
       "scheduled": false,
       "durationSlots": 1
+    },
+    {
+      "id": "mzvyfcf5",
+      "title": "Mock Demo w/ Megan",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#9333ea",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
