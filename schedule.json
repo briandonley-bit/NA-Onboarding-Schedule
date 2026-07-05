@@ -695,7 +695,7 @@
       "color": "#ea580c",
       "scheduled": true,
       "weekId": "w2",
-      "day": "Thu",
+      "day": "Fri",
       "startSlot": 14,
       "durationSlots": 1,
       "notes": "",
@@ -1674,8 +1674,11 @@
       "notes": "",
       "inviteListId": null,
       "color": "#4b5563",
-      "scheduled": false,
-      "durationSlots": 1
+      "scheduled": true,
+      "durationSlots": 1,
+      "weekId": "w2",
+      "day": "Thu",
+      "startSlot": 13
     },
     {
       "id": "mcty53pc",
@@ -1686,8 +1689,11 @@
       "notes": "",
       "inviteListId": null,
       "color": "#4b5563",
-      "scheduled": false,
-      "durationSlots": 1
+      "scheduled": true,
+      "durationSlots": 1,
+      "weekId": "w2",
+      "day": "Wed",
+      "startSlot": 14
     },
     {
       "id": "m9l8hv83",
@@ -1698,8 +1704,11 @@
       "notes": "",
       "inviteListId": null,
       "color": "#4b5563",
-      "scheduled": false,
-      "durationSlots": 1
+      "scheduled": true,
+      "durationSlots": 1,
+      "weekId": "w2",
+      "day": "Tue",
+      "startSlot": 14
     },
     {
       "id": "mcbca5op",
@@ -1710,8 +1719,11 @@
       "notes": "",
       "inviteListId": null,
       "color": "#4b5563",
-      "scheduled": false,
-      "durationSlots": 1
+      "scheduled": true,
+      "durationSlots": 1,
+      "weekId": "w2",
+      "day": "Mon",
+      "startSlot": 14
     }
   ],
   "inviteLists": [
