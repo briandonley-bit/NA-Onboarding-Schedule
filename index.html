@@ -53,7 +53,8 @@
   .tz-primary .tz-tag{color:var(--accent);}
   .tz-secondary{font-size:10px;color:var(--muted);margin-top:1px;}
   .day-col{position:relative;border-left:1px solid var(--border);}
-  .slot-bg{height:var(--row-h);border-bottom:1px solid #f0f1f3;}
+  .slot-bg{height:var(--row-h);border-bottom:1px solid #f0f1f3;cursor:pointer;}
+  .slot-bg:hover{background:#f7f9fc;}
   .slot-bg.hover{background:var(--accent-light);}
   .meeting-block{position:absolute;left:3px;right:3px;border-radius:7px;padding:6px 8px;color:#fff;overflow:hidden;cursor:grab;box-shadow:0 1px 2px rgba(0,0,0,.15);}
   .meeting-block:active{cursor:grabbing;}
@@ -76,6 +77,18 @@
   .modal-actions .right{display:flex;gap:8px;}
   .settings-grid{display:grid;grid-template-columns:1fr;gap:10px;}
   .note{font-size:11.5px;color:var(--muted);line-height:1.5;background:#f7f8fa;padding:8px 10px;border-radius:8px;margin-top:6px;}
+  .invite-lists-scroll{max-height:min(48vh,420px);overflow-y:auto;padding-right:4px;margin-top:4px;}
+  .il-item{border:1px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden;transition:box-shadow .1s;}
+  .il-item.drag-over-top{box-shadow:inset 0 2px 0 var(--accent);}
+  .il-item.drag-over-bottom{box-shadow:inset 0 -2px 0 var(--accent);}
+  .il-row{display:flex;align-items:center;gap:8px;padding:8px 10px;cursor:pointer;}
+  .il-row:hover{background:#fafbfc;}
+  .il-drag{cursor:grab;color:#b7bcc4;font-size:14px;padding:0 2px;flex-shrink:0;}
+  .il-drag:active{cursor:grabbing;}
+  .il-chevron{display:inline-block;width:12px;color:var(--muted);font-size:11px;flex-shrink:0;}
+  .il-name{font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px;}
+  .il-count{font-size:11px;color:var(--muted);flex:1;}
+  .il-body{padding:0 10px 10px 10px;border-top:1px solid var(--border);}
   a{color:var(--accent);}
 </style>
 </head>
@@ -102,7 +115,7 @@
     <h2>Not Yet Scheduled</h2>
     <div id="backlogList"></div>
     <button class="btn" id="btnAddMeeting" style="width:100%;justify-content:center;margin-top:6px;">+ Add meeting</button>
-    <div class="note">Drag any item onto the calendar to schedule it, or drag a scheduled block back here to unschedule it. Times shown as EST (primary), with CST and PST below.</div>
+    <div class="note">Drag any item onto the calendar to schedule it, or drag a scheduled block back here to unschedule it. Click an empty slot on the calendar to create a meeting right there, or open any meeting and click "⧉ Duplicate" to copy it. Times shown as EST (primary), with CST and PST below.</div>
   </aside>
 
   <main>
@@ -464,6 +477,9 @@ function renderGridBody(){
       const bg = document.createElement("div");
       bg.className = "slot-bg";
       bg.dataset.slot = i;
+      bg.addEventListener("click", () => {
+        openEditModal(null, { day, startSlot: i, weekId: state.currentWeekId });
+      });
       col.appendChild(bg);
     }
 
@@ -637,12 +653,21 @@ function renderBacklog(){
 }
 
 // ---------- Edit Modal ----------
-function openEditModal(meetingId){
+function openEditModal(meetingId, prefill){
   const isNew = meetingId === null;
   const m = isNew
-    ? { id: uid("m"), title: "", subtitle: "", owner: "", description: "", notes: "", inviteListId: null, color: COLOR_PRESETS[0], scheduled: false }
+    ? { id: uid("m"), title: "", subtitle: "", owner: "", description: "", notes: "", inviteListId: null, color: COLOR_PRESETS[0], scheduled: false, durationSlots: 1 }
     : state.schedule.meetings.find(x => x.id === meetingId);
   if (!m) return;
+  if (isNew && prefill){
+    // Created by clicking an empty calendar slot — schedule it right there instead
+    // of dropping it into the unscheduled backlog.
+    m.scheduled = true;
+    m.weekId = prefill.weekId;
+    m.day = prefill.day;
+    const maxStart = state.schedule.meta.slotCount - m.durationSlots;
+    m.startSlot = Math.max(0, Math.min(maxStart, prefill.startSlot));
+  }
 
   const root = document.getElementById("modalRoot");
   root.innerHTML = `
@@ -693,6 +718,7 @@ function openEditModal(meetingId){
         <div class="modal-actions">
           <div class="left">
             ${!isNew ? `<button class="btn danger" id="btnDelete">Delete</button>` : ""}
+            ${!isNew ? `<button class="btn" id="btnDuplicate">⧉ Duplicate</button>` : ""}
             ${!isNew && m.scheduled ? `<button class="btn" id="btnUnschedule">Move to list</button>` : ""}
           </div>
           <div class="right">
@@ -729,8 +755,13 @@ function openEditModal(meetingId){
     m.inviteListId = document.getElementById("fInviteList").value || null;
     m.durationSlots = parseInt(document.getElementById("fDuration").value, 10);
     m.color = selectedColor;
+    if (m.scheduled){
+      // Keep a scheduled meeting's duration from running off the bottom of the grid,
+      // whether it was just placed via a slot click or its duration was edited up.
+      const maxDur = state.schedule.meta.slotCount - m.startSlot;
+      m.durationSlots = Math.max(1, Math.min(maxDur, m.durationSlots));
+    }
     if (isNew){
-      m.scheduled = false;
       state.schedule.meetings.push(m);
     }
     markDirty();
@@ -746,6 +777,21 @@ function openEditModal(meetingId){
       markDirty();
       closeModal();
       renderAll();
+    };
+    const dupBtn = document.getElementById("btnDuplicate");
+    if (dupBtn) dupBtn.onclick = () => {
+      const copy = { ...m };
+      copy.id = uid("m");
+      copy.title = (m.title || "Untitled") + " (copy)";
+      // Duplicates always land in the backlog — even for a scheduled original —
+      // so you can drag the copy wherever it belongs without it overlapping the original.
+      copy.scheduled = false;
+      delete copy.weekId; delete copy.day; delete copy.startSlot;
+      delete copy.calendarEventId; delete copy.calendarEventLink; delete copy.meetLink;
+      state.schedule.meetings.push(copy);
+      markDirty();
+      renderAll();
+      openEditModal(copy.id);
     };
     const unschedBtn = document.getElementById("btnUnschedule");
     if (unschedBtn) unschedBtn.onclick = () => {
@@ -823,9 +869,9 @@ function openInviteListsModal(){
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal" style="width:460px;">
         <h3>Invite Lists</h3>
-        <div class="note">Create and edit lists of email addresses (cohorts) anytime — this is independent of sending anything. Assign a list to a single meeting from that meeting's edit panel, or use "＋ Apply to this week" below to attach a list to every scheduled meeting in <b>${week ? week.label : "the current week"}</b> in one click. When you're ready to send, use the <b>🗓️ Calendar &amp; Invites</b> button.</div>
+        <div class="note">Create and edit lists of email addresses (cohorts) anytime — this is independent of sending anything. Click a list to expand it. Drag the ⠿ handle to reorder. Assign a list to a single meeting from that meeting's edit panel, or use "＋ Apply to this week" to attach a list to every scheduled meeting in <b>${week ? week.label : "the current week"}</b> in one click. When you're ready to send, use the <b>🗓️ Calendar &amp; Invites</b> button.</div>
         <div class="field" style="margin-top:10px;">
-          <div id="inviteListsWrap"></div>
+          <div class="invite-lists-scroll"><div id="inviteListsWrap"></div></div>
           <button class="btn" id="btnAddList" style="margin-top:4px;">+ New list</button>
         </div>
         <div class="modal-actions">
@@ -841,11 +887,17 @@ function openInviteListsModal(){
   document.getElementById("btnAddList").onclick = () => {
     const name = prompt('List name (e.g. "June Cohort")');
     if (!name || !name.trim()) return;
-    state.schedule.inviteLists.push({ id: uid("inv"), name: name.trim(), emails: [] });
+    const list = { id: uid("inv"), name: name.trim(), emails: [] };
+    state.schedule.inviteLists.push(list);
+    expandedInviteLists.add(list.id); // open it right away so emails can be added immediately
     markDirty();
     renderInviteListsEditor();
   };
 }
+
+// Which invite lists are currently expanded in the UI. Purely a display
+// preference — not persisted to the schedule data.
+let expandedInviteLists = new Set();
 
 function renderInviteListsEditor(){
   const wrap = document.getElementById("inviteListsWrap");
@@ -858,23 +910,43 @@ function renderInviteListsEditor(){
   const week = state.schedule.weeks.find(w => w.id === state.currentWeekId);
   const countForWeek = (listId) => state.schedule.meetings.filter(m => m.scheduled && week && m.weekId === week.id && m.inviteListId === listId).length;
 
-  wrap.innerHTML = lists.map(list => `
-    <div style="border:1px solid var(--border);border-radius:8px;padding:8px;margin-bottom:8px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
-        <input type="text" data-list="${list.id}" class="listNameInput" value="${escapeHtml(list.name)}" style="font-weight:600;border:none;font-size:13px;flex:1;padding:2px;">
-        <button class="btn danger" data-del="${list.id}" style="padding:2px 8px;font-size:11px;">Delete</button>
+  wrap.innerHTML = lists.map(list => {
+    const expanded = expandedInviteLists.has(list.id);
+    const emailCount = (list.emails||[]).length;
+    return `
+    <div class="il-item" data-item="${list.id}">
+      <div class="il-row" data-toggle="${list.id}">
+        <span class="il-drag" draggable="true" data-drag="${list.id}" title="Drag to reorder">⠿</span>
+        <span class="il-chevron">${expanded ? "▾" : "▸"}</span>
+        <span class="il-name" title="${escapeHtml(list.name)}">${escapeHtml(list.name)}</span>
+        <span class="il-count">${emailCount} contact${emailCount===1?"":"s"} · ${countForWeek(list.id)} in ${week ? week.label : "this week"}</span>
+        <button class="btn danger" data-del="${list.id}" style="padding:2px 8px;font-size:11px;flex-shrink:0;">Delete</button>
       </div>
-      <textarea data-emails="${list.id}" rows="2" placeholder="one email per line or comma-separated" style="width:100%;margin-top:6px;padding:6px;border-radius:6px;border:1px solid var(--border);font-size:12px;font-family:inherit;resize:vertical;">${escapeHtml((list.emails||[]).join("\n"))}</textarea>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;gap:8px;">
-        <span style="font-size:11px;color:var(--muted);">${countForWeek(list.id)} meeting(s) in ${week ? week.label : "this week"} using this list</span>
-        <span data-savedmsg="${list.id}" style="font-size:11px;color:#047857;display:none;">Saved ✓</span>
-        <div style="display:flex;gap:6px;">
+      <div class="il-body" style="display:${expanded ? "block" : "none"};">
+        <div class="field" style="margin:8px 0 6px;">
+          <input type="text" data-list="${list.id}" class="listNameInput" value="${escapeHtml(list.name)}" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid var(--border);font-size:13px;font-weight:600;">
+        </div>
+        <textarea data-emails="${list.id}" rows="4" placeholder="one email per line or comma-separated" style="width:100%;padding:6px;border-radius:6px;border:1px solid var(--border);font-size:12px;font-family:inherit;resize:vertical;">${escapeHtml((list.emails||[]).join("\n"))}</textarea>
+        <div style="display:flex;justify-content:flex-end;align-items:center;margin-top:6px;gap:8px;">
+          <span data-savedmsg="${list.id}" style="font-size:11px;color:#047857;display:none;margin-right:auto;">Saved ✓</span>
           <button class="btn" data-save="${list.id}" style="padding:3px 10px;font-size:11px;">Save</button>
           <button class="btn primary" data-apply="${list.id}" style="padding:3px 10px;font-size:11px;">＋ Apply to this week</button>
         </div>
       </div>
     </div>
-  `).join("");
+    `;
+  }).join("");
+
+  // expand/collapse
+  wrap.querySelectorAll(".il-row").forEach(row => {
+    row.addEventListener("click", (e) => {
+      if (e.target.closest("[data-del]")) return;
+      const id = row.dataset.toggle;
+      if (expandedInviteLists.has(id)) expandedInviteLists.delete(id);
+      else expandedInviteLists.add(id);
+      renderInviteListsEditor();
+    });
+  });
 
   wrap.querySelectorAll(".listNameInput").forEach(inp => {
     inp.addEventListener("change", (e) => {
@@ -893,6 +965,7 @@ function renderInviteListsEditor(){
   });
   wrap.querySelectorAll("button[data-save]").forEach(btn => {
     btn.addEventListener("click", (e) => {
+      e.stopPropagation();
       const listId = e.target.dataset.save;
       const list = lists.find(l => l.id === listId);
       if (!list) return;
@@ -901,6 +974,7 @@ function renderInviteListsEditor(){
       list.name = (nameInput.value || "").trim() || list.name;
       list.emails = (emailsTa.value || "").split(/[\n,]/).map(s=>s.trim()).filter(Boolean);
       markDirty();
+      renderInviteListsEditor(); // refresh the collapsed row's name/count immediately
       const msg = wrap.querySelector(`span[data-savedmsg="${listId}"]`);
       if (msg){
         msg.style.display = "inline";
@@ -910,16 +984,19 @@ function renderInviteListsEditor(){
   });
   wrap.querySelectorAll("button[data-del]").forEach(btn => {
     btn.addEventListener("click", (e) => {
+      e.stopPropagation();
       if (!confirm("Delete this invite list? Meetings using it will be unassigned.")) return;
       const delId = e.target.dataset.del;
       state.schedule.inviteLists = lists.filter(l => l.id !== delId);
       state.schedule.meetings.forEach(m => { if (m.inviteListId === delId) m.inviteListId = null; });
+      expandedInviteLists.delete(delId);
       markDirty();
       renderInviteListsEditor();
     });
   });
   wrap.querySelectorAll("button[data-apply]").forEach(btn => {
     btn.addEventListener("click", (e) => {
+      e.stopPropagation();
       const applyId = e.target.dataset.apply;
       const list = lists.find(l => l.id === applyId);
       const w = state.schedule.weeks.find(w => w.id === state.currentWeekId);
@@ -931,6 +1008,44 @@ function renderInviteListsEditor(){
       markDirty();
       renderInviteListsEditor();
       renderGridBody();
+    });
+  });
+
+  // drag-to-reorder
+  wrap.querySelectorAll("[data-drag]").forEach(handle => {
+    handle.addEventListener("dragstart", (e) => {
+      e.stopPropagation();
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", handle.dataset.drag);
+    });
+  });
+  wrap.querySelectorAll(".il-item").forEach(item => {
+    item.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      const rect = item.getBoundingClientRect();
+      const isAfter = (e.clientY - rect.top) > rect.height / 2;
+      item.classList.toggle("drag-over-top", !isAfter);
+      item.classList.toggle("drag-over-bottom", isAfter);
+    });
+    item.addEventListener("dragleave", () => {
+      item.classList.remove("drag-over-top", "drag-over-bottom");
+    });
+    item.addEventListener("drop", (e) => {
+      e.preventDefault();
+      item.classList.remove("drag-over-top", "drag-over-bottom");
+      const draggedId = e.dataTransfer.getData("text/plain");
+      const targetId = item.dataset.item;
+      if (!draggedId || draggedId === targetId) return;
+      const fromIdx = lists.findIndex(l => l.id === draggedId);
+      if (fromIdx === -1) return;
+      const rect = item.getBoundingClientRect();
+      const isAfter = (e.clientY - rect.top) > rect.height / 2;
+      const [moved] = lists.splice(fromIdx, 1);
+      let toIdx = lists.findIndex(l => l.id === targetId);
+      if (toIdx === -1) toIdx = lists.length;
+      lists.splice(isAfter ? toIdx + 1 : toIdx, 0, moved);
+      markDirty();
+      renderInviteListsEditor();
     });
   });
 }
