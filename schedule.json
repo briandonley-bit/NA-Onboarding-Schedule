@@ -1536,8 +1536,11 @@
       "notes": "",
       "inviteListId": null,
       "color": "#2563eb",
-      "scheduled": false,
-      "durationSlots": 1
+      "scheduled": true,
+      "durationSlots": 2,
+      "weekId": "w1",
+      "day": "Tue",
+      "startSlot": 10
     },
     {
       "id": "mczt4l2o",
