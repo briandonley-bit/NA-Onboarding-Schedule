@@ -1621,7 +1621,7 @@
       "inviteListId": null,
       "color": "#9333ea",
       "scheduled": true,
-      "durationSlots": 1,
+      "durationSlots": 2,
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 8
@@ -1648,7 +1648,7 @@
       "inviteListId": null,
       "color": "#9333ea",
       "scheduled": true,
-      "durationSlots": 1,
+      "durationSlots": 2,
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 11
