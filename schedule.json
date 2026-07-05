@@ -259,8 +259,8 @@
       "color": "#0891b2",
       "scheduled": true,
       "weekId": "w1",
-      "day": "Wed",
-      "startSlot": 6,
+      "day": "Fri",
+      "startSlot": 15,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -274,7 +274,7 @@
       "scheduled": true,
       "weekId": "w1",
       "day": "Fri",
-      "startSlot": 5,
+      "startSlot": 16,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -357,8 +357,8 @@
       "color": "#0891b2",
       "scheduled": true,
       "weekId": "w1",
-      "day": "Wed",
-      "startSlot": 5,
+      "day": "Fri",
+      "startSlot": 14,
       "durationSlots": 1,
       "notes": "",
       "description": ""
