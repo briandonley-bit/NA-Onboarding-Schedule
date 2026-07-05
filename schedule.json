@@ -1492,6 +1492,18 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 3
+    },
+    {
+      "id": "mke35iwu",
+      "title": "Independent Work",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#0891b2",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
