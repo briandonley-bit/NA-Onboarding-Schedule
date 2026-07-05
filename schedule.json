@@ -528,20 +528,6 @@
       "description": ""
     },
     {
-      "id": "m65",
-      "title": "Role Play",
-      "subtitle": "Discovery",
-      "owner": "",
-      "color": "#ea580c",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Tue",
-      "startSlot": 15,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m66",
       "title": "EOD Catch-up",
       "subtitle": "",
@@ -603,20 +589,6 @@
       "owner": "",
       "color": "#16a34a",
       "scheduled": false,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
-      "id": "m72",
-      "title": "Role Play",
-      "subtitle": "Cold Calls",
-      "owner": "",
-      "color": "#ea580c",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Wed",
-      "startSlot": 15,
       "durationSlots": 1,
       "notes": "",
       "description": ""
