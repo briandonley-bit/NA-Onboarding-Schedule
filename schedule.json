@@ -1553,6 +1553,18 @@
       "color": "#2563eb",
       "scheduled": false,
       "durationSlots": 1
+    },
+    {
+      "id": "m1tfa7yz",
+      "title": "Break",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#4b5563",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
