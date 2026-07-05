@@ -1482,8 +1482,11 @@
       "notes": "Review our prospecting goals: \n- Territory Management\n- Lead Pipeline Management\n- Sequences \n- KPIs & Targets\n- Accurate logging \n- Using social media to find opportunities",
       "inviteListId": null,
       "color": "#9333ea",
-      "scheduled": false,
-      "durationSlots": 1
+      "scheduled": true,
+      "durationSlots": 1,
+      "weekId": "w2",
+      "day": "Mon",
+      "startSlot": 9
     }
   ],
   "inviteLists": [
