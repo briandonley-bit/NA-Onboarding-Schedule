@@ -674,20 +674,6 @@
       "description": ""
     },
     {
-      "id": "m80",
-      "title": "Role Play",
-      "subtitle": "Open",
-      "owner": "",
-      "color": "#ea580c",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Thu",
-      "startSlot": 15,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m81",
       "title": "EOD Catch-up",
       "subtitle": "",
@@ -738,20 +724,6 @@
       "owner": "",
       "color": "#2563eb",
       "scheduled": false,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
-      "id": "m87",
-      "title": "Role Play",
-      "subtitle": "",
-      "owner": "",
-      "color": "#ea580c",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Fri",
-      "startSlot": 15,
       "durationSlots": 1,
       "notes": "",
       "description": ""
