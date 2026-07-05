@@ -302,8 +302,8 @@
       "color": "#16a34a",
       "scheduled": true,
       "weekId": "w1",
-      "day": "Tue",
-      "startSlot": 10,
+      "day": "Wed",
+      "startSlot": 3,
       "durationSlots": 2,
       "notes": "",
       "description": "",
@@ -1465,8 +1465,8 @@
       "scheduled": true,
       "durationSlots": 2,
       "weekId": "w1",
-      "day": "Wed",
-      "startSlot": 3
+      "day": "Tue",
+      "startSlot": 10
     },
     {
       "id": "maxggozz",
