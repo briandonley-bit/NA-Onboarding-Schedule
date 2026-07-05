@@ -1610,6 +1610,18 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 1
+    },
+    {
+      "id": "madbicgf",
+      "title": "Demo Overview",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#9333ea",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
