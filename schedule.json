@@ -1625,6 +1625,18 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 8
+    },
+    {
+      "id": "mkg59cxg",
+      "title": "Mock Demo w/ Brian",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#9333ea",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
