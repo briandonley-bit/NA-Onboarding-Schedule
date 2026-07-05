@@ -417,10 +417,7 @@
       "subtitle": "Megan",
       "owner": "",
       "color": "#ea580c",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Mon",
-      "startSlot": 5,
+      "scheduled": false,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -540,10 +537,7 @@
       "subtitle": "Brian",
       "owner": "",
       "color": "#ea580c",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Tue",
-      "startSlot": 5,
+      "scheduled": false,
       "durationSlots": 1,
       "notes": "",
       "description": ""
