@@ -242,10 +242,13 @@
       "subtitle": "Personas + Verticals",
       "owner": "",
       "color": "#0891b2",
-      "scheduled": false,
-      "durationSlots": 1,
+      "scheduled": true,
+      "durationSlots": 2,
       "notes": "",
-      "description": ""
+      "description": "",
+      "weekId": "w1",
+      "day": "Mon",
+      "startSlot": 13
     },
     {
       "id": "m25",
