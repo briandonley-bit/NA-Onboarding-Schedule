@@ -670,7 +670,7 @@
       "scheduled": true,
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 8,
+      "startSlot": 10,
       "durationSlots": 2,
       "notes": "",
       "description": ""
