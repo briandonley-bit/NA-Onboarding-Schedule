@@ -749,20 +749,6 @@
       "description": ""
     },
     {
-      "id": "m83",
-      "title": "Expectations - KPIs, Quota, Commission",
-      "subtitle": "",
-      "owner": "",
-      "color": "#7c3aed",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Fri",
-      "startSlot": 3,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m84",
       "title": "Lunch",
       "subtitle": "",
