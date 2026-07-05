@@ -444,8 +444,8 @@
       "scheduled": true,
       "weekId": "w2",
       "day": "Mon",
-      "startSlot": 15,
-      "durationSlots": 1,
+      "startSlot": 12,
+      "durationSlots": 2,
       "notes": "",
       "description": "",
       "inviteListId": null
