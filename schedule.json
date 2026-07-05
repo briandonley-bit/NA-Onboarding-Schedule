@@ -1520,7 +1520,9 @@
     {
       "id": "inv0buoubj",
       "name": "July East Coast",
-      "emails": []
+      "emails": [
+        "anthony.goodman@fresha.com"
+      ]
     }
   ]
 }
