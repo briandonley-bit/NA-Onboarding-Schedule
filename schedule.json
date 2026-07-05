@@ -1425,7 +1425,7 @@
     },
     {
       "id": "mbi1kl8d",
-      "title": "Product Training",
+      "title": "Product Training - Reporting & Insights",
       "subtitle": "",
       "owner": "",
       "description": "",
@@ -1436,7 +1436,7 @@
       "durationSlots": 2,
       "weekId": "w1",
       "day": "Fri",
-      "startSlot": 10
+      "startSlot": 4
     },
     {
       "id": "my7pjrfe",
