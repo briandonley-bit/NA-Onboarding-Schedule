@@ -442,10 +442,7 @@
       "subtitle": "Brian",
       "owner": "",
       "color": "#ea580c",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Mon",
-      "startSlot": 13,
+      "scheduled": false,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -704,7 +701,7 @@
       "scheduled": true,
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 13,
+      "startSlot": 14,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -799,7 +796,7 @@
       "scheduled": true,
       "weekId": "w2",
       "day": "Fri",
-      "startSlot": 13,
+      "startSlot": 15,
       "durationSlots": 1,
       "notes": "",
       "description": ""
