@@ -437,34 +437,6 @@
       "description": ""
     },
     {
-      "id": "m54",
-      "title": "Product Training",
-      "subtitle": "Placeholder",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Mon",
-      "startSlot": 9,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
-      "id": "m55",
-      "title": "CT001 - DIAL Prospecting & Outreach Fundamentals",
-      "subtitle": "",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Mon",
-      "startSlot": 11,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m56",
       "title": "Mock Demo",
       "subtitle": "Brian",
@@ -557,20 +529,6 @@
       "description": ""
     },
     {
-      "id": "m63",
-      "title": "Product Training",
-      "subtitle": "Placeholder",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Tue",
-      "startSlot": 9,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m64",
       "title": "CT003 - GAP 4Ts Discovering the Gap using the 4T Framework",
       "subtitle": "",
@@ -652,20 +610,6 @@
       "description": ""
     },
     {
-      "id": "m70",
-      "title": "Product Training",
-      "subtitle": "Placeholder",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Wed",
-      "startSlot": 9,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m71",
       "title": "CT005 — EASE | Handling objections with the EASE framework",
       "subtitle": "",
@@ -742,20 +686,6 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 7,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
-      "id": "m77",
-      "title": "Product Training",
-      "subtitle": "Placeholder",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Thu",
-      "startSlot": 9,
       "durationSlots": 1,
       "notes": "",
       "description": ""
@@ -854,20 +784,6 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 7,
-      "durationSlots": 1,
-      "notes": "",
-      "description": ""
-    },
-    {
-      "id": "m85",
-      "title": "Product Training",
-      "subtitle": "Placeholder",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Fri",
-      "startSlot": 9,
       "durationSlots": 1,
       "notes": "",
       "description": ""
