@@ -1707,6 +1707,18 @@
       "color": "#0891b2",
       "scheduled": false,
       "durationSlots": 1
+    },
+    {
+      "id": "m9uhj22h",
+      "title": "Independent Work - East",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#0891b2",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
