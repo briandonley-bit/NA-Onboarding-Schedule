@@ -1480,6 +1480,18 @@
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 12
+    },
+    {
+      "id": "mcqowd9f",
+      "title": "East Coast Catch Up",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#7c3aed",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
