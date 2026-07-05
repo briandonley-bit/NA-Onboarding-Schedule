@@ -485,7 +485,7 @@
       "scheduled": true,
       "weekId": "w2",
       "day": "Tue",
-      "startSlot": 1,
+      "startSlot": 6,
       "durationSlots": 1,
       "notes": "",
       "description": ""
