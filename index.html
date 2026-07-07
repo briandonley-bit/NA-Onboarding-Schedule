@@ -56,6 +56,7 @@
   .slot-bg{height:var(--row-h);border-bottom:1px solid #f0f1f3;cursor:pointer;}
   .slot-bg:hover{background:#f7f9fc;}
   .slot-bg.hover{background:var(--accent-light);}
+  .drop-indicator{position:absolute;left:0;right:0;background:var(--accent-light);border:1px dashed var(--accent);border-radius:4px;pointer-events:none;box-sizing:border-box;}
   .meeting-block{position:absolute;left:3px;right:3px;border-radius:7px;padding:6px 8px;color:#fff;overflow:hidden;cursor:grab;box-shadow:0 1px 2px rgba(0,0,0,.15);}
   .meeting-block:active{cursor:grabbing;}
   .meeting-block .m-title{font-size:12px;font-weight:700;line-height:1.25;}
@@ -137,7 +138,8 @@
 ---------------------------------------------------------------- */
 
 const COLOR_PRESETS = ["#2563eb","#16a34a","#ea580c","#0891b2","#7c3aed","#db2777","#9333ea","#4b5563","#dc2626","#ca8a04"];
-const ROW_H = 64; // must match CSS --row-h
+const ROW_H = 64; // must match CSS --row-h — height of one VISUAL row (30 min)
+const QUARTER_H = ROW_H / 2; // px per 15-minute meeting-placement unit
 const LS_KEYS = { owner:"ghOwner", repo:"ghRepo", branch:"ghBranch", path:"ghPath", token:"ghToken" };
 
 let state = {
@@ -212,10 +214,32 @@ function finishLoad(){
   if (!state.currentWeekId && state.schedule.weeks.length){
     state.currentWeekId = state.schedule.weeks[0].id;
   }
+  migrateScheduleIfNeeded();
   state.dirty = false;
   renderAll();
   setStatus(ghConfigured() ? "Synced with GitHub" : "Using local demo data (connect GitHub in Settings)", ghConfigured() ? "synced" : "");
   startPolling();
+}
+
+// One-time upgrade from 30-minute-only slot units to 15-minute quarter-slot units,
+// so meetings can be scheduled/sized in 15-minute increments. Old files (version < 2)
+// store startSlot/durationSlots in 30-min units with meta.slotMinutes=30; this doubles
+// every meeting's numbers and meta.slotCount to preserve the exact same real-world
+// times under the new finer-grained unit. Runs once per file — the migrated data gets
+// written back to GitHub on the next save (bumping version to 2), so it won't re-run.
+function migrateScheduleIfNeeded(){
+  const s = state.schedule;
+  if (!s || (s.version || 1) >= 2) return;
+  (s.meetings || []).forEach(m => {
+    if (typeof m.startSlot === "number") m.startSlot *= 2;
+    if (typeof m.durationSlots === "number") m.durationSlots *= 2;
+  });
+  if (s.meta){
+    s.meta.slotMinutes = 15;
+    s.meta.slotCount = (s.meta.slotCount || 23) * 2;
+  }
+  s.version = 2;
+  markDirty();
 }
 
 // ---------- GitHub API ----------
@@ -449,13 +473,17 @@ function slotStartMinutes(slotIndex){
 function renderGridBody(){
   const el = document.getElementById("gridBody");
   el.innerHTML = "";
+  // meta.slotCount / meta.slotMinutes are in 15-minute quarter-units (this is the
+  // resolution meetings can be placed/sized at). The visible grid — time labels and
+  // background rows — stays at 30-minute resolution, i.e. every 2 quarter-units.
   const slotCount = state.schedule.meta.slotCount;
+  const visualRows = slotCount / 2;
 
   // time column
   const timeCol = document.createElement("div");
   timeCol.className = "time-col";
-  for (let i=0;i<slotCount;i++){
-    const pst = slotStartMinutes(i);
+  for (let i=0;i<visualRows;i++){
+    const pst = slotStartMinutes(i*2);
     const div = document.createElement("div");
     div.className = "time-label";
     div.innerHTML = `
@@ -470,23 +498,23 @@ function renderGridBody(){
   state.schedule.meta.days.forEach(day => {
     const col = document.createElement("div");
     col.className = "day-col";
-    col.style.height = (slotCount * ROW_H) + "px";
+    col.style.height = (visualRows * ROW_H) + "px";
     col.dataset.day = day;
 
-    for (let i=0;i<slotCount;i++){
+    for (let i=0;i<visualRows;i++){
       const bg = document.createElement("div");
       bg.className = "slot-bg";
-      bg.dataset.slot = i;
+      bg.dataset.slot = i*2; // quarter-slot this 30-min row starts at
       bg.addEventListener("click", () => {
-        openEditModal(null, { day, startSlot: i, weekId: state.currentWeekId });
+        openEditModal(null, { day, startSlot: i*2, weekId: state.currentWeekId });
       });
       col.appendChild(bg);
     }
 
-    // drag over / drop handling
+    // drag over / drop handling — snaps to the nearest 15-minute quarter-slot
     col.addEventListener("dragover", (e) => {
       e.preventDefault();
-      const slot = clampSlot(Math.floor((e.clientY - col.getBoundingClientRect().top) / ROW_H));
+      const slot = clampSlot(Math.round((e.clientY - col.getBoundingClientRect().top) / QUARTER_H));
       highlightSlot(col, slot);
     });
     col.addEventListener("dragleave", () => clearHighlight(col));
@@ -496,7 +524,7 @@ function renderGridBody(){
       const raw = e.dataTransfer.getData("text/plain");
       if (!raw) return;
       const payload = JSON.parse(raw);
-      const slot = clampSlot(Math.floor((e.clientY - col.getBoundingClientRect().top) / ROW_H));
+      const slot = clampSlot(Math.round((e.clientY - col.getBoundingClientRect().top) / QUARTER_H));
       handleDrop(payload, day, slot);
     });
 
@@ -512,13 +540,19 @@ function clampSlot(slot){
   const max = state.schedule.meta.slotCount - 1;
   return Math.max(0, Math.min(max, slot));
 }
-function highlightSlot(col, slot){
+function highlightSlot(col, quarterSlot){
+  // Drag-over preview needs quarter-slot precision, which doesn't map 1:1 to the
+  // (30-min) background rows in the DOM, so this draws its own thin indicator
+  // instead of toggling a class on an existing row.
   clearHighlight(col);
-  const bg = col.querySelector(`.slot-bg[data-slot="${slot}"]`);
-  if (bg) bg.classList.add("hover");
+  const marker = document.createElement("div");
+  marker.className = "drop-indicator";
+  marker.style.top = (quarterSlot * QUARTER_H) + "px";
+  marker.style.height = QUARTER_H + "px";
+  col.appendChild(marker);
 }
 function clearHighlight(col){
-  col.querySelectorAll(".slot-bg.hover").forEach(x => x.classList.remove("hover"));
+  col.querySelectorAll(".drop-indicator").forEach(x => x.remove());
 }
 
 function renderMeetingBlock(m){
@@ -527,8 +561,8 @@ function renderMeetingBlock(m){
   const block = document.createElement("div");
   block.className = "meeting-block";
   block.draggable = true;
-  block.style.top = (m.startSlot * ROW_H + 2) + "px";
-  block.style.height = (m.durationSlots * ROW_H - 4) + "px";
+  block.style.top = (m.startSlot * QUARTER_H + 2) + "px";
+  block.style.height = (m.durationSlots * QUARTER_H - 4) + "px";
   block.style.background = m.color;
   block.dataset.id = m.id;
   if (m.notes) block.title = m.notes;
@@ -562,10 +596,10 @@ function renderMeetingBlock(m){
     const startY = e.clientY;
     const startDuration = m.durationSlots;
     function onMove(ev){
-      const deltaSlots = Math.round((ev.clientY - startY) / ROW_H);
+      const deltaSlots = Math.round((ev.clientY - startY) / QUARTER_H);
       const maxDur = state.schedule.meta.slotCount - m.startSlot;
       m.durationSlots = Math.max(1, Math.min(maxDur, startDuration + deltaSlots));
-      block.style.height = (m.durationSlots * ROW_H - 4) + "px";
+      block.style.height = (m.durationSlots * QUARTER_H - 4) + "px";
     }
     function onUp(){
       document.removeEventListener("mousemove", onMove);
@@ -583,7 +617,7 @@ function renderMeetingBlock(m){
 function handleDrop(payload, day, slot){
   const m = state.schedule.meetings.find(x => x.id === payload.id);
   if (!m) return;
-  const dur = m.durationSlots || 1;
+  const dur = m.durationSlots || 2; // default to 30 min (2 quarter-slots) if unset
   const maxStart = state.schedule.meta.slotCount - dur;
   m.scheduled = true;
   m.weekId = state.currentWeekId;
@@ -656,7 +690,7 @@ function renderBacklog(){
 function openEditModal(meetingId, prefill){
   const isNew = meetingId === null;
   const m = isNew
-    ? { id: uid("m"), title: "", subtitle: "", owner: "", description: "", notes: "", inviteListId: null, color: COLOR_PRESETS[0], scheduled: false, durationSlots: 1 }
+    ? { id: uid("m"), title: "", subtitle: "", owner: "", description: "", notes: "", inviteListId: null, color: COLOR_PRESETS[0], scheduled: false, durationSlots: 2 }
     : state.schedule.meetings.find(x => x.id === meetingId);
   if (!m) return;
   if (isNew && prefill){
@@ -697,7 +731,7 @@ function openEditModal(meetingId, prefill){
         <div class="field">
           <label>Duration</label>
           <select id="fDuration">
-            ${[1,2,3,4,5,6].map(n => `<option value="${n}" ${m.durationSlots===n?"selected":""}>${n*30} min</option>`).join("")}
+            ${[1,2,3,4,5,6,7,8,9,10,11,12,14,16].map(n => `<option value="${n}" ${m.durationSlots===n?"selected":""}>${n*15} min${n*15>=60 ? ` (${(n*15/60).toFixed(n*15%60?1:0)} hr)` : ""}</option>`).join("")}
           </select>
         </div>
         <div class="field">
