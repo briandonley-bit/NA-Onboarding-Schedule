@@ -140,6 +140,7 @@
 const COLOR_PRESETS = ["#2563eb","#16a34a","#ea580c","#0891b2","#7c3aed","#db2777","#9333ea","#4b5563","#dc2626","#ca8a04"];
 const ROW_H = 64; // must match CSS --row-h — height of one VISUAL row (30 min)
 const QUARTER_H = ROW_H / 2; // px per 15-minute meeting-placement unit
+let dragGrabOffsetY = 0; // px from the top of the dragged block to where the user grabbed it
 const LS_KEYS = { owner:"ghOwner", repo:"ghRepo", branch:"ghBranch", path:"ghPath", token:"ghToken" };
 
 let state = {
@@ -514,7 +515,7 @@ function renderGridBody(){
     // drag over / drop handling — snaps to the nearest 15-minute quarter-slot
     col.addEventListener("dragover", (e) => {
       e.preventDefault();
-      const slot = clampSlot(Math.round((e.clientY - col.getBoundingClientRect().top) / QUARTER_H));
+      const slot = clampSlot(Math.round((e.clientY - dragGrabOffsetY - col.getBoundingClientRect().top) / QUARTER_H));
       highlightSlot(col, slot);
     });
     col.addEventListener("dragleave", () => clearHighlight(col));
@@ -524,7 +525,7 @@ function renderGridBody(){
       const raw = e.dataTransfer.getData("text/plain");
       if (!raw) return;
       const payload = JSON.parse(raw);
-      const slot = clampSlot(Math.round((e.clientY - col.getBoundingClientRect().top) / QUARTER_H));
+      const slot = clampSlot(Math.round((e.clientY - dragGrabOffsetY - col.getBoundingClientRect().top) / QUARTER_H));
       handleDrop(payload, day, slot);
     });
 
@@ -581,6 +582,11 @@ function renderMeetingBlock(m){
     if (resizing){ e.preventDefault(); return; }
     e.dataTransfer.setData("text/plain", JSON.stringify({ id: m.id, source: "grid" }));
     e.dataTransfer.effectAllowed = "move";
+    // Remember where within the block the user grabbed it, so the drop calculation
+    // moves the block by exactly how far the cursor moved instead of snapping the
+    // block's top edge to wherever the cursor happens to be (which, at 15-min/32px
+    // resolution, made drags land a slot or two off from where you dragged to).
+    dragGrabOffsetY = e.clientY - block.getBoundingClientRect().top;
   });
 
   block.addEventListener("click", (e) => {
@@ -680,6 +686,9 @@ function renderBacklog(){
     row.addEventListener("dragstart", (e) => {
       e.dataTransfer.setData("text/plain", JSON.stringify({ id: m.id, source: "backlog" }));
       e.dataTransfer.effectAllowed = "move";
+      // Coming from the backlog there's no existing on-calendar position to preserve —
+      // drop the top edge of the meeting right where the cursor is.
+      dragGrabOffsetY = 0;
     });
     row.addEventListener("click", () => openEditModal(m.id));
     wrap.appendChild(row);
