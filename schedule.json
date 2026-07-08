@@ -663,20 +663,6 @@
       "description": ""
     },
     {
-      "id": "m79",
-      "title": "AI Call trainer",
-      "subtitle": "",
-      "owner": "",
-      "color": "#ea580c",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Wed",
-      "startSlot": 26,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m81",
       "title": "Checkpoint",
       "subtitle": "",
