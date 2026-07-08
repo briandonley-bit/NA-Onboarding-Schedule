@@ -596,21 +596,6 @@
       "description": ""
     },
     {
-      "id": "m73",
-      "title": "Checkpoint",
-      "subtitle": "",
-      "owner": "",
-      "color": "#9333ea",
-      "scheduled": true,
-      "weekId": "w2",
-      "day": "Wed",
-      "startSlot": 32,
-      "durationSlots": 2,
-      "notes": "",
-      "description": "",
-      "inviteListId": null
-    },
-    {
       "id": "m74",
       "title": "Thursday",
       "subtitle": "Sales Standup",
@@ -1571,7 +1556,7 @@
       "inviteListId": null,
       "color": "#9333ea",
       "scheduled": true,
-      "durationSlots": 2,
+      "durationSlots": 3,
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 30
