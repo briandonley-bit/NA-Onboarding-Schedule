@@ -1556,7 +1556,7 @@
       "inviteListId": null,
       "color": "#9333ea",
       "scheduled": true,
-      "durationSlots": 3,
+      "durationSlots": 4,
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 30
