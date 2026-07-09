@@ -481,17 +481,6 @@
       "inviteListId": null
     },
     {
-      "id": "m60",
-      "title": "Discovery",
-      "subtitle": "Overview + Best Practices",
-      "owner": "",
-      "color": "#0891b2",
-      "scheduled": false,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m61",
       "title": "Mock Discovery",
       "subtitle": "Brian",
