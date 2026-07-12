@@ -1646,7 +1646,7 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Mon",
-      "startSlot": 28
+      "startSlot": 26
     },
     {
       "id": "mt64l5zn",
@@ -1882,8 +1882,8 @@
       "scheduled": true,
       "durationSlots": 4,
       "weekId": "w2",
-      "day": "Tue",
-      "startSlot": 26
+      "day": "Mon",
+      "startSlot": 28
     }
   ],
   "inviteLists": [
