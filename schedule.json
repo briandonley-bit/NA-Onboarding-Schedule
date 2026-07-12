@@ -607,7 +607,7 @@
       "id": "m75",
       "title": "Objection Handling",
       "subtitle": "Framework + Common Objections",
-      "owner": "",
+      "owner": "Mark",
       "color": "#0891b2",
       "scheduled": true,
       "durationSlots": 4,
@@ -615,7 +615,8 @@
       "description": "",
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 22
+      "startSlot": 22,
+      "inviteListId": null
     },
     {
       "id": "m76",
