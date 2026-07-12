@@ -2016,6 +2016,21 @@
       "calendarEventId": "h5510hd71a1071poil7bl85lis",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=aDU1MTBoZDcxYTEwNzFwb2lsN2JsODVsaXMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/sus-xhxm-zsh"
+    },
+    {
+      "id": "m1dt2bvk",
+      "title": "Prospecting - Overview",
+      "subtitle": "",
+      "owner": "Brian",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#7c3aed",
+      "scheduled": true,
+      "durationSlots": 4,
+      "weekId": "w2",
+      "day": "Tue",
+      "startSlot": 16
     }
   ],
   "inviteLists": [
