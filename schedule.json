@@ -447,8 +447,8 @@
       "scheduled": true,
       "weekId": "w2",
       "day": "Mon",
-      "startSlot": 24,
-      "durationSlots": 4,
+      "startSlot": 26,
+      "durationSlots": 2,
       "notes": "",
       "description": "",
       "inviteListId": null
@@ -1422,7 +1422,7 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Mon",
-      "startSlot": 20
+      "startSlot": 22
     },
     {
       "id": "mprnfhvk",
