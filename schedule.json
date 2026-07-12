@@ -320,7 +320,7 @@
       "id": "m33",
       "title": "Competitors",
       "subtitle": "Overview + Angles",
-      "owner": "",
+      "owner": "Megan",
       "color": "#0891b2",
       "scheduled": true,
       "durationSlots": 4,
@@ -328,7 +328,8 @@
       "description": "",
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 16
+      "startSlot": 16,
+      "inviteListId": null
     },
     {
       "id": "m34",
