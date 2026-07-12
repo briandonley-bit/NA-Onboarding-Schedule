@@ -749,6 +749,10 @@ function openEditModal(meetingId, prefill){
             <option value="">None</option>
             ${(state.schedule.inviteLists||[]).map(l => `<option value="${l.id}" ${m.inviteListId===l.id?"selected":""}>${escapeHtml(l.name)} (${(l.emails||[]).length})</option>`).join("")}
           </select>
+          ${!isNew && m.scheduled ? `
+          <button class="btn primary" id="btnSendMeetingInvite" style="margin-top:8px;width:100%;justify-content:center;">📤 Send invite for this meeting</button>
+          <div id="sendMeetingStatus" style="font-size:11px;color:var(--muted);margin-top:4px;"></div>
+          ` : ""}
           ${m.calendarEventLink ? `<div class="note"><a href="${escapeHtml(m.calendarEventLink)}" target="_blank" rel="noopener">View in Google Calendar ↗</a></div>` : ""}
           ${m.meetLink ? `<div class="note"><a href="${escapeHtml(m.meetLink)}" target="_blank" rel="noopener">Join Google Meet ↗</a></div>` : ""}
         </div>
@@ -787,23 +791,29 @@ function openEditModal(meetingId, prefill){
   });
   document.getElementById("btnCancel").onclick = closeModal;
 
+  // Shared by both the Save button and "Send invite" below, so sending an invite
+  // always reflects whatever's currently in the form, even if unsaved.
+  function readFormFieldsInto(target){
+    target.title = document.getElementById("fTitle").value.trim();
+    target.subtitle = document.getElementById("fSubtitle").value.trim();
+    target.owner = document.getElementById("fOwner").value.trim();
+    target.description = document.getElementById("fDescription").value.trim();
+    target.notes = document.getElementById("fNotes").value.trim();
+    target.inviteListId = document.getElementById("fInviteList").value || null;
+    target.durationSlots = parseInt(document.getElementById("fDuration").value, 10);
+    target.color = selectedColor;
+    if (target.scheduled){
+      // Keep a scheduled meeting's duration from running off the bottom of the grid,
+      // whether it was just placed via a slot click or its duration was edited up.
+      const maxDur = state.schedule.meta.slotCount - target.startSlot;
+      target.durationSlots = Math.max(1, Math.min(maxDur, target.durationSlots));
+    }
+  }
+
   document.getElementById("btnSaveMeeting").onclick = () => {
     const title = document.getElementById("fTitle").value.trim();
     if (!title){ alert("Please enter a title."); return; }
-    m.title = title;
-    m.subtitle = document.getElementById("fSubtitle").value.trim();
-    m.owner = document.getElementById("fOwner").value.trim();
-    m.description = document.getElementById("fDescription").value.trim();
-    m.notes = document.getElementById("fNotes").value.trim();
-    m.inviteListId = document.getElementById("fInviteList").value || null;
-    m.durationSlots = parseInt(document.getElementById("fDuration").value, 10);
-    m.color = selectedColor;
-    if (m.scheduled){
-      // Keep a scheduled meeting's duration from running off the bottom of the grid,
-      // whether it was just placed via a slot click or its duration was edited up.
-      const maxDur = state.schedule.meta.slotCount - m.startSlot;
-      m.durationSlots = Math.max(1, Math.min(maxDur, m.durationSlots));
-    }
+    readFormFieldsInto(m);
     if (isNew){
       state.schedule.meetings.push(m);
     }
@@ -843,6 +853,37 @@ function openEditModal(meetingId, prefill){
       markDirty();
       closeModal();
       renderAll();
+    };
+    const sendBtn = document.getElementById("btnSendMeetingInvite");
+    if (sendBtn) sendBtn.onclick = async () => {
+      const statusEl = document.getElementById("sendMeetingStatus");
+      if (!state.googleToken || Date.now() > (state.googleTokenExpiry||0)){
+        alert("Connect Google Calendar first (🗓️ Calendar & Invites button), then try again.");
+        return;
+      }
+      const week = state.schedule.weeks.find(w => w.id === m.weekId);
+      if (!week || !week.startDate){
+        alert("Set this week's Monday date first (the date field above the calendar grid) before sending invites.");
+        return;
+      }
+      const title = document.getElementById("fTitle").value.trim();
+      if (!title){ alert("Please enter a title first."); return; }
+      readFormFieldsInto(m); // pick up any unsaved edits (including the invite list just chosen) before sending
+      if (!m.inviteListId){ alert("Choose an invite list above first."); return; }
+      sendBtn.disabled = true;
+      if (statusEl) statusEl.textContent = "Sending…";
+      markDirty();
+      try{
+        await syncMeetingToCalendar(m, week);
+        markDirty();
+        closeModal();
+        renderAll();
+        openEditModal(m.id); // reopen so the Google Calendar / Meet links now show
+      }catch(e){
+        console.error(e);
+        if (statusEl) statusEl.textContent = "Failed: " + e.message;
+        sendBtn.disabled = false;
+      }
     };
   }
 }
