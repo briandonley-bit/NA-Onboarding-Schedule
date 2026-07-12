@@ -1613,7 +1613,7 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Wed",
-      "startSlot": 28
+      "startSlot": 30
     },
     {
       "id": "m9l8hv83",
@@ -1892,7 +1892,7 @@
       "inviteListId": null,
       "color": "#0891b2",
       "scheduled": true,
-      "durationSlots": 4,
+      "durationSlots": 2,
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 26
