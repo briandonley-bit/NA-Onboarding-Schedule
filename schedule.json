@@ -1637,7 +1637,7 @@
       "owner": "",
       "description": "",
       "notes": "",
-      "inviteListId": "invb1fk3ep",
+      "inviteListId": null,
       "color": "#4b5563",
       "scheduled": true,
       "durationSlots": 2,
