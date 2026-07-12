@@ -652,7 +652,7 @@
       "color": "#9333ea",
       "scheduled": true,
       "weekId": "w2",
-      "day": "Thu",
+      "day": "Wed",
       "startSlot": 32,
       "durationSlots": 2,
       "notes": "",
@@ -1408,7 +1408,7 @@
       "scheduled": true,
       "durationSlots": 4,
       "weekId": "w2",
-      "day": "Fri",
+      "day": "Tue",
       "startSlot": 16
     },
     {
@@ -1423,7 +1423,7 @@
       "scheduled": true,
       "durationSlots": 4,
       "weekId": "w2",
-      "day": "Fri",
+      "day": "Tue",
       "startSlot": 22
     },
     {
@@ -1555,7 +1555,7 @@
       "scheduled": true,
       "durationSlots": 4,
       "weekId": "w2",
-      "day": "Wed",
+      "day": "Thu",
       "startSlot": 30
     },
     {
@@ -1867,7 +1867,7 @@
       "scheduled": true,
       "durationSlots": 4,
       "weekId": "w2",
-      "day": "Tue",
+      "day": "Wed",
       "startSlot": 22
     },
     {
