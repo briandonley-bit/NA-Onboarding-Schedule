@@ -449,7 +449,7 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 26,
-      "durationSlots": 2,
+      "durationSlots": 4,
       "notes": "",
       "description": "",
       "inviteListId": null
@@ -1628,7 +1628,7 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Tue",
-      "startSlot": 28
+      "startSlot": 30
     },
     {
       "id": "mcbca5op",
@@ -1892,7 +1892,7 @@
       "inviteListId": null,
       "color": "#0891b2",
       "scheduled": true,
-      "durationSlots": 2,
+      "durationSlots": 4,
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 26
@@ -1907,7 +1907,7 @@
       "inviteListId": null,
       "color": "#0891b2",
       "scheduled": true,
-      "durationSlots": 2,
+      "durationSlots": 4,
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 26
