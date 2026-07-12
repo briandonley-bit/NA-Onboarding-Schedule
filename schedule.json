@@ -329,7 +329,10 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 14,
-      "inviteListId": "invb1fk3ep"
+      "inviteListId": "invb1fk3ep",
+      "calendarEventId": "n2tkiog7ul1p3tvhookpmv30ik",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=bjJ0a2lvZzd1bDFwM3R2aG9va3BtdjMwaWsgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/dyi-nzjz-hap"
     },
     {
       "id": "m34",
@@ -452,7 +455,10 @@
       "durationSlots": 3,
       "notes": "",
       "description": "",
-      "inviteListId": "invb1fk3ep"
+      "inviteListId": "invb1fk3ep",
+      "calendarEventId": "hm2osv1kseh8vir6q324t56vd4",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=aG0yb3N2MWtzZWg4dmlyNnEzMjR0NTZ2ZDQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/hvw-nwva-tqo"
     },
     {
       "id": "m58",
@@ -467,7 +473,10 @@
       "durationSlots": 2,
       "notes": "",
       "description": "",
-      "inviteListId": "invb1fk3ep"
+      "inviteListId": "invb1fk3ep",
+      "calendarEventId": "v6rsl1e28sc5a4tlbrr024fh14",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=djZyc2wxZTI4c2M1YTR0bGJycjAyNGZoMTQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/jqb-vmkb-pzd"
     },
     {
       "id": "m59",
@@ -534,7 +543,10 @@
       "durationSlots": 2,
       "notes": "",
       "description": "",
-      "inviteListId": "invb1fk3ep"
+      "inviteListId": "invb1fk3ep",
+      "calendarEventId": "5aat2l1j0edb98aecu41i34mf0",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=NWFhdDJsMWowZWRiOThhZWN1NDFpMzRtZjAgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/hjd-jjru-emm"
     },
     {
       "id": "m67",
@@ -616,7 +628,10 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 22,
-      "inviteListId": "invb1fk3ep"
+      "inviteListId": "invb1fk3ep",
+      "calendarEventId": "5logrj0g4jotu97n3tgoqegb64",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=NWxvZ3JqMGc0am90dTk3bjN0Z29xZWdiNjQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/zqu-ppfk-xrh"
     },
     {
       "id": "m76",
@@ -657,7 +672,10 @@
       "durationSlots": 2,
       "notes": "",
       "description": "",
-      "inviteListId": "invb1fk3ep"
+      "inviteListId": "invb1fk3ep",
+      "calendarEventId": "dpjk248nj6vpjrmumurhar3864",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=ZHBqazI0OG5qNnZwanJtdW11cmhhcjM4NjQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/yzp-haip-sor"
     },
     {
       "id": "m82",
@@ -713,7 +731,10 @@
       "durationSlots": 2,
       "notes": "",
       "description": "",
-      "inviteListId": "invb1fk3ep"
+      "inviteListId": "invb1fk3ep",
+      "calendarEventId": "r3h73e3f8oobdufmtrmlke8a6o",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=cjNoNzNlM2Y4b29iZHVmbXRybWxrZThhNm8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/qyr-zduo-tof"
     },
     {
       "id": "m89",
@@ -1259,7 +1280,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Mon",
-      "startSlot": 34
+      "startSlot": 34,
+      "calendarEventId": "nbk6udmbsm0mcgq8kk1u00lt7k",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=bmJrNnVkbWJzbTBtY2dxOGtrMXUwMGx0N2sgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/aee-ishu-dnt"
     },
     {
       "id": "m7npefrv",
@@ -1394,7 +1418,10 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Mon",
-      "startSlot": 2
+      "startSlot": 2,
+      "calendarEventId": "hm5h2e45p7u4f16pbt2laghscs",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=aG01aDJlNDVwN3U0ZjE2cGJ0MmxhZ2hzY3MgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/esv-wqze-gmp"
     },
     {
       "id": "mjhwzxfp",
@@ -1421,7 +1448,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Tue",
-      "startSlot": 22
+      "startSlot": 22,
+      "calendarEventId": "s5vqfgg5bc4vmholk4ip37pmq8",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=czV2cWZnZzViYzR2bWhvbGs0aXAzN3BtcTggYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/agn-cxcx-kfb"
     },
     {
       "id": "mprnfhvk",
@@ -1436,7 +1466,10 @@
       "durationSlots": 6,
       "weekId": "w2",
       "day": "Mon",
-      "startSlot": 4
+      "startSlot": 4,
+      "calendarEventId": "1s21m26l30v2jnrdtjc0vnvcjo",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=MXMyMW0yNmwzMHYyam5yZHRqYzB2bnZjam8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/yev-fqmz-qee"
     },
     {
       "id": "mxgdq8l6",
@@ -1451,7 +1484,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Wed",
-      "startSlot": 16
+      "startSlot": 16,
+      "calendarEventId": "iv0v85fiej9pm118n9eqnfnrms",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=aXYwdjg1ZmllajlwbTExOG45ZXFuZm5ybXMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/fda-vbxi-cyx"
     },
     {
       "id": "ma7kka0o",
@@ -1478,7 +1514,10 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Tue",
-      "startSlot": 2
+      "startSlot": 2,
+      "calendarEventId": "64vd25npatoss4bc9totlavc9k",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=NjR2ZDI1bnBhdG9zczRiYzl0b3RsYXZjOWsgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/pwr-mzbd-tiv"
     },
     {
       "id": "mtq97mi1",
@@ -1493,7 +1532,10 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Wed",
-      "startSlot": 2
+      "startSlot": 2,
+      "calendarEventId": "rn6v4r7grb0kfgoeif710g0jso",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=cm42djRyN2dyYjBrZmdvZWlmNzEwZzBqc28gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/rhn-giyn-std"
     },
     {
       "id": "m9ndf1s8",
@@ -1508,7 +1550,10 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 2
+      "startSlot": 2,
+      "calendarEventId": "rs9i63gd4lbp90ocq69klo2nd4",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=cnM5aTYzZ2Q0bGJwOTBvY3E2OWtsbzJuZDQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/vwi-cgdh-qgh"
     },
     {
       "id": "m9i4eejq",
@@ -1523,7 +1568,10 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Fri",
-      "startSlot": 2
+      "startSlot": 2,
+      "calendarEventId": "32309v6naf7pfklkp2elscmik0",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=MzIzMDl2Nm5hZjdwZmtsa3AyZWxzY21pazAgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/hyz-veya-pus"
     },
     {
       "id": "madbicgf",
@@ -1538,7 +1586,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 16
+      "startSlot": 16,
+      "calendarEventId": "vd9c7l13fk7v8v6id9oqrl6kgk",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=dmQ5YzdsMTNmazd2OHY2aWQ5b3FybDZrZ2sgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/oxk-gxya-xop"
     },
     {
       "id": "mkg59cxg",
@@ -1553,7 +1604,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 30
+      "startSlot": 30,
+      "calendarEventId": "chc28rl1mpvbjul08pj7gnjdec",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=Y2hjMjhybDFtcHZianVsMDhwajdnbmpkZWMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/bap-moes-ydg"
     },
     {
       "id": "mzvyfcf5",
@@ -1568,7 +1622,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 22
+      "startSlot": 22,
+      "calendarEventId": "gtk5d4o01hvj3bbpal8722fhbo",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=Z3RrNWQ0bzAxaHZqM2JicGFsODcyMmZoYm8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/mrb-efqf-iyt"
     },
     {
       "id": "mxogcdo7",
@@ -1670,7 +1727,10 @@
       "durationSlots": 6,
       "weekId": "w2",
       "day": "Tue",
-      "startSlot": 4
+      "startSlot": 4,
+      "calendarEventId": "o98pfhl1q0e584k74q1tas29ns",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=bzk4cGZobDFxMGU1ODRrNzRxMXRhczI5bnMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/oiw-vjgm-vtq"
     },
     {
       "id": "me6cin46",
@@ -1685,7 +1745,10 @@
       "durationSlots": 6,
       "weekId": "w2",
       "day": "Wed",
-      "startSlot": 4
+      "startSlot": 4,
+      "calendarEventId": "ojvvecaqev0h4k6v915lpu7qdo",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=b2p2dmVjYXFldjBoNGs2djkxNWxwdTdxZG8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/pjd-hnjd-bkk"
     },
     {
       "id": "m9uhj22h",
@@ -1700,7 +1763,10 @@
       "durationSlots": 6,
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 4
+      "startSlot": 4,
+      "calendarEventId": "bkorgrk6dmfqn2q0b9rgqld654",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=YmtvcmdyazZkbWZxbjJxMGI5cmdxbGQ2NTQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/eya-ziao-jrn"
     },
     {
       "id": "mk5awcu1",
@@ -1715,7 +1781,10 @@
       "durationSlots": 6,
       "weekId": "w2",
       "day": "Fri",
-      "startSlot": 4
+      "startSlot": 4,
+      "calendarEventId": "tdip4iq2mpph94sj0i2je83f78",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=dGRpcDRpcTJtcHBoOTRzajBpMmplODNmNzggYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/bjw-fdyr-pdk"
     },
     {
       "id": "mr1huo0h",
@@ -1730,7 +1799,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Tue",
-      "startSlot": 34
+      "startSlot": 34,
+      "calendarEventId": "lhj2mck3t1t180p12qioa1ha0o",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=bGhqMm1jazN0MXQxODBwMTJxaW9hMWhhMG8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/vzn-cogy-ygf"
     },
     {
       "id": "msz57o6k",
@@ -1745,7 +1817,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Wed",
-      "startSlot": 34
+      "startSlot": 34,
+      "calendarEventId": "h3rd13fm8bt57af6ju7vv4ap48",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=aDNyZDEzZm04YnQ1N2FmNmp1N3Z2NGFwNDggYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/mxy-ojwo-qxr"
     },
     {
       "id": "mvg719u4",
@@ -1775,7 +1850,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Fri",
-      "startSlot": 34
+      "startSlot": 34,
+      "calendarEventId": "ouhbksp09jt7d2nc0pei0vld78",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=b3VoYmtzcDA5anQ3ZDJuYzBwZWkwdmxkNzggYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/txo-fhcq-aip"
     },
     {
       "id": "mgu504gd",
@@ -1790,7 +1868,10 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Mon",
-      "startSlot": 44
+      "startSlot": 44,
+      "calendarEventId": "e8tepffbcbgbk29qsahkbcdrno",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=ZTh0ZXBmZmJjYmdiazI5cXNhaGtiY2Rybm8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/aqd-kdbe-nxt"
     },
     {
       "id": "ml479ytx",
@@ -1805,7 +1886,10 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Tue",
-      "startSlot": 44
+      "startSlot": 44,
+      "calendarEventId": "a776sitsm07sufqq8r7hfrm2bo",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=YTc3NnNpdHNtMDdzdWZxcThyN2hmcm0yYm8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/qeq-snxj-xhb"
     },
     {
       "id": "m0b0wce2",
@@ -1820,7 +1904,10 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Wed",
-      "startSlot": 44
+      "startSlot": 44,
+      "calendarEventId": "0fdcu7f0307rs05i1vftmtsles",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=MGZkY3U3ZjAzMDdyczA1aTF2ZnRtdHNsZXMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/sty-ueay-rkj"
     },
     {
       "id": "mwfobj5j",
@@ -1835,7 +1922,10 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 44
+      "startSlot": 44,
+      "calendarEventId": "c87ja034h875ab0v2g4igsha0c",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=Yzg3amEwMzRoODc1YWIwdjJnNGlnc2hhMGMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/vvq-xzgu-oef"
     },
     {
       "id": "mtt0tq06",
@@ -1850,7 +1940,10 @@
       "durationSlots": 2,
       "weekId": "w2",
       "day": "Fri",
-      "startSlot": 44
+      "startSlot": 44,
+      "calendarEventId": "h66du1d2i3ec2eo9tak3npdkbg",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=aDY2ZHUxZDJpM2VjMmVvOXRhazNucGRrYmcgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/ycd-xcrr-aap"
     },
     {
       "id": "myfssd75",
@@ -1865,7 +1958,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Wed",
-      "startSlot": 22
+      "startSlot": 22,
+      "calendarEventId": "597f0lreqvd0rv6t28d6pf4ja4",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=NTk3ZjBscmVxdmQwcnY2dDI4ZDZwZjRqYTQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/rtj-uhqj-eut"
     },
     {
       "id": "m466mxwj",
@@ -1880,7 +1976,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Mon",
-      "startSlot": 28
+      "startSlot": 28,
+      "calendarEventId": "c14ppsjbcj36b82ovpb9unvbrs",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=YzE0cHBzamJjajM2Yjgyb3ZwYjl1bnZicnMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/cjr-ufyw-ajs"
     },
     {
       "id": "mpqcpthd",
@@ -1895,7 +1994,10 @@
       "durationSlots": 3,
       "weekId": "w2",
       "day": "Wed",
-      "startSlot": 26
+      "startSlot": 26,
+      "calendarEventId": "3t4b0ed1pqh9r041efipd3mmqo",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=M3Q0YjBlZDFwcWg5cjA0MWVmaXBkM21tcW8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/ufh-mjpz-vud"
     },
     {
       "id": "mngsd2dz",
@@ -1910,7 +2012,10 @@
       "durationSlots": 3,
       "weekId": "w2",
       "day": "Thu",
-      "startSlot": 26
+      "startSlot": 26,
+      "calendarEventId": "h5510hd71a1071poil7bl85lis",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=aDU1MTBoZDcxYTEwNzFwb2lsN2JsODVsaXMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/sus-xhxm-zsh"
     }
   ],
   "inviteLists": [
