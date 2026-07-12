@@ -1869,6 +1869,21 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 22
+    },
+    {
+      "id": "m466mxwj",
+      "title": "ICP",
+      "subtitle": "",
+      "owner": "Scott?",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#7c3aed",
+      "scheduled": true,
+      "durationSlots": 2,
+      "weekId": "w2",
+      "day": "Tue",
+      "startSlot": 26
     }
   ],
   "inviteLists": [
