@@ -1884,6 +1884,21 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 28
+    },
+    {
+      "id": "mpqcpthd",
+      "title": "Gong Calls - Discovery",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#0891b2",
+      "scheduled": true,
+      "durationSlots": 2,
+      "weekId": "w2",
+      "day": "Wed",
+      "startSlot": 26
     }
   ],
   "inviteLists": [
