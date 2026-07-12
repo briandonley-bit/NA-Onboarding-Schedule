@@ -1993,6 +1993,13 @@
     {
       "id": "inv920kl8f",
       "name": "Scott",
+      "emails": [
+        "scott.obrien@fresha.com"
+      ]
+    },
+    {
+      "id": "inv8sqxrzo",
+      "name": "Greg",
       "emails": []
     }
   ]
