@@ -1899,6 +1899,21 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 26
+    },
+    {
+      "id": "mngsd2dz",
+      "title": "Gong Calls - Demo",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListId": null,
+      "color": "#0891b2",
+      "scheduled": true,
+      "durationSlots": 2,
+      "weekId": "w2",
+      "day": "Thu",
+      "startSlot": 26
     }
   ],
   "inviteLists": [
