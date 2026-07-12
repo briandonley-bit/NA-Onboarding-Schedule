@@ -1880,7 +1880,7 @@
       "inviteListId": null,
       "color": "#7c3aed",
       "scheduled": true,
-      "durationSlots": 2,
+      "durationSlots": 4,
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 26
