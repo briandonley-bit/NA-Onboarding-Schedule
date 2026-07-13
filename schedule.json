@@ -1896,7 +1896,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Tue",
-      "startSlot": 16
+      "startSlot": 16,
+      "calendarEventId": "sfqgugkckh89qbpaufo68mfbmc",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=c2ZxZ3Vna2NraDg5cWJwYXVmbzY4bWZibWMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/big-fkeq-kxh"
     }
   ],
   "inviteLists": [
