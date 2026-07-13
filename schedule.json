@@ -432,17 +432,6 @@
       "inviteListId": null
     },
     {
-      "id": "m56",
-      "title": "Mock Demo",
-      "subtitle": "Brian",
-      "owner": "",
-      "color": "#ea580c",
-      "scheduled": false,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m57",
       "title": "Gong Calls - Cold Calls",
       "subtitle": "Demo",
