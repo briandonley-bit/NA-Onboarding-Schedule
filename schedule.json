@@ -627,7 +627,7 @@
       "description": "",
       "weekId": "w2",
       "day": "Mon",
-      "startSlot": 22,
+      "startSlot": 14,
       "inviteListId": "invb1fk3ep",
       "calendarEventId": "5logrj0g4jotu97n3tgoqegb64",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=NWxvZ3JqMGc0am90dTk3bjN0Z29xZWdiNjQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
@@ -1976,7 +1976,7 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Mon",
-      "startSlot": 16,
+      "startSlot": 22,
       "calendarEventId": "c14ppsjbcj36b82ovpb9unvbrs",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=YzE0cHBzamJjajM2Yjgyb3ZwYjl1bnZicnMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/cjr-ufyw-ajs"
