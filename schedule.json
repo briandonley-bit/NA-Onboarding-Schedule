@@ -231,17 +231,6 @@
       "inviteListId": "invuv83sdz"
     },
     {
-      "id": "m23",
-      "title": "Systems",
-      "subtitle": "(HS, Gong, Flippy, Deal Manager)",
-      "owner": "",
-      "color": "#0891b2",
-      "scheduled": false,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m24",
       "title": "ICP",
       "subtitle": "Personas + Verticals",
@@ -395,28 +384,6 @@
       "inviteListId": null
     },
     {
-      "id": "m51",
-      "title": "Demo",
-      "subtitle": "Overview + Best Practices",
-      "owner": "",
-      "color": "#0891b2",
-      "scheduled": false,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
-    },
-    {
-      "id": "m52",
-      "title": "Mock Demo",
-      "subtitle": "Megan",
-      "owner": "",
-      "color": "#ea580c",
-      "scheduled": false,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m53",
       "title": "Lunch - East",
       "subtitle": "",
@@ -483,17 +450,6 @@
       "inviteListId": null
     },
     {
-      "id": "m61",
-      "title": "Mock Discovery",
-      "subtitle": "Brian",
-      "owner": "",
-      "color": "#ea580c",
-      "scheduled": false,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
-    },
-    {
       "id": "m62",
       "title": "Lunch East",
       "subtitle": "",
@@ -507,17 +463,6 @@
       "notes": "",
       "description": "",
       "inviteListId": null
-    },
-    {
-      "id": "m64",
-      "title": "CT003 - GAP 4Ts Discovering the Gap using the 4T Framework",
-      "subtitle": "",
-      "owner": "",
-      "color": "#16a34a",
-      "scheduled": false,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
     },
     {
       "id": "m66",
@@ -551,17 +496,6 @@
       "notes": "",
       "description": "",
       "inviteListId": null
-    },
-    {
-      "id": "m68",
-      "title": "Prospecting",
-      "subtitle": "Overview + Best Practices",
-      "owner": "",
-      "color": "#0891b2",
-      "scheduled": false,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
     },
     {
       "id": "m69",
@@ -673,17 +607,6 @@
       "notes": "",
       "description": "",
       "inviteListId": null
-    },
-    {
-      "id": "m86",
-      "title": "CT009 — PIPELINE | Pipeline management & forecasting",
-      "subtitle": "",
-      "owner": "",
-      "color": "#2563eb",
-      "scheduled": false,
-      "durationSlots": 2,
-      "notes": "",
-      "description": ""
     },
     {
       "id": "m88",
@@ -1389,18 +1312,6 @@
       "calendarEventId": "hm5h2e45p7u4f16pbt2laghscs",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=aG01aDJlNDVwN3U0ZjE2cGJ0MmxhZ2hzY3MgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/esv-wqze-gmp"
-    },
-    {
-      "id": "mjhwzxfp",
-      "title": "Prospecting - Overview",
-      "subtitle": "",
-      "owner": "Greg",
-      "description": "",
-      "notes": "Review our prospecting goals: \n- Territory Management\n- Lead Pipeline Management\n- Sequences \n- KPIs & Targets\n- Accurate logging \n- Using social media to find opportunities",
-      "inviteListId": null,
-      "color": "#9333ea",
-      "scheduled": false,
-      "durationSlots": 4
     },
     {
       "id": "mlzg8dgq",
