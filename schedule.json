@@ -1932,7 +1932,10 @@
       "durationSlots": 4,
       "weekId": "w2",
       "day": "Fri",
-      "startSlot": 22
+      "startSlot": 22,
+      "calendarEventId": "6fg8gatj0pqdcq3pti545fsltg",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=NmZnOGdhdGowcHFkY3EzcHRpNTQ1ZnNsdGcgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/jzi-byxs-bpw"
     }
   ],
   "inviteLists": [
