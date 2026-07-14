@@ -1915,6 +1915,21 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 16
+    },
+    {
+      "id": "me975i3t",
+      "title": "Placeholder Training",
+      "subtitle": "",
+      "owner": "Greg",
+      "description": "",
+      "notes": "Targets and Commission?",
+      "inviteListId": "invb1fk3ep",
+      "color": "#7c3aed",
+      "scheduled": true,
+      "durationSlots": 4,
+      "weekId": "w2",
+      "day": "Fri",
+      "startSlot": 22
     }
   ],
   "inviteLists": [
