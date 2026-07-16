@@ -659,14 +659,15 @@
       "title": "BD Monday",
       "subtitle": "Morning Meeting",
       "owner": "",
-      "color": "#2563eb",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w3",
       "day": "Mon",
       "startSlot": 12,
       "durationSlots": 2,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m92",
