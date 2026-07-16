@@ -1938,7 +1938,7 @@
       "description": "",
       "notes": "- Review Hubspot end-to-end New Lead > Handover\n- Ensure all hubspot accounts are connected (dialpad, gmail, signatures, meeting links etc.)",
       "inviteListId": null,
-      "color": "#2563eb",
+      "color": "#7c3aed",
       "scheduled": true,
       "durationSlots": 4,
       "weekId": "w3",
