@@ -663,7 +663,7 @@
       "scheduled": true,
       "weekId": "w3",
       "day": "Mon",
-      "startSlot": 10,
+      "startSlot": 12,
       "durationSlots": 2,
       "notes": "",
       "description": ""
