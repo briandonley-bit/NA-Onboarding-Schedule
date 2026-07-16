@@ -707,8 +707,8 @@
       "color": "#db2777",
       "scheduled": true,
       "weekId": "w3",
-      "day": "Mon",
-      "startSlot": 24,
+      "day": "Wed",
+      "startSlot": 18,
       "durationSlots": 2,
       "notes": "",
       "description": ""
