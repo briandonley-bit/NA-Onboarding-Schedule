@@ -2011,11 +2011,14 @@
       "subtitle": "",
       "owner": "",
       "color": "#2563eb",
-      "scheduled": false,
+      "scheduled": true,
       "durationSlots": 2,
       "notes": "",
       "description": "",
-      "inviteListId": null
+      "inviteListId": null,
+      "weekId": "w3",
+      "day": "Fri",
+      "startSlot": 32
     }
   ],
   "inviteLists": [
