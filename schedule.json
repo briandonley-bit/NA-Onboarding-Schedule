@@ -1989,6 +1989,21 @@
       "weekId": "w3",
       "day": "Thu",
       "startSlot": 24
+    },
+    {
+      "id": "mee7buuc",
+      "title": "Daily Planning",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "Review call blocks, best practices to plan day\n- time blocking, when to call etc",
+      "inviteListId": null,
+      "color": "#2563eb",
+      "scheduled": true,
+      "durationSlots": 3,
+      "weekId": "w3",
+      "day": "Tue",
+      "startSlot": 18
     }
   ],
   "inviteLists": [
