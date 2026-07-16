@@ -1959,6 +1959,18 @@
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 18
+    },
+    {
+      "id": "m8480e67",
+      "title": "Cold Call Role Plays (copy)",
+      "subtitle": "",
+      "owner": "Brian/Greg",
+      "description": "",
+      "notes": "Group session in which everyone does a mock cold call as a group - make it fun but focused, get the jitters out. Replacing AI trainer.",
+      "inviteListId": null,
+      "color": "#7c3aed",
+      "scheduled": false,
+      "durationSlots": 6
     }
   ],
   "inviteLists": [
