@@ -950,7 +950,7 @@
       "scheduled": true,
       "weekId": "w3",
       "day": "Fri",
-      "startSlot": 18,
+      "startSlot": 24,
       "durationSlots": 6,
       "notes": "",
       "description": ""
