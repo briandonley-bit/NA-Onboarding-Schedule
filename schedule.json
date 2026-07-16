@@ -1958,7 +1958,7 @@
       "durationSlots": 6,
       "weekId": "w3",
       "day": "Tue",
-      "startSlot": 18
+      "startSlot": 24
     },
     {
       "id": "m8480e67",
@@ -1973,7 +1973,7 @@
       "durationSlots": 6,
       "weekId": "w3",
       "day": "Wed",
-      "startSlot": 18
+      "startSlot": 24
     },
     {
       "id": "m5mrq8xi",
@@ -1988,7 +1988,7 @@
       "durationSlots": 6,
       "weekId": "w3",
       "day": "Thu",
-      "startSlot": 18
+      "startSlot": 24
     }
   ],
   "inviteLists": [
