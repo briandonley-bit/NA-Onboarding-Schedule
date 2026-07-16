@@ -694,9 +694,10 @@
       "weekId": "w3",
       "day": "Mon",
       "startSlot": 21,
-      "durationSlots": 2,
+      "durationSlots": 3,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m94",
