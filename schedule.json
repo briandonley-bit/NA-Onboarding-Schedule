@@ -1942,6 +1942,21 @@
       "calendarEventId": "6fg8gatj0pqdcq3pti545fsltg",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=NmZnOGdhdGowcHFkY3EzcHRpNTQ1ZnNsdGcgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/jzi-byxs-bpw"
+    },
+    {
+      "id": "mkc5kaod",
+      "title": "Hubspot",
+      "subtitle": "",
+      "owner": "Brian/Greg",
+      "description": "",
+      "notes": "- Review Hubspot end-to-end New Lead > Handover\n- Ensure all hubspot accounts are connected (dialpad, gmail, signatures, meeting links etc.)",
+      "inviteListId": null,
+      "color": "#2563eb",
+      "scheduled": true,
+      "durationSlots": 4,
+      "weekId": "w3",
+      "day": "Mon",
+      "startSlot": 8
     }
   ],
   "inviteLists": [
