@@ -693,7 +693,7 @@
       "scheduled": true,
       "weekId": "w3",
       "day": "Mon",
-      "startSlot": 18,
+      "startSlot": 20,
       "durationSlots": 2,
       "notes": "",
       "description": ""
@@ -1956,7 +1956,7 @@
       "durationSlots": 4,
       "weekId": "w3",
       "day": "Mon",
-      "startSlot": 8
+      "startSlot": 16
     }
   ],
   "inviteLists": [
