@@ -2000,7 +2000,7 @@
       "inviteListId": null,
       "color": "#2563eb",
       "scheduled": true,
-      "durationSlots": 3,
+      "durationSlots": 4,
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 18
