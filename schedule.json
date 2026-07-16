@@ -588,7 +588,7 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 12,
-      "durationSlots": 2,
+      "durationSlots": 4,
       "notes": "",
       "description": "",
       "inviteListId": null
