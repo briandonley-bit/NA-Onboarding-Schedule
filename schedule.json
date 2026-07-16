@@ -744,14 +744,15 @@
       "title": "Tuesday",
       "subtitle": "Sales Standup",
       "owner": "",
-      "color": "#4b5563",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w3",
       "day": "Tue",
-      "startSlot": 10,
+      "startSlot": 14,
       "durationSlots": 2,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m98",
@@ -762,7 +763,7 @@
       "scheduled": true,
       "weekId": "w3",
       "day": "Tue",
-      "startSlot": 14,
+      "startSlot": 16,
       "durationSlots": 2,
       "notes": "",
       "description": ""
@@ -814,14 +815,15 @@
       "title": "Wednesday",
       "subtitle": "Sales Standup",
       "owner": "",
-      "color": "#4b5563",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w3",
       "day": "Wed",
-      "startSlot": 10,
+      "startSlot": 14,
       "durationSlots": 2,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m103",
@@ -832,7 +834,7 @@
       "scheduled": true,
       "weekId": "w3",
       "day": "Wed",
-      "startSlot": 14,
+      "startSlot": 16,
       "durationSlots": 2,
       "notes": "",
       "description": ""
@@ -870,14 +872,15 @@
       "title": "Thursday",
       "subtitle": "Sales Standup",
       "owner": "",
-      "color": "#4b5563",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w3",
       "day": "Thu",
-      "startSlot": 10,
+      "startSlot": 14,
       "durationSlots": 2,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m107",
@@ -888,7 +891,7 @@
       "scheduled": true,
       "weekId": "w3",
       "day": "Thu",
-      "startSlot": 14,
+      "startSlot": 16,
       "durationSlots": 2,
       "notes": "",
       "description": ""
@@ -926,14 +929,15 @@
       "title": "Pipeline Review",
       "subtitle": "All",
       "owner": "",
-      "color": "#2563eb",
+      "color": "#ca8a04",
       "scheduled": true,
       "weekId": "w3",
       "day": "Fri",
-      "startSlot": 10,
+      "startSlot": 12,
       "durationSlots": 2,
       "notes": "",
-      "description": ""
+      "description": "",
+      "inviteListId": null
     },
     {
       "id": "m111",
@@ -944,7 +948,7 @@
       "scheduled": true,
       "weekId": "w3",
       "day": "Fri",
-      "startSlot": 14,
+      "startSlot": 16,
       "durationSlots": 2,
       "notes": "",
       "description": ""
