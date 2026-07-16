@@ -2004,6 +2004,18 @@
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 18
+    },
+    {
+      "id": "mg34vho6",
+      "title": "EOD Catch-up (copy)",
+      "subtitle": "",
+      "owner": "",
+      "color": "#2563eb",
+      "scheduled": false,
+      "durationSlots": 2,
+      "notes": "",
+      "description": "",
+      "inviteListId": null
     }
   ],
   "inviteLists": [
