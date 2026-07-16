@@ -722,8 +722,8 @@
       "scheduled": true,
       "weekId": "w3",
       "day": "Mon",
-      "startSlot": 30,
-      "durationSlots": 4,
+      "startSlot": 32,
+      "durationSlots": 2,
       "notes": "",
       "description": ""
     },
@@ -779,8 +779,8 @@
       "scheduled": true,
       "weekId": "w3",
       "day": "Tue",
-      "startSlot": 30,
-      "durationSlots": 4,
+      "startSlot": 32,
+      "durationSlots": 2,
       "notes": "",
       "description": ""
     },
@@ -836,8 +836,8 @@
       "scheduled": true,
       "weekId": "w3",
       "day": "Wed",
-      "startSlot": 30,
-      "durationSlots": 4,
+      "startSlot": 32,
+      "durationSlots": 2,
       "notes": "",
       "description": ""
     },
@@ -893,8 +893,8 @@
       "scheduled": true,
       "weekId": "w3",
       "day": "Thu",
-      "startSlot": 30,
-      "durationSlots": 4,
+      "startSlot": 32,
+      "durationSlots": 2,
       "notes": "",
       "description": ""
     },
