@@ -697,7 +697,10 @@
       "durationSlots": 3,
       "notes": "",
       "description": "",
-      "inviteListId": "invb1fk3ep"
+      "inviteListId": "invb1fk3ep",
+      "calendarEventId": "u09i0rmrhhnirlfnrcpocijh6k",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=dTA5aTBybXJoaG5pcmxmbnJjcG9jaWpoNmsgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/abm-xqkj-jaw"
     },
     {
       "id": "m94",
