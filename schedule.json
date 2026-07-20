@@ -688,7 +688,7 @@
       "id": "m93",
       "title": "Field Work",
       "subtitle": "Drop Ins",
-      "owner": "",
+      "owner": "Brian",
       "color": "#db2777",
       "scheduled": true,
       "weekId": "w3",
@@ -697,7 +697,7 @@
       "durationSlots": 3,
       "notes": "",
       "description": "",
-      "inviteListId": null
+      "inviteListId": "invb1fk3ep"
     },
     {
       "id": "m94",
