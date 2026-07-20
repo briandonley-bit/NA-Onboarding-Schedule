@@ -710,7 +710,7 @@
       "color": "#db2777",
       "scheduled": true,
       "weekId": "w3",
-      "day": "Wed",
+      "day": "Thu",
       "startSlot": 18,
       "durationSlots": 2,
       "notes": "",
@@ -2008,7 +2008,7 @@
       "scheduled": true,
       "durationSlots": 4,
       "weekId": "w3",
-      "day": "Tue",
+      "day": "Wed",
       "startSlot": 18
     },
     {
