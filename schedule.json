@@ -1982,7 +1982,7 @@
       "inviteListId": null,
       "color": "#7c3aed",
       "scheduled": true,
-      "durationSlots": 6,
+      "durationSlots": 5,
       "weekId": "w3",
       "day": "Wed",
       "startSlot": 24
@@ -1993,7 +1993,7 @@
       "subtitle": "",
       "owner": "Brian/Greg",
       "description": "",
-      "notes": "Group session in which everyone does a mock cold call as a group - make it fun but focused, get the jitters out. Replacing AI trainer.",
+      "notes": "Go over how targets are measured and how commission is calculated. \n\nGet them across commission calculator tool.",
       "inviteListId": null,
       "color": "#7c3aed",
       "scheduled": true,
