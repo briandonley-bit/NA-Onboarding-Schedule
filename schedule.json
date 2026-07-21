@@ -1961,7 +1961,7 @@
       "inviteListId": null,
       "color": "#7c3aed",
       "scheduled": true,
-      "durationSlots": 6,
+      "durationSlots": 4,
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 24
