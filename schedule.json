@@ -1961,13 +1961,16 @@
       "owner": "Brian/Greg/Mark",
       "description": "",
       "notes": "Group session in which everyone does a mock cold call as a group - make it fun but focused, get the jitters out. Replacing AI trainer.",
-      "inviteListId": null,
+      "inviteListId": "invb1fk3ep",
       "color": "#7c3aed",
       "scheduled": true,
       "durationSlots": 4,
       "weekId": "w3",
       "day": "Tue",
-      "startSlot": 24
+      "startSlot": 24,
+      "calendarEventId": "4qbqsu79evqv24opv1hel5evmc",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=NHFicXN1NzlldnF2MjRvcHYxaGVsNWV2bWMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/pkn-ugeb-ywn"
     },
     {
       "id": "m8480e67",
