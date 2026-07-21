@@ -1982,7 +1982,7 @@
       "inviteListId": null,
       "color": "#7c3aed",
       "scheduled": true,
-      "durationSlots": 5,
+      "durationSlots": 4,
       "weekId": "w3",
       "day": "Wed",
       "startSlot": 24
