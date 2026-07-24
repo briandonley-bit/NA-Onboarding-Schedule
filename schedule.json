@@ -2034,7 +2034,7 @@
     },
     {
       "id": "mxwxn66j",
-      "title": "Leadership Tasks (copy)",
+      "title": "Leadership Tasks",
       "subtitle": "",
       "owner": "",
       "color": "#4b5563",
@@ -2060,7 +2060,7 @@
       "inviteListId": "invuv83sdz",
       "weekId": "w1",
       "day": "Wed",
-      "startSlot": 35
+      "startSlot": 34
     }
   ],
   "inviteLists": [
