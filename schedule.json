@@ -2397,18 +2397,6 @@
       ]
     },
     {
-      "id": "inv9bgbl99",
-      "name": "July West Coast",
-      "emails": [
-        "arthur.garritano@fresha.com",
-        "alvin.jhou@fresha.com",
-        "christian.guzman@fresha.com",
-        "lindsey.hudson@fresha.com",
-        "maysen.tagliaferri@fresha.com",
-        "angeline.ly@fresha.com"
-      ]
-    },
-    {
       "id": "invuv83sdz",
       "name": "BD Leadership Team",
       "emails": [
@@ -2498,6 +2486,18 @@
         "Lindsey.hudson@fresha.com",
         "Maysen.tagliaferri@fresha.com",
         "Hiad.hamida@fresha.com"
+      ]
+    },
+    {
+      "id": "inv9bgbl99",
+      "name": "July West Coast",
+      "emails": [
+        "arthur.garritano@fresha.com",
+        "alvin.jhou@fresha.com",
+        "christian.guzman@fresha.com",
+        "lindsey.hudson@fresha.com",
+        "maysen.tagliaferri@fresha.com",
+        "angeline.ly@fresha.com"
       ]
     }
   ]
