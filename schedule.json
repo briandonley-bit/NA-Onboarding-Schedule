@@ -172,7 +172,7 @@
     },
     {
       "id": "m19",
-      "title": "order biz cards",
+      "title": "Leadership Tasks",
       "subtitle": "",
       "owner": "",
       "color": "#4b5563",
@@ -181,7 +181,7 @@
       "day": "Mon",
       "startSlot": 34,
       "durationSlots": 2,
-      "notes": "",
+      "notes": "- Collect Business Card Details\n- Get KYC on test accounts",
       "description": "",
       "inviteListId": "invuv83sdz"
     },
