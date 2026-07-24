@@ -2389,7 +2389,7 @@
       "extraEmails": [],
       "color": "#2563eb",
       "scheduled": true,
-      "durationSlots": 3,
+      "durationSlots": 4,
       "weekId": "w3",
       "day": "Wed",
       "startSlot": 18
