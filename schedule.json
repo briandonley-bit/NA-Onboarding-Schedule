@@ -2053,11 +2053,14 @@
       "subtitle": "",
       "owner": "",
       "color": "#4b5563",
-      "scheduled": false,
+      "scheduled": true,
       "durationSlots": 2,
       "notes": "- Confirm all business card details collected\n- Follow up on KYC on test accounts",
       "description": "",
-      "inviteListId": "invuv83sdz"
+      "inviteListId": "invuv83sdz",
+      "weekId": "w1",
+      "day": "Wed",
+      "startSlot": 35
     }
   ],
   "inviteLists": [
