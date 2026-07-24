@@ -2381,23 +2381,6 @@
   ],
   "inviteLists": [
     {
-      "id": "invb1fk3ep",
-      "name": "July Cohort",
-      "emails": [
-        "alvin.jhou@fresha.com",
-        "angeline.ly@fresha.com",
-        "anthony.goodman@fresha.com",
-        "arthur.garritano@fresha.com",
-        "birlys.duran@fresha.com",
-        "carson.ortez@fresha.com",
-        "christian.guzman@fresha.com",
-        "danessa.goulston@fresha.com",
-        "Lindsey.hudson@fresha.com",
-        "Maysen.tagliaferri@fresha.com",
-        "Hiad.hamida@fresha.com"
-      ]
-    },
-    {
       "id": "inv0buoubj",
       "name": "July East Coast",
       "emails": [
@@ -2493,6 +2476,23 @@
       "name": "Evan",
       "emails": [
         "evan.scotney@fresha.com"
+      ]
+    },
+    {
+      "id": "invb1fk3ep",
+      "name": "July Cohort",
+      "emails": [
+        "alvin.jhou@fresha.com",
+        "angeline.ly@fresha.com",
+        "anthony.goodman@fresha.com",
+        "arthur.garritano@fresha.com",
+        "birlys.duran@fresha.com",
+        "carson.ortez@fresha.com",
+        "christian.guzman@fresha.com",
+        "danessa.goulston@fresha.com",
+        "Lindsey.hudson@fresha.com",
+        "Maysen.tagliaferri@fresha.com",
+        "Hiad.hamida@fresha.com"
       ]
     },
     {
