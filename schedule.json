@@ -2377,6 +2377,22 @@
         "invuv83sdz"
       ],
       "extraEmails": []
+    },
+    {
+      "id": "mirz16fb",
+      "title": "Hubspot Prospecting",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "Walk through more detail of: \n- Task list\n- Lead/Deal views\n- Sequences",
+      "inviteListIds": [],
+      "extraEmails": [],
+      "color": "#2563eb",
+      "scheduled": true,
+      "durationSlots": 3,
+      "weekId": "w3",
+      "day": "Wed",
+      "startSlot": 18
     }
   ],
   "inviteLists": [
