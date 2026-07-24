@@ -2386,17 +2386,6 @@
       "emails": []
     },
     {
-      "id": "inv0buoubj",
-      "name": "July East Coast",
-      "emails": [
-        "anthony.goodman@fresha.com",
-        "carson.ortez@fresha.com",
-        "hiad.hamida@fresha.com",
-        "birlys.duran@fresha.com",
-        "danessa.goulston@fresha.com"
-      ]
-    },
-    {
       "id": "invuv83sdz",
       "name": "BD Leadership Team",
       "emails": [
@@ -2498,6 +2487,17 @@
         "lindsey.hudson@fresha.com",
         "maysen.tagliaferri@fresha.com",
         "angeline.ly@fresha.com"
+      ]
+    },
+    {
+      "id": "inv0buoubj",
+      "name": "July East Coast",
+      "emails": [
+        "anthony.goodman@fresha.com",
+        "carson.ortez@fresha.com",
+        "hiad.hamida@fresha.com",
+        "birlys.duran@fresha.com",
+        "danessa.goulston@fresha.com"
       ]
     }
   ]
