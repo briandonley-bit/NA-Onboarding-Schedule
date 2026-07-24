@@ -234,24 +234,6 @@
       "extraEmails": []
     },
     {
-      "id": "m21",
-      "title": "CPU BLOCK",
-      "subtitle": "",
-      "owner": "",
-      "color": "#4b5563",
-      "scheduled": true,
-      "weekId": "w1",
-      "day": "Thu",
-      "startSlot": 10,
-      "durationSlots": 4,
-      "notes": "",
-      "description": "",
-      "inviteListIds": [
-        "invuv83sdz"
-      ],
-      "extraEmails": []
-    },
-    {
       "id": "m22",
       "title": "Wednesday",
       "subtitle": "Sales Standup",
@@ -1240,7 +1222,8 @@
       "day": "Thu",
       "startSlot": 20,
       "inviteListIds": [
-        "invuv83sdz"
+        "invuv83sdz",
+        "invo4xq410"
       ],
       "extraEmails": []
     },
