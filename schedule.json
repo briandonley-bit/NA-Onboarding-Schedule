@@ -2038,11 +2038,14 @@
       "subtitle": "",
       "owner": "",
       "color": "#4b5563",
-      "scheduled": false,
+      "scheduled": true,
       "durationSlots": 2,
       "notes": "- Collect Business Card Details\n- Get KYC on test accounts",
       "description": "",
-      "inviteListId": "invuv83sdz"
+      "inviteListId": "invuv83sdz",
+      "weekId": "w1",
+      "day": "Tue",
+      "startSlot": 34
     }
   ],
   "inviteLists": [
