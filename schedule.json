@@ -2381,6 +2381,11 @@
   ],
   "inviteLists": [
     {
+      "id": "invcf0a337",
+      "name": "August Onboarding Cohort",
+      "emails": []
+    },
+    {
       "id": "inv0buoubj",
       "name": "July East Coast",
       "emails": [
@@ -2494,11 +2499,6 @@
         "Maysen.tagliaferri@fresha.com",
         "Hiad.hamida@fresha.com"
       ]
-    },
-    {
-      "id": "invcf0a337",
-      "name": "August Onboarding Cohort",
-      "emails": []
     }
   ]
 }
