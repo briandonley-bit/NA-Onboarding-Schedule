@@ -114,7 +114,9 @@
       "durationSlots": 2,
       "notes": "Onboarding plan - overview of the first 3 weeks and set target of having 2x pipeline coverage for the start of their ramp month.",
       "description": "",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invlhxmils"
+      ],
       "extraEmails": [],
       "calendarEventId": "ll30l3d1l8qm73f0het6htk8c0",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=bGwzMGwzZDFsOHFtNzNmMGhldDZodGs4YzAgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
