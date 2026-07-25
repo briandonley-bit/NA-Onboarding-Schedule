@@ -66,10 +66,14 @@
       "durationSlots": 2,
       "notes": "",
       "description": "",
-      "inviteListIds": [
-        "invlhxmils"
-      ],
-      "extraEmails": []
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "tuv9qj0t94vjbi9oa4p34dh2hc",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=dHV2OXFqMHQ5NHZqYmk5b2E0cDM0ZGgyaGMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/qkm-pjmq-fmv",
+      "sentTo": [
+        "Brian"
+      ]
     },
     {
       "id": "m3",
@@ -84,10 +88,14 @@
       "durationSlots": 4,
       "notes": "Lets invite Arianit to this so he can help us get things resolved in real time rather than having things linger all day/week. \n\nGmail, HS, Dialpad, Deal Manager, Gong, Flippy,",
       "description": "",
-      "inviteListIds": [
-        "invlhxmils"
-      ],
-      "extraEmails": []
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "6cq4ellui9u6sq49ag2l1tmkis",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=NmNxNGVsbHVpOXU2c3E0OWFnMmwxdG1raXMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/tnh-yrss-axe",
+      "sentTo": [
+        "Brian"
+      ]
     },
     {
       "id": "m4",
@@ -102,10 +110,14 @@
       "durationSlots": 2,
       "notes": "Onboarding plan - overview of the first 3 weeks and set target of having 2x pipeline coverage for the start of their ramp month.",
       "description": "",
-      "inviteListIds": [
-        "invlhxmils"
-      ],
-      "extraEmails": []
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "ll30l3d1l8qm73f0het6htk8c0",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=bGwzMGwzZDFsOHFtNzNmMGhldDZodGs4YzAgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/dvz-cgha-qux",
+      "sentTo": [
+        "Brian"
+      ]
     },
     {
       "id": "m5",
