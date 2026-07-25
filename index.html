@@ -71,7 +71,7 @@
   .bulk-invite-bar label{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);cursor:pointer;}
   .bulk-invite-bar .spacer{flex:1;}
   .modal-overlay{position:fixed;inset:0;background:rgba(15,18,25,.45);display:flex;align-items:center;justify-content:center;z-index:100;}
-  .modal{background:#fff;border-radius:12px;padding:22px;width:380px;max-width:92vw;box-shadow:0 20px 50px rgba(0,0,0,.25);}
+  .modal{background:#fff;border-radius:12px;padding:22px;width:380px;max-width:92vw;max-height:88vh;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,.25);}
   .modal h3{margin:0 0 14px;font-size:16px;}
   .field{margin-bottom:12px;}
   .field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:4px;}
@@ -777,7 +777,7 @@ function openEditModal(meetingId, prefill){
   const root = document.getElementById("modalRoot");
   root.innerHTML = `
     <div class="modal-overlay" id="modalOverlay">
-      <div class="modal">
+      <div class="modal" style="width:460px;">
         <h3>${isNew ? "Add meeting" : "Edit meeting"}</h3>
         <div class="field">
           <label>Title</label>
