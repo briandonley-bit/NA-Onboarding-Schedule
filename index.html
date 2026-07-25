@@ -619,9 +619,11 @@ function renderMeetingBlock(m){
   if (selectedForInvite.has(m.id)) block.classList.add("selected-for-invite");
 
   const inviteSummary = meetingInviteSummary(m);
+  const blockWeek = state.schedule.weeks.find(w => w.id === m.weekId);
+  const sentCurrent = isSentForCurrentDate(m, blockWeek);
   block.innerHTML = `
     <input type="checkbox" class="select-check" title="Select for bulk invite sending" ${selectedForInvite.has(m.id) ? "checked" : ""}>
-    <div class="m-title">${escapeHtml(m.title)}${m.notes ? ` <span title="${escapeHtml(m.notes)}">📝</span>` : ""}${inviteSummary.hasAny ? ` <span title="${escapeHtml(inviteSummary.tooltip)}">✉️</span>` : ""}${(m.sentTo||[]).length ? ` <span title="Sent to: ${escapeHtml((m.sentTo||[]).join(", "))}">📨</span>` : ""}</div>
+    <div class="m-title">${escapeHtml(m.title)}${m.notes ? ` <span title="${escapeHtml(m.notes)}">📝</span>` : ""}${inviteSummary.hasAny ? ` <span title="${escapeHtml(inviteSummary.tooltip)}">✉️</span>` : ""}${sentCurrent ? ` <span title="Sent to: ${escapeHtml((m.sentTo||[]).join(", "))}">📨</span>` : ""}</div>
     ${m.subtitle ? `<div class="m-subtitle">${escapeHtml(m.subtitle)}</div>` : ""}
     ${m.owner ? `<div class="m-owner">👤 ${escapeHtml(m.owner)}</div>` : ""}
     <div class="resize-handle"></div>
@@ -740,7 +742,7 @@ function renderBacklog(){
     row.innerHTML = `
       <div class="color-dot" style="background:${m.color}"></div>
       <div class="info">
-        <div class="title">${escapeHtml(m.title)}${m.notes ? " 📝" : ""}${inviteSummary.hasAny ? ` <span title="${escapeHtml(inviteSummary.tooltip)}">✉️</span>` : ""}${(m.sentTo||[]).length ? ` <span title="Sent to: ${escapeHtml((m.sentTo||[]).join(", "))}">📨</span>` : ""}</div>
+        <div class="title">${escapeHtml(m.title)}${m.notes ? " 📝" : ""}${inviteSummary.hasAny ? ` <span title="${escapeHtml(inviteSummary.tooltip)}">✉️</span>` : ""}${isSentForCurrentDate(m, null) ? ` <span title="Sent to: ${escapeHtml((m.sentTo||[]).join(", "))}">📨</span>` : ""}</div>
         ${m.subtitle ? `<div class="subtitle">${escapeHtml(m.subtitle)}</div>` : ""}
         ${m.owner ? `<div class="owner">👤 ${escapeHtml(m.owner)}</div>` : ""}
       </div>
@@ -773,6 +775,8 @@ function openEditModal(meetingId, prefill){
     const maxStart = state.schedule.meta.slotCount - m.durationSlots;
     m.startSlot = Math.max(0, Math.min(maxStart, prefill.startSlot));
   }
+  const modalWeek = m.weekId ? state.schedule.weeks.find(w => w.id === m.weekId) : null;
+  const sentCurrent = isSentForCurrentDate(m, modalWeek);
 
   const root = document.getElementById("modalRoot");
   root.innerHTML = `
@@ -807,7 +811,7 @@ function openEditModal(meetingId, prefill){
         </div>
         <div class="field">
           <label>Invite lists (for calendar invites)</label>
-          ${(m.sentTo||[]).length ? `<div class="note">✅ Sent to: ${escapeHtml((m.sentTo||[]).join(", "))}</div>` : ""}
+          ${sentCurrent ? `<div class="note">✅ Sent to: ${escapeHtml((m.sentTo||[]).join(", "))}</div>` : ""}
           <div class="il-checklist" id="fInviteListsWrap">
             ${(state.schedule.inviteLists||[]).length ? (state.schedule.inviteLists||[]).map(l => `
               <label class="il-check-row">
@@ -973,6 +977,28 @@ function minsToHHMMSS(mins){
 }
 function ensureInviteLists(){
   if (!state.schedule.inviteLists) state.schedule.inviteLists = [];
+}
+
+// The real calendar date a meeting falls on, given its week's start date. Shared by
+// syncMeetingToCalendar (to build the actual invite) and isSentForCurrentDate (to
+// tell whether a past "sent to" record still applies to the week's current date).
+function meetingDateStr(m, week){
+  if (!week || !week.startDate || !m.day) return null;
+  const dayIndex = state.schedule.meta.days.indexOf(m.day);
+  if (dayIndex < 0) return null;
+  const base = new Date(week.startDate + "T00:00:00");
+  base.setDate(base.getDate() + dayIndex);
+  return `${base.getFullYear()}-${pad2(base.getMonth()+1)}-${pad2(base.getDate())}`;
+}
+
+// A meeting's "Sent to" record only counts if it was sent for the date the meeting
+// currently falls on. Week start dates get reset for each new onboarding cohort
+// (e.g. reused for August after being set for July), so an old send recorded under
+// a since-changed date shouldn't read as "already invited" for the new one.
+function isSentForCurrentDate(m, week){
+  if (!m.sentTo || !m.sentTo.length || !m.sentForDate) return false;
+  const currentDateStr = meetingDateStr(m, week);
+  return !!currentDateStr && currentDateStr === m.sentForDate;
 }
 
 // A meeting can have several invite lists (m.inviteListIds) plus its own one-off
@@ -1256,10 +1282,7 @@ function connectGoogle(){
 async function syncMeetingToCalendar(m, week){
   const summary = meetingInviteSummary(m);
   if (!summary.emails.length) throw new Error("No invite lists or individual emails on this meeting");
-  const dayIndex = state.schedule.meta.days.indexOf(m.day);
-  const base = new Date(week.startDate + "T00:00:00");
-  base.setDate(base.getDate() + dayIndex);
-  const dateStr = `${base.getFullYear()}-${pad2(base.getMonth()+1)}-${pad2(base.getDate())}`;
+  const dateStr = meetingDateStr(m, week);
   const pstStart = slotStartMinutes(m.startSlot);
   const estStartMin = pstStart + 180;
   const estEndMin = estStartMin + m.durationSlots * state.schedule.meta.slotMinutes;
@@ -1304,8 +1327,14 @@ async function syncMeetingToCalendar(m, week){
   // assignment — once sent, it's no longer "waiting to send," so checkboxes reset
   // and the meeting instead shows "Sent to: ..." until someone deliberately attaches
   // a list again (e.g. to notify people of a change).
-  if (!m.sentTo) m.sentTo = [];
+  // "Sent to" is scoped to the actual calendar date the invite went out for — since
+  // week start dates get reset for each new onboarding cohort, a send recorded for
+  // July shouldn't read as "already invited" once the week's date rolls to August.
+  if (!m.sentTo || m.sentForDate !== dateStr){
+    m.sentTo = []; // different date than last recorded send (or first ever send) — start fresh
+  }
   summary.names.forEach(name => { if (!m.sentTo.includes(name)) m.sentTo.push(name); });
+  m.sentForDate = dateStr;
   m.inviteListIds = [];
   m.extraEmails = [];
 }
@@ -1397,7 +1426,7 @@ function renderBulkInviteBar(){
   }
   const alreadySentCount = [...selectedForInvite].filter(id => {
     const m = state.schedule.meetings.find(x => x.id === id);
-    return m && (m.sentTo||[]).length;
+    return m && isSentForCurrentDate(m, state.schedule.weeks.find(w => w.id === m.weekId));
   }).length;
   bar.style.display = "flex";
   bar.innerHTML = `
@@ -1431,7 +1460,7 @@ async function sendSelectedInvites(){
   const toSend = [];
   let skippedAlreadyInvited = 0, skippedNoInvites = 0, skippedNoDate = 0;
   targets.forEach(m => {
-    if (skipAlreadyInvited && (m.sentTo||[]).length){ skippedAlreadyInvited++; return; }
+    if (skipAlreadyInvited && isSentForCurrentDate(m, state.schedule.weeks.find(w => w.id === m.weekId))){ skippedAlreadyInvited++; return; }
     if (!meetingInviteSummary(m).hasAny){ skippedNoInvites++; return; }
     const week = state.schedule.weeks.find(w => w.id === m.weekId);
     if (!week || !week.startDate){ skippedNoDate++; return; }
