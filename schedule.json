@@ -1093,7 +1093,10 @@
       "durationSlots": 6,
       "notes": "",
       "description": "",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "invuv83sdz"
+      ],
       "extraEmails": []
     },
     {
