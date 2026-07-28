@@ -2399,6 +2399,22 @@
       "weekId": "w3",
       "day": "Wed",
       "startSlot": 18
+    },
+    {
+      "id": "m59hyr0a",
+      "title": "Quota & Commission",
+      "subtitle": "",
+      "owner": "Greg/Brian",
+      "description": "",
+      "notes": "Share targets, how and where it is measured, and how the commission structure works and how to use the calculator.",
+      "inviteListIds": [],
+      "extraEmails": [],
+      "color": "#2563eb",
+      "scheduled": true,
+      "durationSlots": 2,
+      "weekId": "w3",
+      "day": "Tue",
+      "startSlot": 22
     }
   ],
   "inviteLists": [
