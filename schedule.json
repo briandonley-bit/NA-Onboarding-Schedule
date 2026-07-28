@@ -2426,8 +2426,11 @@
       "inviteListIds": [],
       "extraEmails": [],
       "color": "#2563eb",
-      "scheduled": false,
-      "durationSlots": 2
+      "scheduled": true,
+      "durationSlots": 3,
+      "weekId": "w1",
+      "day": "Thu",
+      "startSlot": 9
     }
   ],
   "inviteLists": [
