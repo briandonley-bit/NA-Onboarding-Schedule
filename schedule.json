@@ -1088,7 +1088,7 @@
       "color": "#ea580c",
       "scheduled": true,
       "weekId": "w3",
-      "day": "Fri",
+      "day": "Thu",
       "startSlot": 24,
       "durationSlots": 6,
       "notes": "",
@@ -2311,7 +2311,7 @@
       "scheduled": true,
       "durationSlots": 4,
       "weekId": "w3",
-      "day": "Thu",
+      "day": "Fri",
       "startSlot": 26,
       "inviteListIds": [],
       "extraEmails": []
