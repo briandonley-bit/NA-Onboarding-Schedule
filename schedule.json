@@ -1211,29 +1211,6 @@
       "sentForDate": "2026-08-03"
     },
     {
-      "id": "ma6svji8",
-      "title": "Break",
-      "subtitle": "",
-      "owner": "",
-      "description": "",
-      "notes": "",
-      "color": "#4b5563",
-      "scheduled": true,
-      "durationSlots": 2,
-      "weekId": "w1",
-      "day": "Mon",
-      "startSlot": 24,
-      "inviteListIds": [],
-      "extraEmails": [],
-      "calendarEventId": "9qnu2gd5pt7i6np6tdm8j7pl1c",
-      "calendarEventLink": "https://www.google.com/calendar/event?eid=OXFudTJnZDVwdDdpNm5wNnRkbThqN3BsMWMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
-      "meetLink": "https://meet.google.com/vrg-zsrq-syr",
-      "sentTo": [
-        "BD Leadership Team"
-      ],
-      "sentForDate": "2026-08-03"
-    },
-    {
       "id": "mw0pgl1k",
       "title": "Independent Work",
       "subtitle": "",
