@@ -91,7 +91,9 @@
       "durationSlots": 4,
       "notes": "Lets invite Arianit to this so he can help us get things resolved in real time rather than having things linger all day/week. \n\nGmail, HS, Dialpad, Deal Manager, Gong, Flippy,",
       "description": "",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invuv83sdz"
+      ],
       "extraEmails": [],
       "calendarEventId": "6cq4ellui9u6sq49ag2l1tmkis",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=NmNxNGVsbHVpOXU2c3E0OWFnMmwxdG1raXMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
