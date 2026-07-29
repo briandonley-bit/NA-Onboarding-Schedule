@@ -2615,6 +2615,22 @@
         "AM Leadership"
       ],
       "sentForDate": "2026-08-06"
+    },
+    {
+      "id": "m3894r3c",
+      "title": "Break",
+      "subtitle": "",
+      "owner": "",
+      "description": "",
+      "notes": "",
+      "inviteListIds": [],
+      "extraEmails": [],
+      "color": "#2563eb",
+      "scheduled": true,
+      "durationSlots": 2,
+      "weekId": "w1",
+      "day": "Mon",
+      "startSlot": 10
     }
   ],
   "inviteLists": [
