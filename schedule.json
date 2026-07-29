@@ -1376,7 +1376,7 @@
       "notes": "",
       "color": "#0891b2",
       "scheduled": true,
-      "durationSlots": 6,
+      "durationSlots": 8,
       "weekId": "w1",
       "day": "Thu",
       "startSlot": 28,
