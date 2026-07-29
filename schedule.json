@@ -140,7 +140,7 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 16,
-      "durationSlots": 2,
+      "durationSlots": 4,
       "notes": "",
       "description": "",
       "inviteListIds": [],
