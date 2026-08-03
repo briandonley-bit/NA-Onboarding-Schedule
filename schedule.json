@@ -218,7 +218,9 @@
       "durationSlots": 2,
       "notes": "",
       "description": "",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337"
+      ],
       "extraEmails": [],
       "calendarEventId": "t43vtk2s5p1bonq6o9uek7f158",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=dDQzdnRrMnM1cDFib25xNm85dWVrN2YxNTggYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
