@@ -1188,7 +1188,9 @@
       "weekId": "w1",
       "day": "Mon",
       "startSlot": 24,
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337"
+      ],
       "extraEmails": [],
       "calendarEventId": "n0t4q2l3if878ur835hoikstro",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=bjB0NHEybDNpZjg3OHVyODM1aG9pa3N0cm8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
