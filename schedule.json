@@ -2611,7 +2611,10 @@
       "owner": "",
       "description": "",
       "notes": "",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "invuv83sdz"
+      ],
       "extraEmails": [],
       "color": "#4b5563",
       "scheduled": true,
