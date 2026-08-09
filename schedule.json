@@ -320,11 +320,16 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 17,
-      "inviteListIds": [
-        "invcf0a337",
-        "inv4fgr224"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "o6mda58d8tth40d4ma43bggevs",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=bzZtZGE1OGQ4dHRoNDBkNG1hNDNiZ2dldnMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/twh-jvac-unb",
+      "sentTo": [
+        "August Cohort",
+        "Megan"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-10"
     },
     {
       "id": "m34",
@@ -403,11 +408,16 @@
       "durationSlots": 3,
       "notes": "",
       "description": "",
-      "inviteListIds": [
-        "invcf0a337",
-        "inv8sqxrzo"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "6rhlk0edpdc08bkran72mf3c9c",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=NnJobGswZWRwZGMwOGJrcmFuNzJtZjNjOWMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/ofg-uyfb-fva",
+      "sentTo": [
+        "August Cohort",
+        "Greg"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-11"
     },
     {
       "id": "m58",
@@ -422,10 +432,15 @@
       "durationSlots": 1,
       "notes": "",
       "description": "",
-      "inviteListIds": [
-        "invcf0a337"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "1ldvhcnrpg2t9c4hqvto1k4868",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=MWxkdmhjbnJwZzJ0OWM0aHF2dG8xazQ4NjggYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/zqt-jgzu-afm",
+      "sentTo": [
+        "August Cohort"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-10"
     },
     {
       "id": "m59",
@@ -472,11 +487,16 @@
       "durationSlots": 1,
       "notes": "",
       "description": "",
-      "inviteListIds": [
-        "invcf0a337",
-        "inv4fgr224"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "0eumanpr0gfo1kvhshatq6r1co",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=MGV1bWFucHIwZ2ZvMWt2aHNoYXRxNnIxY28gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/qfs-oowb-une",
+      "sentTo": [
+        "August Cohort",
+        "Megan"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-11"
     },
     {
       "id": "m67",
@@ -539,11 +559,16 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 28,
-      "inviteListIds": [
-        "invcf0a337",
-        "inv4fgr224"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "gu2nuujl6n2rrl008lf6mt4t1s",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=Z3UybnV1amw2bjJycmwwMDhsZjZtdDR0MXMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/wpx-xdxu-riq",
+      "sentTo": [
+        "August Cohort",
+        "Megan"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-10"
     },
     {
       "id": "m76",
@@ -574,11 +599,16 @@
       "durationSlots": 1,
       "notes": "",
       "description": "",
-      "inviteListIds": [
-        "invcf0a337",
-        "invd24p69t"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "u8vfs3v7ejqauss3ukabidd2fk",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=dTh2ZnMzdjdlanFhdXNzM3VrYWJpZGQyZmsgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/aru-xfoj-pbi",
+      "sentTo": [
+        "August Cohort",
+        "Mark"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-12"
     },
     {
       "id": "m82",
@@ -625,10 +655,15 @@
       "durationSlots": 1,
       "notes": "",
       "description": "",
-      "inviteListIds": [
-        "invcf0a337"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "ioh35e1ar9dm55gqk9r0eif4as",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=aW9oMzVlMWFyOWRtNTVncWs5cjBlaWY0YXMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/xwp-eytp-ahd",
+      "sentTo": [
+        "August Cohort"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-14"
     },
     {
       "id": "m89",
@@ -1210,10 +1245,15 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 34,
-      "inviteListIds": [
-        "invinscwzl"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "25op4ck58o712m19o3jo2af068",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=MjVvcDRjazU4bzcxMm0xOW8zam8yYWYwNjggYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/iek-gmgy-pvm",
+      "sentTo": [
+        "August West Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-10"
     },
     {
       "id": "m7npefrv",
@@ -1356,10 +1396,15 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 4,
-      "inviteListIds": [
-        "inv77cl9iv"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "7ifortnklqk1itcvn704q6p25k",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=N2lmb3J0bmtscWsxaXRjdm43MDRxNnAyNWsgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/zct-uuju-aqw",
+      "sentTo": [
+        "August East Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-10"
     },
     {
       "id": "mlzg8dgq",
@@ -1374,10 +1419,15 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 22,
-      "inviteListIds": [
-        "invcf0a337"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "kpnoj425klqpl0m5g76t2nlt4k",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=a3Bub2o0MjVrbHFwbDBtNWc3NnQybmx0NGsgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/kwx-gsjz-xfe",
+      "sentTo": [
+        "August Cohort"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-11"
     },
     {
       "id": "mprnfhvk",
@@ -1392,10 +1442,15 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 8,
-      "inviteListIds": [
-        "inv77cl9iv"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "2q1i4at2i169ubfqaq7pb7tbrk",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=MnExaTRhdDJpMTY5dWJmcWFxN3BiN3RicmsgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/zrm-mome-vpw",
+      "sentTo": [
+        "August East Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-10"
     },
     {
       "id": "mxgdq8l6",
@@ -1410,10 +1465,15 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 16,
-      "inviteListIds": [
-        "invcf0a337"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "6srenud5ov6g1424adepoug79s",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=NnNyZW51ZDVvdjZnMTQyNGFkZXBvdWc3OXMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/ioh-vary-kum",
+      "sentTo": [
+        "August Cohort"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-12"
     },
     {
       "id": "ma7kka0o",
@@ -1441,10 +1501,15 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 4,
-      "inviteListIds": [
-        "inv77cl9iv"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "mrn66sv8beotat9pm61q1s9dog",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=bXJuNjZzdjhiZW90YXQ5cG02MXExczlkb2cgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/yxo-emxh-zwm",
+      "sentTo": [
+        "August East Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-11"
     },
     {
       "id": "mtq97mi1",
@@ -1459,10 +1524,15 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 4,
-      "inviteListIds": [
-        "inv77cl9iv"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "srtr9ecqk01sbumt615vka4738",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=c3J0cjllY3FrMDFzYnVtdDYxNXZrYTQ3MzggYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/ytb-aqfh-rtm",
+      "sentTo": [
+        "August East Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-12"
     },
     {
       "id": "m9ndf1s8",
@@ -1477,10 +1547,15 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 4,
-      "inviteListIds": [
-        "inv77cl9iv"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "hmvl6cevhgk1froj3e9c1oa3ss",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=aG12bDZjZXZoZ2sxZnJvajNlOWMxb2Ezc3MgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/rqj-tmpf-cdx",
+      "sentTo": [
+        "August East Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-13"
     },
     {
       "id": "m9i4eejq",
@@ -1495,10 +1570,15 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 4,
-      "inviteListIds": [
-        "inv77cl9iv"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "td0ct1pamhbm7409d9umbf6mbg",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=dGQwY3QxcGFtaGJtNzQwOWQ5dW1iZjZtYmcgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/zjz-zgsi-umc",
+      "sentTo": [
+        "August East Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-14"
     },
     {
       "id": "madbicgf",
@@ -1513,10 +1593,15 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 16,
-      "inviteListIds": [
-        "invcf0a337"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "t0nr858vt4ivh1p9j2modhkp8c",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=dDBucjg1OHZ0NGl2aDFwOWoybW9kaGtwOGMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/vgj-cbyw-vqo",
+      "sentTo": [
+        "August Cohort"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-13"
     },
     {
       "id": "mkg59cxg",
@@ -1531,10 +1616,15 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 30,
-      "inviteListIds": [
-        "invcf0a337"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "iqkoh9p5d116dmv21hd7rk5a9c",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=aXFrb2g5cDVkMTE2ZG12MjFoZDdyazVhOWMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/vfv-eowh-jgb",
+      "sentTo": [
+        "August Cohort"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-13"
     },
     {
       "id": "mzvyfcf5",
@@ -1549,11 +1639,16 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 22,
-      "inviteListIds": [
-        "invcf0a337",
-        "inv4fgr224"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "c1i04ur55giqnad5os5k4thrnc",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=YzFpMDR1cjU1Z2lxbmFkNW9zNWs0dGhybmMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/phb-pter-cgv",
+      "sentTo": [
+        "August Cohort",
+        "Megan"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-13"
     },
     {
       "id": "mxogcdo7",
@@ -1648,10 +1743,15 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 8,
-      "inviteListIds": [
-        "inv77cl9iv"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "ujr6g6nu68683no0259jtk0rrg",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=dWpyNmc2bnU2ODY4M25vMDI1OWp0azBycmcgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/iqz-trjv-svu",
+      "sentTo": [
+        "August East Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-11"
     },
     {
       "id": "me6cin46",
@@ -1666,10 +1766,15 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 8,
-      "inviteListIds": [
-        "inv77cl9iv"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "a9id7mefje42813flcb6dpkkkc",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=YTlpZDdtZWZqZTQyODEzZmxjYjZkcGtra2MgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/pze-urva-bkm",
+      "sentTo": [
+        "August East Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-12"
     },
     {
       "id": "m9uhj22h",
@@ -1684,10 +1789,15 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 8,
-      "inviteListIds": [
-        "inv77cl9iv"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "akrvkjqj0upqomogs1u4nv8jrk",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=YWtydmtqcWowdXBxb21vZ3MxdTRudjhqcmsgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/zzj-quzv-rmv",
+      "sentTo": [
+        "August East Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-13"
     },
     {
       "id": "mk5awcu1",
@@ -1702,10 +1812,15 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 8,
-      "inviteListIds": [
-        "inv77cl9iv"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "knk7vma8ngjruovqugpblk6l6k",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=a25rN3ZtYThuZ2pydW92cXVncGJsazZsNmsgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/mgj-qnux-yxx",
+      "sentTo": [
+        "August East Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-14"
     },
     {
       "id": "mr1huo0h",
@@ -1720,10 +1835,15 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 34,
-      "inviteListIds": [
-        "invinscwzl"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "7dddhhbccra60l9k7cj8o1ruoc",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=N2RkZGhoYmNjcmE2MGw5azdjajhvMXJ1b2MgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/wjn-qzwm-tbg",
+      "sentTo": [
+        "August West Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-11"
     },
     {
       "id": "msz57o6k",
@@ -1738,10 +1858,15 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 34,
-      "inviteListIds": [
-        "invinscwzl"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "0bib0vbba5oro35cpif73qlcjk",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=MGJpYjB2YmJhNW9ybzM1Y3BpZjczcWxjamsgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/bhs-hbkc-gfy",
+      "sentTo": [
+        "August West Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-12"
     },
     {
       "id": "mvg719u4",
@@ -1756,10 +1881,15 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 34,
-      "inviteListIds": [
-        "invinscwzl"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "re623o7gi536m24os8ls736o2o",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=cmU2MjNvN2dpNTM2bTI0b3M4bHM3MzZvMm8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/ddw-urdq-pyz",
+      "sentTo": [
+        "August West Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-13"
     },
     {
       "id": "mnnqdhc1",
@@ -1774,10 +1904,15 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 34,
-      "inviteListIds": [
-        "invinscwzl"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "ka91r1k8vk829nqkjq1md555ug",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=a2E5MXIxazh2azgyOW5xa2pxMW1kNTU1dWcgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/uiq-pyyk-xsi",
+      "sentTo": [
+        "August West Coast"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-14"
     },
     {
       "id": "mgu504gd",
@@ -1872,11 +2007,16 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 22,
-      "inviteListIds": [
-        "invcf0a337",
-        "inv8sqxrzo"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "cj199hnsfpvqef0401dgafsn70",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=Y2oxOTlobnNmcHZxZWYwNDAxZGdhZnNuNzAgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/auc-rbaq-rnv",
+      "sentTo": [
+        "August Cohort",
+        "Greg"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-12"
     },
     {
       "id": "mpqcpthd",
@@ -1891,11 +2031,16 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 26,
-      "inviteListIds": [
-        "invcf0a337",
-        "inv8sqxrzo"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "lk4krpkrgcq50k7h42vv0qhb90",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=bGs0a3Jwa3JnY3E1MGs3aDQydnYwcWhiOTAgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/yiq-yhab-rbj",
+      "sentTo": [
+        "August Cohort",
+        "Greg"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-13"
     },
     {
       "id": "mngsd2dz",
@@ -1910,11 +2055,16 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 26,
-      "inviteListIds": [
-        "invcf0a337",
-        "inv8sqxrzo"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "g8fvqr59h5n5qv3c4h5ua86lj4",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=ZzhmdnFyNTloNW41cXYzYzRoNXVhODZsajQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/itb-yotb-reb",
+      "sentTo": [
+        "August Cohort",
+        "Greg"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-12"
     },
     {
       "id": "m1dt2bvk",
@@ -1929,10 +2079,15 @@
       "weekId": "w2",
       "day": "Tue",
       "startSlot": 16,
-      "inviteListIds": [
-        "invcf0a337"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "a3186bf0nsg7g7et3qm5a1cbl0",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=YTMxODZiZjBuc2c3ZzdldDNxbTVhMWNibDAgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/byo-uogv-jio",
+      "sentTo": [
+        "August Cohort"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-11"
     },
     {
       "id": "m9c48os5",
@@ -1947,11 +2102,16 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 18,
-      "inviteListIds": [
-        "invcf0a337",
-        "invd24p69t"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "c6tqto6q5jo3p4e8esv66ure3o",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=YzZ0cXRvNnE1am8zcDRlOGVzdjY2dXJlM28gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/ein-pqvw-arv",
+      "sentTo": [
+        "August Cohort",
+        "Mark"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-14"
     },
     {
       "id": "me975i3t",
@@ -1966,11 +2126,16 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 24,
-      "inviteListIds": [
-        "invcf0a337",
-        "inv8sqxrzo"
+      "inviteListIds": [],
+      "extraEmails": [],
+      "calendarEventId": "qh3p33rur7ijifodi6t0u66m1o",
+      "calendarEventLink": "https://www.google.com/calendar/event?eid=cWgzcDMzcnVyN2lqaWZvZGk2dDB1NjZtMW8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
+      "meetLink": "https://meet.google.com/pgg-anuu-jgk",
+      "sentTo": [
+        "August Cohort",
+        "Greg"
       ],
-      "extraEmails": []
+      "sentForDate": "2026-08-14"
     },
     {
       "id": "mkc5kaod",
