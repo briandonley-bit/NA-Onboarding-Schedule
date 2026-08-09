@@ -2591,7 +2591,10 @@
       "calendarEventId": "6fg8gatj0pqdcq3pti545fsltg",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=NmZnOGdhdGowcHFkY3EzcHRpNTQ1ZnNsdGcgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/jzi-byxs-bpw",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "inv8sqxrzo"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August Cohort",
