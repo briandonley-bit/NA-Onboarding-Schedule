@@ -1562,7 +1562,9 @@
       "calendarEventId": "nbk6udmbsm0mcgq8kk1u00lt7k",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=bmJrNnVkbWJzbTBtY2dxOGtrMXUwMGx0N2sgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/aee-ishu-dnt",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invinscwzl"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August West Coast"
