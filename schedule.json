@@ -1859,7 +1859,9 @@
       "calendarEventId": "iv0v85fiej9pm118n9eqnfnrms",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=aXYwdjg1ZmllajlwbTExOG45ZXFuZm5ybXMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/fda-vbxi-cyx",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August Cohort"
