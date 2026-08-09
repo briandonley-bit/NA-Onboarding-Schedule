@@ -2256,7 +2256,9 @@
       "calendarEventId": "lhj2mck3t1t180p12qioa1ha0o",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=bGhqMm1jazN0MXQxODBwMTJxaW9hMWhhMG8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/vzn-cogy-ygf",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invinscwzl"
+      ],
       "extraEmails": [],
       "sentTo": [
         "July West Coast"
