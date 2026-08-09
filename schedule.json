@@ -2158,7 +2158,9 @@
       "calendarEventId": "ojvvecaqev0h4k6v915lpu7qdo",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=b2p2dmVjYXFldjBoNGs2djkxNWxwdTdxZG8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/pjd-hnjd-bkk",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "inv77cl9iv"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August East Coast"
