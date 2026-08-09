@@ -1432,7 +1432,9 @@
       "weekId": "w2",
       "day": "Wed",
       "startSlot": 4,
-      "inviteListIds": [],
+      "inviteListIds": [
+        "inv77cl9iv"
+      ],
       "extraEmails": []
     },
     {
