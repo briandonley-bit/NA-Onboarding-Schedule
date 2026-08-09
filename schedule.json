@@ -792,7 +792,9 @@
       "calendarEventId": "dpjk248nj6vpjrmumurhar3864",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=ZHBqazI0OG5qNnZwanJtdW11cmhhcjM4NjQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/yzp-haip-sor",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August Cohort",
