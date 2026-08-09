@@ -2054,7 +2054,10 @@
       "calendarEventId": "gtk5d4o01hvj3bbpal8722fhbo",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=Z3RrNWQ0bzAxaHZqM2JicGFsODcyMmZoYm8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/mrb-efqf-iyt",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "inv4fgr224"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August Cohort",
