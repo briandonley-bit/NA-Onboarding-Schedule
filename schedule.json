@@ -2303,7 +2303,9 @@
       "weekId": "w2",
       "day": "Thu",
       "startSlot": 34,
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invinscwzl"
+      ],
       "extraEmails": [],
       "calendarEventId": "kdu6medcb59no1jnvv09jolidk",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=a2R1Nm1lZGNiNTlubzFqbnZ2MDlqb2xpZGsgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
