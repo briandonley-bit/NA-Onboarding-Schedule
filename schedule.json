@@ -1945,7 +1945,10 @@
       "weekId": "w2",
       "day": "Fri",
       "startSlot": 18,
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "invd24p69t"
+      ],
       "extraEmails": []
     },
     {
