@@ -2439,7 +2439,10 @@
       "calendarEventId": "597f0lreqvd0rv6t28d6pf4ja4",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=NTk3ZjBscmVxdmQwcnY2dDI4ZDZwZjRqYTQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/rtj-uhqj-eut",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "inv8sqxrzo"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August Cohort",
