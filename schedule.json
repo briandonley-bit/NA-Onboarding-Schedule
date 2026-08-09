@@ -2030,7 +2030,9 @@
       "calendarEventId": "chc28rl1mpvbjul08pj7gnjdec",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=Y2hjMjhybDFtcHZianVsMDhwajdnbmpkZWMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/bap-moes-ydg",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August Cohort",
