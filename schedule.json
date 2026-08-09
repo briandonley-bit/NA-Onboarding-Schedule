@@ -1877,7 +1877,7 @@
       "id": "m9ndf1s8",
       "title": "East Coast Kickoff",
       "subtitle": "",
-      "owner": "",
+      "owner": "Megan",
       "description": "",
       "notes": "Review any questions, initiate the habit of setting priorities: \n- questions about any material\n- update on progress from independent work \n- priority to work on in independent work time",
       "color": "#9333ea",
@@ -1890,6 +1890,8 @@
       "calendarEventLink": "https://www.google.com/calendar/event?eid=cnM5aTYzZ2Q0bGJwOTBvY3E2OWtsbzJuZDQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/vwi-cgdh-qgh",
       "inviteListIds": [
+        "inv77cl9iv",
+        "inv4fgr224",
         "inv0buoubj"
       ],
       "extraEmails": []
