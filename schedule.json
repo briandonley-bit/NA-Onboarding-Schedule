@@ -2345,27 +2345,6 @@
       "extraEmails": []
     },
     {
-      "id": "m466mxwj",
-      "title": "ICP Personas",
-      "subtitle": "",
-      "owner": "Greg",
-      "description": "",
-      "notes": "",
-      "color": "#7c3aed",
-      "scheduled": true,
-      "durationSlots": 4,
-      "weekId": "w2",
-      "day": "Mon",
-      "startSlot": 22,
-      "calendarEventId": "c14ppsjbcj36b82ovpb9unvbrs",
-      "calendarEventLink": "https://www.google.com/calendar/event?eid=YzE0cHBzamJjajM2Yjgyb3ZwYjl1bnZicnMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
-      "meetLink": "https://meet.google.com/cjr-ufyw-ajs",
-      "inviteListIds": [
-        "invb1fk3ep"
-      ],
-      "extraEmails": []
-    },
-    {
       "id": "mpqcpthd",
       "title": "Territory Assignments",
       "subtitle": "",
