@@ -191,6 +191,21 @@ function b64EncodeUnicode(str){ return btoa(unescape(encodeURIComponent(str))); 
 function b64DecodeUnicode(str){ return decodeURIComponent(escape(atob(str))); }
 function escapeHtml(s){ return (s||"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
+// Turns free-typed/pasted email text into a clean list of individual addresses.
+// Splits on comma, semicolon, newline, OR whitespace (so "a@x.com b@y.com" on one
+// line — no comma, no line break — still separates correctly, the exact case that
+// was silently merging two emails into one invalid string). Anything left over that
+// still doesn't look like a real email is dropped rather than sent to Google as a
+// bogus attendee.
+function parseEmailList(raw){
+  return (raw||"")
+    .split(/[\n,;]+/)
+    .flatMap(chunk => chunk.trim().split(/\s+/))
+    .map(s => s.trim())
+    .filter(Boolean)
+    .filter(s => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s));
+}
+
 function ghConfig(){
   return {
     owner: localStorage.getItem(LS_KEYS.owner) || "",
@@ -874,7 +889,7 @@ function openEditModal(meetingId, prefill){
     target.notes = document.getElementById("fNotes").value.trim();
     target.inviteListIds = [...document.querySelectorAll('#fInviteListsWrap input[type=checkbox]:checked')].map(cb => cb.dataset.invitelist);
     const extraEmailsEl = document.getElementById("fExtraEmails");
-    target.extraEmails = extraEmailsEl ? extraEmailsEl.value.split(/[\n,]/).map(s=>s.trim()).filter(Boolean) : [];
+    target.extraEmails = extraEmailsEl ? parseEmailList(extraEmailsEl.value) : [];
     target.durationSlots = parseInt(document.getElementById("fDuration").value, 10);
     target.color = selectedColor;
     if (target.scheduled){
@@ -1163,7 +1178,7 @@ function renderInviteListsEditor(){
     ta.addEventListener("change", (e) => {
       const list = lists.find(l => l.id === e.target.dataset.emails);
       if (list){
-        list.emails = e.target.value.split(/[\n,]/).map(s=>s.trim()).filter(Boolean);
+        list.emails = parseEmailList(e.target.value);
         markDirty();
       }
     });
@@ -1177,7 +1192,7 @@ function renderInviteListsEditor(){
       const nameInput = wrap.querySelector(`.listNameInput[data-list="${listId}"]`);
       const emailsTa = wrap.querySelector(`textarea[data-emails="${listId}"]`);
       list.name = (nameInput.value || "").trim() || list.name;
-      list.emails = (emailsTa.value || "").split(/[\n,]/).map(s=>s.trim()).filter(Boolean);
+      list.emails = parseEmailList(emailsTa.value);
       markDirty();
       renderInviteListsEditor(); // refresh the collapsed row's name/count immediately
       const msg = wrap.querySelector(`span[data-savedmsg="${listId}"]`);
