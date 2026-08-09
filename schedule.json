@@ -1855,7 +1855,7 @@
       "id": "mtq97mi1",
       "title": "East Coast Kickoff",
       "subtitle": "",
-      "owner": "",
+      "owner": "Brian",
       "description": "",
       "notes": "Review any questions, initiate the habit of setting priorities: \n- questions about any material\n- update on progress from independent work \n- priority to work on in independent work time",
       "color": "#9333ea",
@@ -1868,6 +1868,7 @@
       "calendarEventLink": "https://www.google.com/calendar/event?eid=cm42djRyN2dyYjBrZmdvZWlmNzEwZzBqc28gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/rhn-giyn-std",
       "inviteListIds": [
+        "inv77cl9iv",
         "inv0buoubj"
       ],
       "extraEmails": []
