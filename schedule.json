@@ -590,7 +590,10 @@
       "calendarEventId": "hm2osv1kseh8vir6q324t56vd4",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=aG0yb3N2MWtzZWg4dmlyNnEzMjR0NTZ2ZDQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/hvw-nwva-tqo",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "inv8sqxrzo"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August Cohort",
