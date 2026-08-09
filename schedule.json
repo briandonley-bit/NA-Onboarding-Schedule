@@ -1369,7 +1369,9 @@
       "weekId": "w2",
       "day": "Mon",
       "startSlot": 8,
-      "inviteListIds": [],
+      "inviteListIds": [
+        "inv77cl9iv"
+      ],
       "extraEmails": []
     },
     {
