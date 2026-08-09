@@ -1928,7 +1928,10 @@
       "calendarEventId": "rs9i63gd4lbp90ocq69klo2nd4",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=cnM5aTYzZ2Q0bGJwOTBvY3E2OWtsbzJuZDQgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/vwi-cgdh-qgh",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "inv77cl9iv",
+        "inv4fgr224"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August East Coast",
