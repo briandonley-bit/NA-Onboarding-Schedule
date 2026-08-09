@@ -674,7 +674,10 @@
       "calendarEventId": "5aat2l1j0edb98aecu41i34mf0",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=NWFhdDJsMWowZWRiOThhZWN1NDFpMzRtZjAgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/hjd-jjru-emm",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "inv4fgr224"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August Cohort",
