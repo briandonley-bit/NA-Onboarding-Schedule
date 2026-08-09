@@ -2281,7 +2281,9 @@
       "calendarEventId": "h3rd13fm8bt57af6ju7vv4ap48",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=aDNyZDEzZm04YnQ1N2FmNmp1N3Z2NGFwNDggYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/mxy-ojwo-qxr",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invinscwzl"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August West Coast"
