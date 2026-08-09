@@ -2245,9 +2245,7 @@
       "calendarEventId": "e8tepffbcbgbk29qsahkbcdrno",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=ZTh0ZXBmZmJjYmdiazI5cXNhaGtiY2Rybm8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/aqd-kdbe-nxt",
-      "inviteListIds": [
-        "invb1fk3ep"
-      ],
+      "inviteListIds": [],
       "extraEmails": []
     },
     {
