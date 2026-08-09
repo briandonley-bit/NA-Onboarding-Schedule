@@ -1955,7 +1955,9 @@
       "calendarEventId": "32309v6naf7pfklkp2elscmik0",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=MzIzMDl2Nm5hZjdwZmtsa3AyZWxzY21pazAgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/hyz-veya-pus",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "inv77cl9iv"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August East Coast"
