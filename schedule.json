@@ -2564,7 +2564,10 @@
       "calendarEventId": "jh8fnleve556v2smabdqtkfhqs",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=amg4Zm5sZXZlNTU2djJzbWFiZHF0a2ZocXMgYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/ibz-mwmx-nnj",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "invd24p69t"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August Cohort",
