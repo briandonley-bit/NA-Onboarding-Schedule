@@ -1817,7 +1817,9 @@
       "calendarEventId": "1s21m26l30v2jnrdtjc0vnvcjo",
       "calendarEventLink": "https://www.google.com/calendar/event?eid=MXMyMW0yNmwzMHYyam5yZHRqYzB2bnZjam8gYnJpYW4uZG9ubGV5QGZyZXNoYS5jb20",
       "meetLink": "https://meet.google.com/yev-fqmz-qee",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "inv77cl9iv"
+      ],
       "extraEmails": [],
       "sentTo": [
         "August East Coast"
