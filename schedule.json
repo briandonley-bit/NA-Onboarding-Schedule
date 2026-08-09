@@ -472,7 +472,10 @@
       "durationSlots": 1,
       "notes": "",
       "description": "",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "inv4fgr224"
+      ],
       "extraEmails": []
     },
     {
