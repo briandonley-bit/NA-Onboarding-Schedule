@@ -769,22 +769,6 @@
       "extraEmails": []
     },
     {
-      "id": "m96",
-      "title": "Tuesday",
-      "subtitle": "Sales Standup",
-      "owner": "",
-      "color": "#4b5563",
-      "scheduled": true,
-      "weekId": "w3",
-      "day": "Tue",
-      "startSlot": 2,
-      "durationSlots": 2,
-      "notes": "",
-      "description": "",
-      "inviteListIds": [],
-      "extraEmails": []
-    },
-    {
       "id": "m97",
       "title": "Tuesday",
       "subtitle": "Sales Standup",
@@ -835,22 +819,6 @@
       "extraEmails": []
     },
     {
-      "id": "m101",
-      "title": "Wednesday",
-      "subtitle": "Sales Standup",
-      "owner": "",
-      "color": "#4b5563",
-      "scheduled": true,
-      "weekId": "w3",
-      "day": "Wed",
-      "startSlot": 2,
-      "durationSlots": 2,
-      "notes": "",
-      "description": "",
-      "inviteListIds": [],
-      "extraEmails": []
-    },
-    {
       "id": "m102",
       "title": "Wednesday",
       "subtitle": "Sales Standup",
@@ -898,22 +866,6 @@
       "inviteListIds": [
         "invcf0a337"
       ],
-      "extraEmails": []
-    },
-    {
-      "id": "m105",
-      "title": "Thursday",
-      "subtitle": "Sales Standup",
-      "owner": "",
-      "color": "#4b5563",
-      "scheduled": true,
-      "weekId": "w3",
-      "day": "Thu",
-      "startSlot": 2,
-      "durationSlots": 2,
-      "notes": "",
-      "description": "",
-      "inviteListIds": [],
       "extraEmails": []
     },
     {
