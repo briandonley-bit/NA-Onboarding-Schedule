@@ -2298,7 +2298,7 @@
       "scheduled": true,
       "durationSlots": 1,
       "weekId": "w3",
-      "day": "Wed",
+      "day": "Thu",
       "startSlot": 6
     },
     {
@@ -2317,7 +2317,7 @@
       "scheduled": true,
       "durationSlots": 1,
       "weekId": "w3",
-      "day": "Thu",
+      "day": "Wed",
       "startSlot": 6
     },
     {
