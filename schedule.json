@@ -2171,7 +2171,7 @@
       "id": "mg34vho6",
       "title": "EOD Catch-up",
       "subtitle": "",
-      "owner": "",
+      "owner": "Brian",
       "color": "#2563eb",
       "scheduled": true,
       "durationSlots": 1,
@@ -2180,7 +2180,9 @@
       "weekId": "w3",
       "day": "Fri",
       "startSlot": 33,
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337"
+      ],
       "extraEmails": []
     },
     {
