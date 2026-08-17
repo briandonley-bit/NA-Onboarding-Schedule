@@ -842,10 +842,12 @@
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 32,
-      "durationSlots": 2,
+      "durationSlots": 1,
       "notes": "",
       "description": "",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337"
+      ],
       "extraEmails": []
     },
     {
