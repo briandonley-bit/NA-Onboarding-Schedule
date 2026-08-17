@@ -2282,6 +2282,54 @@
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 6
+    },
+    {
+      "id": "m9hqpg7j",
+      "title": "East Coast Kickoff",
+      "subtitle": "",
+      "owner": "Mark",
+      "description": "",
+      "notes": "",
+      "inviteListIds": [
+        "invcf0a337",
+        "invd24p69t"
+      ],
+      "extraEmails": [],
+      "color": "#2563eb",
+      "scheduled": false,
+      "durationSlots": 1
+    },
+    {
+      "id": "mye3cqbh",
+      "title": "East Coast Kickoff",
+      "subtitle": "",
+      "owner": "Mark",
+      "description": "",
+      "notes": "",
+      "inviteListIds": [
+        "invcf0a337",
+        "invd24p69t"
+      ],
+      "extraEmails": [],
+      "color": "#2563eb",
+      "scheduled": false,
+      "durationSlots": 1
+    },
+    {
+      "id": "m48vxcqj",
+      "title": "East Coast Kickoff",
+      "subtitle": "",
+      "owner": "Mark",
+      "description": "",
+      "notes": "",
+      "inviteListIds": [
+        "invcf0a337",
+        "invd24p69t"
+      ],
+      "extraEmails": [],
+      "color": "#2563eb",
+      "scheduled": false,
+      "durationSlots": 1
     }
   ],
   "inviteLists": [
