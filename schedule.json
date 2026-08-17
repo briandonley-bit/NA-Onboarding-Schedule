@@ -2139,7 +2139,7 @@
       "id": "mee7buuc",
       "title": "Daily Planning",
       "subtitle": "",
-      "owner": "",
+      "owner": "Brian",
       "description": "",
       "notes": "Review call blocks, best practices to plan day\n- time blocking, when to call etc",
       "color": "#7c3aed",
@@ -2148,7 +2148,9 @@
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 18,
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337"
+      ],
       "extraEmails": []
     },
     {
