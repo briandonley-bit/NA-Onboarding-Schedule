@@ -2069,7 +2069,7 @@
       "id": "mkc5kaod",
       "title": "Deal Manager",
       "subtitle": "",
-      "owner": "Brian",
+      "owner": "Mark",
       "description": "",
       "notes": "- Review Hubspot end-to-end New Lead > Handover\n- Ensure all hubspot accounts are connected (dialpad, gmail, signatures, meeting links etc.)",
       "color": "#7c3aed",
@@ -2080,7 +2080,7 @@
       "startSlot": 24,
       "inviteListIds": [
         "invcf0a337",
-        "invb1fk3ep"
+        "invd24p69t"
       ],
       "extraEmails": []
     },
