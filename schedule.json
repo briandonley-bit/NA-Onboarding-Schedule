@@ -2333,8 +2333,11 @@
       ],
       "extraEmails": [],
       "color": "#2563eb",
-      "scheduled": false,
-      "durationSlots": 1
+      "scheduled": true,
+      "durationSlots": 1,
+      "weekId": "w3",
+      "day": "Fri",
+      "startSlot": 6
     }
   ],
   "inviteLists": [
