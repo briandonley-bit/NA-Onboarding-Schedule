@@ -2214,7 +2214,7 @@
       "extraEmails": [],
       "color": "#7c3aed",
       "scheduled": true,
-      "durationSlots": 4,
+      "durationSlots": 3,
       "weekId": "w3",
       "day": "Wed",
       "startSlot": 18
