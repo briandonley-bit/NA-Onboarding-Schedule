@@ -768,7 +768,7 @@
     },
     {
       "id": "m95",
-      "title": "EOD Catch-up",
+      "title": "Checkpoint",
       "subtitle": "",
       "owner": "",
       "color": "#2563eb",
@@ -779,7 +779,9 @@
       "durationSlots": 1,
       "notes": "",
       "description": "",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337"
+      ],
       "extraEmails": []
     },
     {
