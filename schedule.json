@@ -739,7 +739,7 @@
       "id": "m94",
       "title": "Meeting Fresha Partners - 5 Partners",
       "subtitle": "",
-      "owner": "",
+      "owner": "Scott",
       "color": "#db2777",
       "scheduled": true,
       "weekId": "w3",
@@ -748,7 +748,10 @@
       "durationSlots": 2,
       "notes": "",
       "description": "",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "inv920kl8f"
+      ],
       "extraEmails": []
     },
     {
