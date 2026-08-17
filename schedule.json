@@ -2190,7 +2190,7 @@
       "notes": "Group session in which everyone does a mock cold call as a group - make it fun but focused, get the jitters out. Replacing AI trainer.",
       "color": "#7c3aed",
       "scheduled": true,
-      "durationSlots": 4,
+      "durationSlots": 3,
       "weekId": "w3",
       "day": "Wed",
       "startSlot": 26,
