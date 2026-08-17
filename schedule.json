@@ -2131,10 +2131,10 @@
       "notes": "Go over how targets are measured and how commission is calculated. \n\nGet them across commission calculator tool.",
       "color": "#7c3aed",
       "scheduled": true,
-      "durationSlots": 4,
+      "durationSlots": 3,
       "weekId": "w3",
       "day": "Fri",
-      "startSlot": 26,
+      "startSlot": 24,
       "inviteListIds": [],
       "extraEmails": []
     },
