@@ -2279,12 +2279,14 @@
     },
     {
       "id": "mirz16fb",
-      "title": "Hubspot Prospecting",
+      "title": "Training Block",
       "subtitle": "",
       "owner": "",
       "description": "",
       "notes": "Walk through more detail of: \n- Task list\n- Lead/Deal views\n- Sequences",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337"
+      ],
       "extraEmails": [],
       "color": "#7c3aed",
       "scheduled": true,
