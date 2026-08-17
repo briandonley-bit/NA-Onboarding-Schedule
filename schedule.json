@@ -2222,7 +2222,7 @@
       "notes": "Review call blocks, best practices to plan day\n- time blocking, when to call etc",
       "color": "#7c3aed",
       "scheduled": true,
-      "durationSlots": 4,
+      "durationSlots": 2,
       "weekId": "w3",
       "day": "Tue",
       "startSlot": 18,
