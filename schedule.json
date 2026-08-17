@@ -2087,7 +2087,7 @@
       "id": "mrydy8cb",
       "title": "Cold Call Role Plays",
       "subtitle": "",
-      "owner": "Brian/Greg/Mark",
+      "owner": "Mark",
       "description": "",
       "notes": "Group session in which everyone does a mock cold call as a group - make it fun but focused, get the jitters out. Replacing AI trainer.",
       "color": "#7c3aed",
@@ -2097,7 +2097,8 @@
       "day": "Tue",
       "startSlot": 26,
       "inviteListIds": [
-        "invcf0a337"
+        "invcf0a337",
+        "invd24p69t"
       ],
       "extraEmails": []
     },
