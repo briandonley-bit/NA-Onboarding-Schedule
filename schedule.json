@@ -666,22 +666,6 @@
       "sentForDate": "2026-08-14"
     },
     {
-      "id": "m89",
-      "title": "BD Monday",
-      "subtitle": "Morning Meeting",
-      "owner": "",
-      "color": "#2563eb",
-      "scheduled": true,
-      "weekId": "w3",
-      "day": "Mon",
-      "startSlot": 0,
-      "durationSlots": 2,
-      "notes": "",
-      "description": "",
-      "inviteListIds": [],
-      "extraEmails": []
-    },
-    {
       "id": "m90",
       "title": "Territory Plan",
       "subtitle": "Research / List Building",
