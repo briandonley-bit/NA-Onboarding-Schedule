@@ -2107,7 +2107,7 @@
       "id": "m8480e67",
       "title": "Cold Call Role Plays",
       "subtitle": "",
-      "owner": "Brian/Greg",
+      "owner": "Greg",
       "description": "",
       "notes": "Group session in which everyone does a mock cold call as a group - make it fun but focused, get the jitters out. Replacing AI trainer.",
       "color": "#7c3aed",
@@ -2116,7 +2116,10 @@
       "weekId": "w3",
       "day": "Wed",
       "startSlot": 26,
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "inv8sqxrzo"
+      ],
       "extraEmails": []
     },
     {
