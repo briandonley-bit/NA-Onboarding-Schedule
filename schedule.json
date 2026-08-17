@@ -2226,7 +2226,9 @@
       "owner": "Brian",
       "description": "",
       "notes": "Share targets, how and where it is measured, and how the commission structure works and how to use the calculator.",
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337"
+      ],
       "extraEmails": [],
       "color": "#2563eb",
       "scheduled": true,
