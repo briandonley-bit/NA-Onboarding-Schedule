@@ -2147,10 +2147,10 @@
       "notes": "- Review Hubspot end-to-end New Lead > Handover\n- Ensure all hubspot accounts are connected (dialpad, gmail, signatures, meeting links etc.)",
       "color": "#7c3aed",
       "scheduled": true,
-      "durationSlots": 4,
+      "durationSlots": 3,
       "weekId": "w3",
       "day": "Mon",
-      "startSlot": 26,
+      "startSlot": 24,
       "inviteListIds": [
         "invcf0a337",
         "invb1fk3ep"
