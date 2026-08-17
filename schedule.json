@@ -2129,7 +2129,7 @@
       "id": "m5mrq8xi",
       "title": "Cold Call Role Plays",
       "subtitle": "",
-      "owner": "Brian/Greg",
+      "owner": "Greg",
       "description": "",
       "notes": "Go over how targets are measured and how commission is calculated. \n\nGet them across commission calculator tool.",
       "color": "#7c3aed",
@@ -2138,7 +2138,10 @@
       "weekId": "w3",
       "day": "Fri",
       "startSlot": 26,
-      "inviteListIds": [],
+      "inviteListIds": [
+        "invcf0a337",
+        "inv8sqxrzo"
+      ],
       "extraEmails": []
     },
     {
