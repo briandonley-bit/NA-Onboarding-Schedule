@@ -2341,6 +2341,25 @@
       "weekId": "w3",
       "day": "Fri",
       "startSlot": 6
+    },
+    {
+      "id": "mjkzmuej",
+      "title": "Training Block",
+      "subtitle": "",
+      "owner": "Greg",
+      "description": "",
+      "notes": "",
+      "inviteListIds": [
+        "invcf0a337",
+        "inv8sqxrzo"
+      ],
+      "extraEmails": [],
+      "color": "#2563eb",
+      "scheduled": true,
+      "durationSlots": 2,
+      "weekId": "w3",
+      "day": "Wed",
+      "startSlot": 22
     }
   ],
   "inviteLists": [
